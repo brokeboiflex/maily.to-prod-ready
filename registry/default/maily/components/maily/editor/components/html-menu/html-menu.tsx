@@ -1,6 +1,7 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from '../../utils/classname';
 import { BubbleMenu } from '@tiptap/react';
-import { CodeXmlIcon, ViewIcon } from 'lucide-react';
+
 import { useCallback } from 'react';
 import { sticky } from 'tippy.js';
 import { getRenderContainer } from '../../utils/get-render-container';
@@ -75,7 +76,14 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
                   });
                 }}
               >
-                <CodeXmlIcon className="mly:size-3 mly:shrink-0 mly:stroke-[2.5]" />
+                <IconPlaceholder
+  lucide="CodeXmlIcon"
+  tabler="IconCode"
+  hugeicons="SourceCodeIcon"
+  phosphor="Code"
+  remixicon="RiCodeLine"
+  className="mly:size-3 mly:shrink-0 mly:stroke-[2.5]"
+/>
               </button>
             </TooltipTrigger>
             <TooltipContent sideOffset={8}>HTML Code</TooltipContent>
@@ -94,7 +102,14 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
                   });
                 }}
               >
-                <ViewIcon className="mly:size-3 mly:shrink-0 mly:stroke-[2.5]" />
+                <IconPlaceholder
+  lucide="ViewIcon"
+  tabler="IconEye"
+  hugeicons="ViewIcon"
+  phosphor="Eye"
+  remixicon="RiEyeLine"
+  className="mly:size-3 mly:shrink-0 mly:stroke-[2.5]"
+/>
               </button>
             </TooltipTrigger>
             <TooltipContent sideOffset={8}>Preview</TooltipContent>

@@ -1,10 +1,11 @@
+import { LucideIcon } from "lucide-react"
 import { ColumnExtension } from '../../nodes/columns/column';
 import { ColumnsExtension } from '../../nodes/columns/columns';
 import { SectionExtension } from '../../nodes/section/section';
 import { isCustomNodeSelected } from '../../utils/is-custom-node-selected';
 import { isTextSelected } from '../../utils/is-text-selected';
 import { BubbleMenu, BubbleMenuProps } from '@tiptap/react';
-import { LucideIcon } from 'lucide-react';
+
 import { SVGIcon } from '../icons/grid-lines';
 import { Divider } from '../ui/divider';
 import { TooltipProvider } from '../ui/tooltip';

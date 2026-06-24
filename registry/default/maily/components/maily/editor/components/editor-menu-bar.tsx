@@ -1,17 +1,7 @@
+import { AlignCenter, AlignLeft, AlignRight, BoldIcon, EraserIcon, ItalicIcon, LinkIcon, SeparatorHorizontal, StrikethroughIcon, UnderlineIcon } from "lucide-react"
 import { useMemo } from 'react';
 import { Editor as EditorType } from '@tiptap/core';
-import {
-  AlignCenter,
-  AlignLeft,
-  AlignRight,
-  BoldIcon,
-  EraserIcon,
-  ItalicIcon,
-  LinkIcon,
-  SeparatorHorizontal,
-  StrikethroughIcon,
-  UnderlineIcon,
-} from 'lucide-react';
+
 
 import { EditorProps } from '..';
 

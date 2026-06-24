@@ -1,7 +1,8 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from '../../utils/classname';
 import { isTextSelected } from '../../utils/is-text-selected';
 import { BubbleMenu, findChildren } from '@tiptap/react';
-import { InfoIcon } from 'lucide-react';
+
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { sticky } from 'tippy.js';
 import { getRenderContainer } from '../../utils/get-render-container';
@@ -101,9 +102,14 @@ export function RepeatBubbleMenu(props: EditorBubbleMenuProps) {
           Repeat
           <Tooltip>
             <TooltipTrigger>
-              <InfoIcon
-                className={cn('mly:size-3 mly:stroke-[2.5] mly:text-gray-500')}
-              />
+              <IconPlaceholder
+  lucide="InfoIcon"
+  tabler="IconInfoCircle"
+  hugeicons="InformationCircleIcon"
+  phosphor="Info"
+  remixicon="RiInformationLine"
+  className={cn('mly:size-3 mly:stroke-[2.5] mly:text-gray-500')}
+/>
             </TooltipTrigger>
             <TooltipContent
               sideOffset={14}

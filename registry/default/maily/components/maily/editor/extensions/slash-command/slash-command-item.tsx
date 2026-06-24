@@ -1,6 +1,7 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import type { Editor } from '@tiptap/core';
 import { BlockItem } from '../../../blocks';
-import { ChevronRightIcon } from 'lucide-react';
+
 import {
   Tooltip,
   TooltipContent,
@@ -64,7 +65,14 @@ export function SlashCommandItem(props: SlashCommandItemProps) {
 
       {isSubCommand && (
         <span className="mly:block mly:px-1 mly:text-gray-400">
-          <ChevronRightIcon className="mly:size-3.5 mly:stroke-[2.5]" />
+          <IconPlaceholder
+  lucide="ChevronRightIcon"
+  tabler="IconChevronRight"
+  hugeicons="ChevronRightIcon"
+  phosphor="CaretRight"
+  remixicon="RiArrowRightSLine"
+  className="mly:size-3.5 mly:stroke-[2.5]"
+/>
         </span>
       )}
     </>

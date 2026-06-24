@@ -1,8 +1,9 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from '../../utils/classname';
 import { useId } from 'react';
 import { Divider } from './divider';
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
-import { ChevronUp } from 'lucide-react';
+
 import { AUTOCOMPLETE_PASSWORD_MANAGERS_OFF } from '../../utils/constants';
 
 type EdgeSpacingControlProps = {
@@ -31,7 +32,14 @@ export function EdgeSpacingControl(props: EdgeSpacingControlProps) {
   return (
     <Popover>
       <PopoverTrigger className="mly:rounded mly:hover:bg-gray-100">
-        <ChevronUp size={14} />
+        <IconPlaceholder
+  lucide="ChevronUp"
+  tabler="IconChevronUp"
+  hugeicons="ChevronUpIcon"
+  phosphor="CaretUp"
+  remixicon="RiArrowUpSLine"
+  size={14}
+/>
       </PopoverTrigger>
       <PopoverContent
         className="mly:flex mly:max-w-max mly:gap-0.5 mly:rounded-md mly:border mly:border-gray-200 mly:p-0.5! mly:shadow-none"

@@ -1,7 +1,9 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
+import { Trash } from "lucide-react"
 import { deleteNode } from '../../utils/delete-node';
 import { isTextSelected } from '../../utils/is-text-selected';
 import { BubbleMenu, findChildren } from '@tiptap/react';
-import { ChevronUp, Trash } from 'lucide-react';
+
 import { useCallback } from 'react';
 import { sticky } from 'tippy.js';
 import { getRenderContainer } from '../../utils/get-render-container';
@@ -263,7 +265,14 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
             <Popover>
               <PopoverTrigger className="mly:flex mly:items-center mly:gap-1 mly:rounded-md mly:px-1.5 mly:text-sm mly:data-[state=open]:bg-soft-gray mly:hover:bg-soft-gray">
                 Column
-                <ChevronUp className="mly:h-3 mly:w-3" />
+                <IconPlaceholder
+  lucide="ChevronUp"
+  tabler="IconChevronUp"
+  hugeicons="ChevronUpIcon"
+  phosphor="CaretUp"
+  remixicon="RiArrowUpSLine"
+  className="mly:h-3 mly:w-3"
+/>
               </PopoverTrigger>
               <PopoverContent
                 className="mly:w-max mly:rounded-lg mly:p-0.5!"

@@ -1,7 +1,9 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
+import { LucideIcon } from "lucide-react"
 import { useId } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './tooltip';
 import { cn } from '../../utils/classname';
-import { ChevronDownIcon, LucideIcon } from 'lucide-react';
+
 import { SVGIcon } from '../icons/grid-lines';
 
 type SelectProps = {
@@ -74,12 +76,17 @@ export function Select(props: SelectProps) {
       </select>
 
       <span className="mly:pointer-events-none mly:absolute mly:inset-y-0 mly:right-0 mly:z-10 mly:flex mly:h-full mly:w-7 mly:items-center mly:justify-center mly:text-gray-600 mly:peer-disabled:opacity-50">
-        <ChevronDownIcon
-          size={16}
+        <IconPlaceholder
+  lucide="ChevronDownIcon"
+  tabler="IconChevronDown"
+  hugeicons="ChevronDownIcon"
+  phosphor="CaretDown"
+  remixicon="RiArrowDownSLine"
+  size={16}
           strokeWidth={2}
           aria-hidden="true"
           role="img"
-        />
+/>
       </span>
     </div>
   );

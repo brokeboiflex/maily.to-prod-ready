@@ -39,7 +39,7 @@
         "fast-deep-equal@^3.1.3",
         "highlight.js@^11.11.1",
         "lowlight@^3.3.0",
-        "lucide-react@^0.483.0",
+        "lucide-react@latest",
         "react-colorful@^5.6.1",
         "tailwindcss@^4.1.8",
         "tippy.js@^6.3.7",
@@ -51,7 +51,12 @@
         "node-html-parser@^7.0.1",
         "csstype@^3.1.3",
         "zod@^3.24.2",
-        "@antfu/utils@^9.2.0"
+        "@antfu/utils@^9.2.0",
+        "@tabler/icons-react@latest",
+        "@hugeicons/react@latest",
+        "@hugeicons/core-free-icons@latest",
+        "@phosphor-icons/react@latest",
+        "@remixicon/react@latest"
       ],
       "devDependencies": [
         "@tailwindcss/typography@^0.5.16",
@@ -61,697 +66,697 @@
       "files": [
         {
           "path": "registry/default/maily/components/maily/blocks/button.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks/button.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/blocks/code.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks/code.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/blocks/footers.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks/footers.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/blocks/headers.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks/headers.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/blocks/image.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks/image.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/blocks/layout.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks/layout.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/blocks/list.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks/list.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/blocks/types.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks/types.ts"
         },
         {
           "path": "registry/default/maily/components/maily/blocks/typography.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks/typography.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/blocks.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/blocks.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/alignment-switch.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/alignment-switch.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/base-button.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/base-button.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/bubble-menu-button.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/bubble-menu-button.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/column-menu/columns-bubble-menu-content.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/column-menu/columns-bubble-menu-content.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/column-menu/columns-bubble-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/column-menu/columns-bubble-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/column-menu/columns-width-config.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/column-menu/columns-width-config.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/column-menu/columns-width.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/column-menu/columns-width.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/column-menu/use-columns-state.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/column-menu/use-columns-state.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/content-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/content-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/editor-menu-bar.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/editor-menu-bar.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/html-menu/html-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/html-menu/html-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/html-menu/use-html-state.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/html-menu/use-html-state.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/icons/border-color.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/icons/border-color.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/icons/grid-lines.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/icons/grid-lines.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/icons/logo-with-cover-image.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/icons/logo-with-cover-image.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/icons/logo-with-text-horizon.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/icons/logo-with-text-horizon.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/icons/logo-with-text-vertical.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/icons/logo-with-text-vertical.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/icons/margin-icon.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/icons/margin-icon.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/icons/padding-icon.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/icons/padding-icon.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/icons/text-direction-icon.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/icons/text-direction-icon.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/image-menu/image-bubble-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/image-menu/image-bubble-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/image-menu/image-size.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/image-menu/image-size.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/image-menu/lock-aspect-ratio-button.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/image-menu/lock-aspect-ratio-button.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/image-menu/use-image-state.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/image-menu/use-image-state.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/inline-image-menu/inline-image-bubble-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/inline-image-menu/inline-image-bubble-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/inline-image-menu/use-inline-image-state.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/inline-image-menu/use-inline-image-state.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/input.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/input.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/popover.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/popover.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/repeat-menu/repeat-bubble-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/repeat-menu/repeat-bubble-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/repeat-menu/use-repeat-state.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/repeat-menu/use-repeat-state.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/section-menu/section-bubble-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/section-menu/section-bubble-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/section-menu/use-section-state.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/section-menu/use-section-state.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/show-popover.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/show-popover.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/spacer-menu/spacer-bubble-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/spacer-menu/spacer-bubble-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/spacer-menu/use-spacer-state.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/spacer-menu/use-spacer-state.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/text-direction-switch.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/text-direction-switch.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/text-menu/text-bubble-content.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/text-menu/text-bubble-content.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/text-menu/text-bubble-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/text-menu/text-bubble-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/text-menu/turn-into-block.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/text-menu/turn-into-block.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/text-menu/use-text-menu-state.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/text-menu/use-text-menu-state.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/text-menu/use-turn-into-block-options.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/text-menu/use-turn-into-block-options.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/textarea.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/textarea.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/ui/color-picker.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/ui/color-picker.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/ui/divider.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/ui/divider.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/ui/dropdown-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/ui/dropdown-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/ui/edge-spacing-controls.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/ui/edge-spacing-controls.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/ui/input-autocomplete.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/ui/input-autocomplete.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/ui/link-input-popover.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/ui/link-input-popover.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/ui/number-input.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/ui/number-input.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/ui/select.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/ui/select.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/ui/tooltip.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/ui/tooltip.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/variable-menu/variable-bubble-menu.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/variable-menu/variable-bubble-menu.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/components/vertical-alignment-switch.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/components/vertical-alignment-switch.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/color.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/color.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/horizontal-rule.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/horizontal-rule.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/image-upload/image-upload.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/image-upload/image-upload.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/index.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/index.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/link-card.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/link-card.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/maily-kit.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/maily-kit.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/placeholder.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/placeholder.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/selection/selection.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/selection/selection.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/slash-command/default-slash-commands.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/slash-command/default-slash-commands.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/slash-command/slash-command-item.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/slash-command/slash-command-item.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/slash-command/slash-command-search.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/slash-command/slash-command-search.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/slash-command/slash-command-view.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/slash-command/slash-command-view.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/slash-command/slash-command.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/slash-command/slash-command.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/extensions/tailing-node/tailing-node.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/extensions/tailing-node/tailing-node.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/index.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/index.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/button/button-label-input.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/button/button-label-input.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/button/button-view.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/button/button-view.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/button/button.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/button/button.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/columns/column.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/columns/column.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/columns/columns.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/columns/columns.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/footer.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/footer.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/heading/heading.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/heading/heading.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/html/html-view.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/html/html-view.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/html/html.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/html/html.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/image/image-view.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/image/image-view.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/image/image.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/image/image.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/inline-image/inline-image.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/inline-image/inline-image.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/link-card.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/link-card.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/link.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/link.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/logo/logo-view.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/logo/logo-view.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/logo/logo.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/logo/logo.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/paragraph/paragraph.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/paragraph/paragraph.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/repeat/repeat-view.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/repeat/repeat-view.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/repeat/repeat.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/repeat/repeat.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/section/section.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/section/section.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/spacer.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/spacer.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/variable/variable-suggestions-popover.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/variable/variable-suggestions-popover.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/variable/variable-suggestions.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/variable/variable-suggestions.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/variable/variable-view.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/variable/variable-view.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/nodes/variable/variable.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/nodes/variable/variable.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/plugins/drag-handle/drag-handle-plugin.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/plugins/drag-handle/drag-handle-plugin.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/plugins/drag-handle/drag-handle.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/plugins/drag-handle/drag-handle.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/plugins/image-upload/image-upload-plugin.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/plugins/image-upload/image-upload-plugin.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/provider.tsx",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/provider.tsx"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/aspect-ratio.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/aspect-ratio.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/border-radius.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/border-radius.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/classname.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/classname.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/columns.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/columns.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/constants.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/constants.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/delete-node.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/delete-node.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/get-render-container.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/get-render-container.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/is-custom-node-selected.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/is-custom-node-selected.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/is-text-selected.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/is-text-selected.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/node-options.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/node-options.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/replace-deprecated.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/replace-deprecated.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/spacing.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/spacing.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/update-attribute.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/update-attribute.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/update-scroll-view.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/update-scroll-view.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/use-event.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/use-event.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/use-outside-click.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/use-outside-click.ts"
         },
         {
           "path": "registry/default/maily/components/maily/editor/utils/variable.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/editor/utils/variable.ts"
         },
         {
           "path": "registry/default/maily/components/maily/extensions.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/extensions.ts"
         },
         {
           "path": "registry/default/maily/components/maily/index.ts",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/index.ts"
         },
         {
           "path": "registry/default/maily/components/maily/styles/index.css",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/styles/index.css"
         },
         {
           "path": "registry/default/maily/components/maily/styles/_editor.css",
-          "type": "registry:file",
+          "type": "registry:component",
           "target": "@components/maily/styles/_editor.css"
         },
         {
           "path": "registry/default/maily/lib/maily-render/index.ts",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/index.ts"
         },
         {
           "path": "registry/default/maily/lib/maily-render/maily.tsx",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/maily.tsx"
         },
         {
           "path": "registry/default/maily/lib/maily-render/meta.tsx",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/meta.tsx"
         },
         {
           "path": "registry/default/maily/lib/maily-render/preheader.ts",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/preheader.ts"
         },
         {
           "path": "registry/default/maily/lib/maily-render/render.test.ts",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/render.test.ts"
         },
         {
           "path": "registry/default/maily/lib/maily-render/render.ts",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/render.ts"
         },
         {
           "path": "registry/default/maily/lib/maily-render/shared/css-variables.ts",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/shared/css-variables.ts"
         },
         {
           "path": "registry/default/maily/lib/maily-render/shared/font.ts",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/shared/font.ts"
         },
         {
           "path": "registry/default/maily/lib/maily-render/shared/index.ts",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/shared/index.ts"
         },
         {
           "path": "registry/default/maily/lib/maily-render/shared/theme.ts",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/shared/theme.ts"
         },
         {
           "path": "registry/default/maily/lib/maily-render/utils.ts",
-          "type": "registry:file",
+          "type": "registry:lib",
           "target": "@lib/maily-render/utils.ts"
         }
       ],

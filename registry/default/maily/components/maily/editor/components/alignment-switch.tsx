@@ -1,4 +1,5 @@
-import { AlignCenter, AlignLeft, AlignRight } from 'lucide-react';
+import { AlignCenter, AlignLeft, AlignRight } from "lucide-react"
+
 import { BubbleMenuButton } from './bubble-menu-button';
 import { AllowedLogoAlignment, allowedLogoAlignment } from '../nodes/logo/logo';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';

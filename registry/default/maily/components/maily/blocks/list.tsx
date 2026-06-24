@@ -1,5 +1,6 @@
+import { List, ListOrdered } from "lucide-react"
 import type { BlockItem } from './types';
-import { List, ListOrdered } from 'lucide-react';
+
 
 export const bulletList: BlockItem = {
   title: 'Bullet List',

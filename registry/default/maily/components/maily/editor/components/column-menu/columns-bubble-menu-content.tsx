@@ -1,3 +1,4 @@
+import { Space, Trash } from "lucide-react"
 import { EditorBubbleMenuProps } from '../text-menu/text-bubble-menu';
 import { useColumnsState } from './use-columns-state';
 import { Divider } from '../ui/divider';
@@ -11,7 +12,7 @@ import {
 import { ShowPopover } from '../show-popover';
 import { ColumnsWidthConfig } from './columns-width-config';
 import { Select } from '../ui/select';
-import { Space, Trash } from 'lucide-react';
+
 import { BubbleMenuButton } from '../bubble-menu-button';
 import { deleteNode } from '../../utils/delete-node';
 import { spacing } from '../../utils/spacing';

@@ -1,8 +1,9 @@
 'use client';
 
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Check, ChevronRight, Circle } from 'lucide-react';
+
 import { cn } from '../../utils/classname';
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
@@ -33,7 +34,14 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className="mly:ml-auto mly:h-4 mly:w-4" />
+    <IconPlaceholder
+  lucide="ChevronRight"
+  tabler="IconChevronRight"
+  hugeicons="ChevronRightIcon"
+  phosphor="CaretRight"
+  remixicon="RiArrowRightSLine"
+  className="mly:ml-auto mly:h-4 mly:w-4"
+/>
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =

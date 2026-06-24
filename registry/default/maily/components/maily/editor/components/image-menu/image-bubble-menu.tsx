@@ -1,8 +1,9 @@
+import { ImageDown, LockIcon, LockOpenIcon } from "lucide-react"
 import { AllowedLogoSize, allowedLogoSize } from '../../nodes/logo/logo';
 import { getNewHeight, getNewWidth } from '../../utils/aspect-ratio';
 import { borderRadius } from '../../utils/border-radius';
 import { BubbleMenu } from '@tiptap/react';
-import { ImageDown, LockIcon, LockOpenIcon } from 'lucide-react';
+
 import { sticky } from 'tippy.js';
 import { AlignmentSwitch } from '../alignment-switch';
 import { BubbleMenuButton } from '../bubble-menu-button';

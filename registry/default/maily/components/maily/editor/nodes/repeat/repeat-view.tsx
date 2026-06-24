@@ -1,5 +1,6 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { NodeViewProps, NodeViewWrapper, NodeViewContent } from '@tiptap/react';
-import { Repeat2 } from 'lucide-react';
+
 
 export function RepeatView(props: NodeViewProps) {
   const { editor, getPos } = props;
@@ -22,7 +23,14 @@ export function RepeatView(props: NodeViewProps) {
           editor.commands.setNodeSelection(getPos());
         }}
       >
-        <Repeat2 className="mly:size-3 mly:stroke-[2.5] mly:text-midnight-gray" />
+        <IconPlaceholder
+  lucide="Repeat2"
+  tabler="IconRepeat"
+  hugeicons="RepeatIcon"
+  phosphor="Repeat"
+  remixicon="RiRepeatLine"
+  className="mly:size-3 mly:stroke-[2.5] mly:text-midnight-gray"
+/>
         <div className="mly:w-[1.5px] mly:grow mly:rounded-full mly:bg-rose-300" />
       </div>
     </NodeViewWrapper>

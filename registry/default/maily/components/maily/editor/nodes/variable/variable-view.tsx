@@ -1,3 +1,4 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import {
   Popover,
   PopoverContent,
@@ -10,7 +11,7 @@ import { AUTOCOMPLETE_PASSWORD_MANAGERS_OFF } from '../../utils/constants';
 import { getNodeOptions } from '../../utils/node-options';
 import { NodeViewProps } from '@tiptap/core';
 import { NodeViewWrapper } from '@tiptap/react';
-import { AlertTriangle, Braces, Pencil } from 'lucide-react';
+
 import { useMemo } from 'react';
 import {
   DEFAULT_RENDER_VARIABLE_FUNCTION,
@@ -106,7 +107,14 @@ export function VariableView(props: NodeViewProps) {
                       className="mly:h-7 mly:w-32 mly:rounded-md mly:bg-soft-gray mly:px-2 mly:pr-6 mly:text-sm mly:text-midnight-gray mly:focus:bg-soft-gray mly:focus:outline-none"
                     />
                     <div className="mly:absolute mly:inset-y-0 mly:right-1 mly:flex mly:items-center">
-                      <Pencil className="mly:h-3 mly:w-3 mly:stroke-[2.5] mly:text-midnight-gray" />
+                      <IconPlaceholder
+  lucide="Pencil"
+  tabler="IconPencil"
+  hugeicons="PencilIcon"
+  phosphor="Pencil"
+  remixicon="RiPencilLine"
+  className="mly:h-3 mly:w-3 mly:stroke-[2.5] mly:text-midnight-gray"
+/>
                     </div>
                   </label>
                 </>
@@ -127,7 +135,14 @@ export const DefaultRenderVariable: RenderVariableFunction = (props) => {
   if (from === 'button-variable') {
     return (
       <div className="mly:inline-grid mly:max-w-xs mly:grid-cols-[12px_1fr] mly:items-center mly:gap-1.5 mly:rounded-md mly:border mly:border-(--button-var-border-color) mly:px-2 mly:py-px mly:font-mono mly:text-xs">
-        <Braces className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5]" />
+        <IconPlaceholder
+  lucide="Braces"
+  tabler="IconBraces"
+  hugeicons="BracesIcon"
+  phosphor="BracketsCurly"
+  remixicon="RiBracesLine"
+  className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5]"
+/>
         <span className="mly:min-w-0 mly:truncate mly:text-left">
           {variableLabel}
         </span>
@@ -144,7 +159,14 @@ export const DefaultRenderVariable: RenderVariableFunction = (props) => {
             'mly:border-rose-400 mly:bg-rose-50 mly:text-rose-600 mly:hover:bg-rose-100'
         )}
       >
-        <Braces className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-rose-600" />
+        <IconPlaceholder
+  lucide="Braces"
+  tabler="IconBraces"
+  hugeicons="BracesIcon"
+  phosphor="BracketsCurly"
+  remixicon="RiBracesLine"
+  className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-rose-600"
+/>
         <span className="mly:min-w-0 mly:truncate mly:text-left">
           {variableLabel}
         </span>
@@ -157,10 +179,24 @@ export const DefaultRenderVariable: RenderVariableFunction = (props) => {
       tabIndex={-1}
       className="mly:inline-flex mly:items-center mly:gap-(--variable-icon-gap) mly:rounded-full mly:border mly:border-gray-200 mly:px-1.5 mly:py-0.5 mly:leading-none"
     >
-      <Braces className="mly:size-[var(--variable-icon-size)] mly:shrink-0 mly:stroke-[2.5] mly:text-rose-600" />
+      <IconPlaceholder
+  lucide="Braces"
+  tabler="IconBraces"
+  hugeicons="BracesIcon"
+  phosphor="BracketsCurly"
+  remixicon="RiBracesLine"
+  className="mly:size-[var(--variable-icon-size)] mly:shrink-0 mly:stroke-[2.5] mly:text-rose-600"
+/>
       {variableLabel}
       {required && !fallback && (
-        <AlertTriangle className="mly:size-[var(--variable-icon-size)] mly:shrink-0 mly:stroke-[2.5]" />
+        <IconPlaceholder
+  lucide="AlertTriangle"
+  tabler="IconAlertTriangle"
+  hugeicons="AlertCircleIcon"
+  phosphor="Warning"
+  remixicon="RiAlertLine"
+  className="mly:size-[var(--variable-icon-size)] mly:shrink-0 mly:stroke-[2.5]"
+/>
       )}
     </span>
   );

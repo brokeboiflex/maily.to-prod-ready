@@ -1,4 +1,6 @@
-import { LockIcon, LockOpenIcon } from 'lucide-react';
+import { IconPlaceholder } from "@/components/icon-placeholder"
+import { LockOpenIcon } from "lucide-react"
+
 import { BaseButton } from '../base-button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
@@ -22,7 +24,14 @@ export function LockAspectRatioButton(props: LockAspectRatioButtonProps) {
           onClick={onClick}
         >
           {isLocked ? (
-            <LockIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-midnight-gray" />
+            <IconPlaceholder
+  lucide="LockIcon"
+  tabler="IconLock"
+  hugeicons="LockIcon"
+  phosphor="Lock"
+  remixicon="RiLockLine"
+  className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-midnight-gray"
+/>
           ) : (
             <LockOpenIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-midnight-gray" />
           )}

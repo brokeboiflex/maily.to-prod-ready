@@ -1,10 +1,11 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import type { Editor } from '@tiptap/core';
 import { useCallback, useEffect, useState } from 'react';
 
 import type { NodeSelection } from '@tiptap/pm/state';
 
 import type { Node } from '@tiptap/pm/model';
-import { Copy, GripVertical, Plus, Trash2 } from 'lucide-react';
+
 import { BaseButton } from './base-button';
 import {
   Tooltip,
@@ -136,7 +137,14 @@ export function ContentMenu(props: ContentMenuProps) {
                 onClick={handleAddNewNode}
                 type="button"
               >
-                <Plus className="mly:size-3.5 mly:shrink-0" />
+                <IconPlaceholder
+  lucide="Plus"
+  tabler="IconPlus"
+  hugeicons="Add01Icon"
+  phosphor="Plus"
+  remixicon="RiAddLine"
+  className="mly:size-3.5 mly:shrink-0"
+/>
               </BaseButton>
             </TooltipTrigger>
             <TooltipContent sideOffset={8}>Add new node</TooltipContent>
@@ -156,7 +164,14 @@ export function ContentMenu(props: ContentMenuProps) {
                     }}
                     type="button"
                   >
-                    <GripVertical className="mly:size-3.5 mly:shrink-0" />
+                    <IconPlaceholder
+  lucide="GripVertical"
+  tabler="IconGripVertical"
+  hugeicons="GripVerticalIcon"
+  phosphor="DotsSixVertical"
+  remixicon="RiDraggable"
+  className="mly:size-3.5 mly:shrink-0"
+/>
                   </BaseButton>
                 </TooltipTrigger>
                 <TooltipContent sideOffset={8}>Node actions</TooltipContent>
@@ -175,7 +190,14 @@ export function ContentMenu(props: ContentMenuProps) {
                 onClick={duplicateNode}
                 className="mly:h-auto mly:justify-start mly:gap-2 mly:rounded! mly:px-2 mly:py-1 mly:text-sm mly:font-normal"
               >
-                <Copy className="mly:size-[15px] mly:shrink-0" />
+                <IconPlaceholder
+  lucide="Copy"
+  tabler="IconCopy"
+  hugeicons="Copy01Icon"
+  phosphor="Copy"
+  remixicon="RiFileCopyLine"
+  className="mly:size-[15px] mly:shrink-0"
+/>
                 Duplicate
               </BaseButton>
               <Divider type="horizontal" />
@@ -183,7 +205,14 @@ export function ContentMenu(props: ContentMenuProps) {
                 onClick={deleteCurrentNode}
                 className="mly:h-auto mly:justify-start mly:gap-2 mly:rounded! mly:bg-red-100 mly:px-2 mly:py-1 mly:text-sm mly:font-normal mly:text-red-600 mly:hover:bg-red-200 mly:focus:bg-red-200"
               >
-                <Trash2 className="mly:size-[15px] mly:shrink-0" />
+                <IconPlaceholder
+  lucide="Trash2"
+  tabler="IconTrash"
+  hugeicons="Delete02Icon"
+  phosphor="Trash"
+  remixicon="RiDeleteBinLine"
+  className="mly:size-[15px] mly:shrink-0"
+/>
                 Delete
               </BaseButton>
             </PopoverContent>

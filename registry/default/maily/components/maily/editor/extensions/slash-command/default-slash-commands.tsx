@@ -1,4 +1,5 @@
-import { FootprintsIcon, Heading1 } from 'lucide-react';
+import { IconPlaceholder } from "@/components/icon-placeholder"
+
 import { button, linkCard } from '../../../blocks/button';
 import { htmlCodeBlock } from '../../../blocks/code';
 import { image, inlineImage, logo } from '../../../blocks/image';
@@ -60,7 +61,14 @@ export const DEFAULT_SLASH_COMMANDS: BlockGroupItem[] = [
         title: 'Headers',
         description: 'Add pre-designed headers block',
         searchTerms: ['header', 'headers'],
-        icon: <Heading1 className="mly:h-4 mly:w-4" />,
+        icon: <IconPlaceholder
+  lucide="Heading1"
+  tabler="IconH1"
+  hugeicons="Heading01Icon"
+  phosphor="TextHOne"
+  remixicon="RiHeading"
+  className="mly:h-4 mly:w-4"
+/>,
         preview: 'https://cdn.usemaily.com/previews/header-preview-xyz.png',
         commands: [
           headerLogoWithTextVertical,
@@ -73,7 +81,14 @@ export const DEFAULT_SLASH_COMMANDS: BlockGroupItem[] = [
         title: 'Footers',
         description: 'Add pre-designed footers block',
         searchTerms: ['footers'],
-        icon: <FootprintsIcon className="mly:h-4 mly:w-4" />,
+        icon: <IconPlaceholder
+  lucide="FootprintsIcon"
+  tabler="IconWalk"
+  hugeicons="FootprintsIcon"
+  phosphor="Footprints"
+  remixicon="RiFootprintLine"
+  className="mly:h-4 mly:w-4"
+/>,
         commands: [
           footerCopyrightText,
           footerCommunityFeedbackCta,

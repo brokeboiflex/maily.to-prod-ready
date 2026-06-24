@@ -1,6 +1,7 @@
+import { type LucideIcon } from "lucide-react"
 import { forwardRef } from 'react';
 import { cn } from '../../utils/classname';
-import { type LucideIcon } from 'lucide-react';
+
 import { SVGIcon } from '../icons/grid-lines';
 import { Tooltip, TooltipContent, TooltipTrigger } from './tooltip';
 import { AUTOCOMPLETE_PASSWORD_MANAGERS_OFF } from '../../utils/constants';

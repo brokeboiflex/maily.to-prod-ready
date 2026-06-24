@@ -1,10 +1,6 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { cn } from '../../utils/classname';
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  Braces,
-  CornerDownLeftIcon,
-} from 'lucide-react';
+
 import {
   forwardRef,
   useEffect,
@@ -91,7 +87,14 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
         <div className="mly:flex mly:items-center mly:justify-between mly:gap-2 mly:border-b mly:border-gray-200 mly:bg-soft-gray/40 mly:px-1 mly:py-1.5 mly:text-gray-500">
           <span className="mly:text-xs mly:uppercase">Variables</span>
           <VariableIcon>
-            <Braces className="mly:size-3 mly:stroke-[2.5]" />
+            <IconPlaceholder
+  lucide="Braces"
+  tabler="IconBraces"
+  hugeicons="BracesIcon"
+  phosphor="BracketsCurly"
+  remixicon="RiBracesLine"
+  className="mly:size-3 mly:stroke-[2.5]"
+/>
           </VariableIcon>
         </div>
 
@@ -113,7 +116,14 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
                       : 'mly:bg-white'
                   )}
                 >
-                  <Braces className="mly:size-3 mly:stroke-[2.5] mly:text-rose-600" />
+                  <IconPlaceholder
+  lucide="Braces"
+  tabler="IconBraces"
+  hugeicons="BracesIcon"
+  phosphor="BracketsCurly"
+  remixicon="RiBracesLine"
+  className="mly:size-3 mly:stroke-[2.5] mly:text-rose-600"
+/>
                   {item?.label || item.name}
                 </button>
               ))
@@ -128,15 +138,36 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
         <div className="mly:flex mly:items-center mly:justify-between mly:gap-2 mly:border-t mly:border-gray-200 mly:px-1 mly:py-1.5 mly:text-gray-500">
           <div className="mly:flex mly:items-center mly:gap-1">
             <VariableIcon>
-              <ArrowDownIcon className="mly:size-3 mly:stroke-[2.5]" />
+              <IconPlaceholder
+  lucide="ArrowDownIcon"
+  tabler="IconArrowDown"
+  hugeicons="ArrowDown01Icon"
+  phosphor="ArrowDown"
+  remixicon="RiArrowDownLine"
+  className="mly:size-3 mly:stroke-[2.5]"
+/>
             </VariableIcon>
             <VariableIcon>
-              <ArrowUpIcon className="mly:size-3 mly:stroke-[2.5]" />
+              <IconPlaceholder
+  lucide="ArrowUpIcon"
+  tabler="IconArrowUp"
+  hugeicons="ArrowUp01Icon"
+  phosphor="ArrowUp"
+  remixicon="RiArrowUpLine"
+  className="mly:size-3 mly:stroke-[2.5]"
+/>
             </VariableIcon>
             <span className="mly:text-xs mly:text-gray-500">Navigate</span>
           </div>
           <VariableIcon>
-            <CornerDownLeftIcon className="mly:size-3 mly:stroke-[2.5]" />
+            <IconPlaceholder
+  lucide="CornerDownLeftIcon"
+  tabler="IconCornerDownLeft"
+  hugeicons="CornerDownLeftIcon"
+  phosphor="ArrowBendDownLeft"
+  remixicon="RiCornerDownLeftLine"
+  className="mly:size-3 mly:stroke-[2.5]"
+/>
           </VariableIcon>
         </div>
       </div>

@@ -1,5 +1,6 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Editor } from '@tiptap/core';
-import { Eye, InfoIcon } from 'lucide-react';
+
 import { memo, useMemo, useRef, useState } from 'react';
 import { cn } from '../utils/classname';
 import { useVariableOptions } from '../utils/node-options';
@@ -53,7 +54,14 @@ function _ShowPopover(props: ShowPopoverProps) {
                 'mly:bg-rose-100 mly:text-rose-800 mly:data-[state=open]:bg-rose-100 mly:hover:bg-rose-100'
             )}
           >
-            <Eye className="mly:h-3 mly:w-3 mly:stroke-[2.5]" />
+            <IconPlaceholder
+  lucide="Eye"
+  tabler="IconEye"
+  hugeicons="ViewIcon"
+  phosphor="Eye"
+  remixicon="RiEyeLine"
+  className="mly:h-3 mly:w-3 mly:stroke-[2.5]"
+/>
           </PopoverTrigger>
         </TooltipTrigger>
         <TooltipContent sideOffset={8}>Show block conditionally</TooltipContent>
@@ -74,9 +82,14 @@ function _ShowPopover(props: ShowPopoverProps) {
           Show if
           <Tooltip>
             <TooltipTrigger>
-              <InfoIcon
-                className={cn('mly:size-3 mly:stroke-[2.5] mly:text-gray-500')}
-              />
+              <IconPlaceholder
+  lucide="InfoIcon"
+  tabler="IconInfoCircle"
+  hugeicons="InformationCircleIcon"
+  phosphor="Info"
+  remixicon="RiInformationLine"
+  className={cn('mly:size-3 mly:stroke-[2.5] mly:text-gray-500')}
+/>
             </TooltipTrigger>
             <TooltipContent
               sideOffset={14}

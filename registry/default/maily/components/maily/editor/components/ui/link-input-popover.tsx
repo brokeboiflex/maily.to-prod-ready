@@ -1,4 +1,6 @@
-import { Link, LinkIcon, LucideIcon } from 'lucide-react';
+import { IconPlaceholder } from "@/components/icon-placeholder"
+import { Link, LucideIcon } from "lucide-react"
+
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
 import { BaseButton } from '../base-button';
 import { useRef, useState } from 'react';
@@ -140,7 +142,14 @@ export function LinkInputPopover(props: LinkInputPopoverProps) {
             {isEditing && (
               <div className="mly:relative">
                 <div className="mly:absolute mly:inset-y-0 mly:left-1.5 mly:z-10 mly:flex mly:items-center">
-                  <LinkIcon className="mly:h-3 mly:w-3 mly:stroke-[2.5] mly:text-midnight-gray" />
+                  <IconPlaceholder
+  lucide="LinkIcon"
+  tabler="IconLink"
+  hugeicons="Link01Icon"
+  phosphor="Link"
+  remixicon="RiLink"
+  className="mly:h-3 mly:w-3 mly:stroke-[2.5] mly:text-midnight-gray"
+/>
                 </div>
 
                 <InputAutocomplete

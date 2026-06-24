@@ -1,17 +1,19 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
 import type { BlockItem } from './types';
-import {
-  ColumnsIcon,
-  Repeat2,
-  MoveVertical,
-  RectangleHorizontal,
-  Minus,
-} from 'lucide-react';
+
 
 export const columns: BlockItem = {
   title: 'Columns',
   description: 'Add columns to email.',
   searchTerms: ['layout', 'columns'],
-  icon: <ColumnsIcon className="mly:h-4 mly:w-4" />,
+  icon: <IconPlaceholder
+  lucide="ColumnsIcon"
+  tabler="IconColumns"
+  hugeicons="LayoutTwoColumnIcon"
+  phosphor="Columns"
+  remixicon="RiLayoutColumnLine"
+  className="mly:h-4 mly:w-4"
+/>,
   command: ({ editor, range }) => {
     // @ts-ignore
     editor
@@ -29,7 +31,14 @@ export const section: BlockItem = {
   title: 'Section',
   description: 'Add a section to email.',
   searchTerms: ['layout', 'section'],
-  icon: <RectangleHorizontal className="mly:h-4 mly:w-4" />,
+  icon: <IconPlaceholder
+  lucide="RectangleHorizontal"
+  tabler="IconRectangle"
+  hugeicons="Square01Icon"
+  phosphor="Rectangle"
+  remixicon="RiRectangleLine"
+  className="mly:h-4 mly:w-4"
+/>,
   command: ({ editor, range }) => {
     // @ts-ignore
     editor.chain().focus().deleteRange(range).setSection().run();
@@ -40,7 +49,14 @@ export const repeat: BlockItem = {
   title: 'Repeat',
   description: 'Loop over an array of items.',
   searchTerms: ['repeat', 'for', 'loop'],
-  icon: <Repeat2 className="mly:h-4 mly:w-4" />,
+  icon: <IconPlaceholder
+  lucide="Repeat2"
+  tabler="IconRepeat"
+  hugeicons="RepeatIcon"
+  phosphor="Repeat"
+  remixicon="RiRepeatLine"
+  className="mly:h-4 mly:w-4"
+/>,
   command: ({ editor, range }) => {
     // @ts-ignore
     editor.chain().focus().deleteRange(range).setRepeat().run();
@@ -51,7 +67,14 @@ export const spacer: BlockItem = {
   title: 'Spacer',
   description: 'Add space between blocks.',
   searchTerms: ['space', 'gap', 'divider'],
-  icon: <MoveVertical className="mly:h-4 mly:w-4" />,
+  icon: <IconPlaceholder
+  lucide="MoveVertical"
+  tabler="IconArrowsVertical"
+  hugeicons="MoveIcon"
+  phosphor="ArrowsVertical"
+  remixicon="RiExpandUpDownLine"
+  className="mly:h-4 mly:w-4"
+/>,
   command: ({ editor, range }) => {
     // @ts-ignore
     editor.chain().focus().deleteRange(range).setSpacer({ height: 'sm' }).run();
@@ -62,7 +85,14 @@ export const divider: BlockItem = {
   title: 'Divider',
   description: 'Add a horizontal divider.',
   searchTerms: ['divider', 'line'],
-  icon: <Minus className="mly:h-4 mly:w-4" />,
+  icon: <IconPlaceholder
+  lucide="Minus"
+  tabler="IconMinus"
+  hugeicons="MinusSignIcon"
+  phosphor="Minus"
+  remixicon="RiSubtractLine"
+  className="mly:h-4 mly:w-4"
+/>,
   command: ({ editor, range }) => {
     // @ts-ignore
     editor.chain().focus().deleteRange(range).setHorizontalRule().run();

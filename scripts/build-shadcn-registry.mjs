@@ -1,5 +1,16 @@
 import fs from "node:fs"
 import path from "node:path"
+import { iconMap, iconMapMeta } from "./icon-map.mjs"
+
+const iconPlaceholderImport =
+  'import { IconPlaceholder } from "@/components/icon-placeholder"'
+
+// Accumulated icon-conversion data, populated during the build and emitted as a report.
+const report = {
+  files: [],
+  totals: { converted: 0, preserved: 0, unmapped: 0, filesWithIcons: 0 },
+}
+
 
 const root = process.cwd()
 
@@ -63,6 +74,216 @@ function makeRelativeImport(fromFile, toPath) {
   return relativePath
 }
 
+function escapeRegex(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+}
+
+function buildIconPlaceholder(iconName, props = "") {
+  const mapped = iconMap[iconName]
+
+  if (!mapped) {
+    throw new Error(
+      [
+        `Missing icon map for Lucide icon "${iconName}".`,
+        "",
+        "Add it to iconMap before building the registry.",
+        "Do not guess names. Verify the icon names in each target icon package.",
+      ].join("\n")
+    )
+  }
+
+  const requiredKeys = ["lucide", "tabler", "hugeicons", "phosphor", "remixicon"]
+
+  for (const key of requiredKeys) {
+    if (!mapped[key]) {
+      throw new Error(`Icon "${iconName}" is missing "${key}" mapping.`)
+    }
+  }
+
+  const normalizedProps = props.trim()
+
+  return [
+    "<IconPlaceholder",
+    `  lucide="${mapped.lucide}"`,
+    `  tabler="${mapped.tabler}"`,
+    `  hugeicons="${mapped.hugeicons}"`,
+    `  phosphor="${mapped.phosphor}"`,
+    `  remixicon="${mapped.remixicon}"`,
+    normalizedProps ? `  ${normalizedProps}` : "",
+    "/>",
+  ]
+    .filter(Boolean)
+    .join("\n")
+}
+
+/**
+ * Insert an import statement at the top of a file, AFTER any "use client"/"use strict"
+ * directives so that the directive remains the very first line.
+ */
+function insertImportAfterDirectives(content, importBlock) {
+  const directiveRegex = /^((?:["'`]use\s+(?:client|strict)["'`];?\s*\n?)+)/
+  const match = content.match(directiveRegex)
+  if (match) {
+    const pos = match[0].length
+    return content.slice(0, pos) + importBlock + "\n" + content.slice(pos)
+  }
+  return importBlock + "\n" + content
+}
+
+/**
+ * Transform lucide-react icon imports into <IconPlaceholder> JSX elements.
+ *
+ * THREE categories of usage are handled per-file:
+ *   1. JSX self-closing   (<IconName .../>)  → converted to <IconPlaceholder> when mapped
+ *   2. Value reference    (icon: IconName)   → preserved (component type, not convertible)
+ *   3. Type-only          (type LucideIcon)  → preserved as type-only import
+ *
+ * Aliased imports (X as Y) fail-closed with a clear error (no silent mis-transform).
+ */
+function transformLucideIconsToPlaceholders(content, filePath) {
+  const lucideImportRegex =
+    /import\s*{\s*([^}]+)\s*}\s*from\s*["']lucide-react["'];?\n?/g
+
+  const typeSpecifiers = [] // e.g. ["LucideIcon"]
+  const valueSpecifiers = [] // e.g. ["BoldIcon", "ChevronRight"]
+  let hasLucideImport = false
+
+  // Remove ALL lucide-react imports; we reconstruct a reduced one below.
+  let transformed = content.replace(lucideImportRegex, (_match, imports) => {
+    hasLucideImport = true
+    imports
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean)
+      .forEach((item) => {
+        // Type-only specifier: `type LucideIcon`
+        const typeMatch = item.match(/^type\s+(\w+)$/)
+        if (typeMatch) {
+          typeSpecifiers.push(typeMatch[1])
+          return
+        }
+
+        // Aliased imports are not supported — fail closed.
+        if (/\s+as\s+/i.test(item)) {
+          throw new Error(
+            `Aliased lucide-react import is not supported by the registry icon transformer: ${item}`
+          )
+        }
+
+        valueSpecifiers.push(item)
+      })
+
+    return ""
+  })
+
+  if (!hasLucideImport) {
+    return transformed
+  }
+
+  const fileConverted = []
+  const filePreserved = []
+  const fileUnmapped = []
+
+  // Record type-only specifiers as preserved.
+  for (const name of typeSpecifiers) {
+    filePreserved.push({ name, reason: "type-only" })
+  }
+
+  const specifiersToKeep = [] // value specifiers that stay in the reduced import
+  let didConvert = false
+
+  for (const iconName of valueSpecifiers) {
+    // Detect JSX self-closing usage: <IconName ... />
+    const jsxRegex = new RegExp(
+      `<${escapeRegex(iconName)}\\b([^>]*)\\/>`,
+      "g"
+    )
+    const jsxMatches = transformed.match(jsxRegex)
+
+    if (jsxMatches && jsxMatches.length > 0) {
+      // Has JSX usage. Is it mapped?
+      if (iconMap[iconName]) {
+        // CONVERTIBLE — replace every JSX occurrence with IconPlaceholder.
+        transformed = transformed.replace(jsxRegex, (_match, props) =>
+          buildIconPlaceholder(iconName, props)
+        )
+        fileConverted.push(iconName)
+        didConvert = true
+
+        // After replacement, does the bare identifier still appear OUTSIDE
+        // IconPlaceholder attribute values AND string literals? (mixed usage)
+        // We strip generated <IconPlaceholder .../> blocks and quoted strings so
+        // that attribute values like lucide="Text" and titles like 'Text' don't
+        // cause false positives.
+        const withoutPlaceholders = transformed
+          .replace(/<IconPlaceholder\b[\s\S]*?\/>/g, "")
+          .replace(/"[^"]*"/g, '""')
+          .replace(/'[^']*'/g, "''")
+        const bareRegex = new RegExp(`\\b${escapeRegex(iconName)}\\b`)
+        if (bareRegex.test(withoutPlaceholders)) {
+          specifiersToKeep.push(iconName)
+          filePreserved.push({
+            name: iconName,
+            reason: "value-referenced (mixed JSX + value usage)",
+          })
+        }
+      } else {
+        // JSX usage but NOT in iconMap → unmapped, keep as lucide.
+        specifiersToKeep.push(iconName)
+        fileUnmapped.push(iconName)
+      }
+    } else {
+      // No JSX usage. Is the identifier still referenced (value/destructure)?
+      const bareRegex = new RegExp(`\\b${escapeRegex(iconName)}\\b`)
+      if (bareRegex.test(transformed)) {
+        specifiersToKeep.push(iconName)
+        filePreserved.push({ name: iconName, reason: "value-referenced" })
+      }
+      // else: dead import — strip silently.
+    }
+  }
+
+  // Reconstruct the lucide-react import if any specifiers remain.
+  const importParts = []
+  if (typeSpecifiers.length > 0) {
+    importParts.push(...typeSpecifiers.map((s) => `type ${s}`))
+  }
+  importParts.push(...specifiersToKeep)
+
+  // Build the combined import block (IconPlaceholder first, then lucide).
+  const importLines = []
+  if (didConvert) {
+    importLines.push(iconPlaceholderImport)
+  }
+  if (importParts.length > 0) {
+    importLines.push(
+      `import { ${importParts.join(", ")} } from "lucide-react"`
+    )
+  }
+  if (importLines.length > 0) {
+    transformed = insertImportAfterDirectives(
+      transformed,
+      importLines.join("\n")
+    )
+  }
+
+  // Record report data for this file.
+  if (fileConverted.length > 0 || filePreserved.length > 0 || fileUnmapped.length > 0) {
+    report.files.push({
+      file: path.relative(root, filePath),
+      converted: fileConverted,
+      preserved: filePreserved,
+      unmapped: fileUnmapped,
+    })
+    report.totals.converted += fileConverted.length
+    report.totals.preserved += filePreserved.length
+    report.totals.unmapped += fileUnmapped.length
+    report.totals.filesWithIcons += 1
+  }
+
+  return transformed
+}
+
 function rewriteCoreImports(filePath, content) {
   const ext = path.extname(filePath)
 
@@ -70,12 +291,16 @@ function rewriteCoreImports(filePath, content) {
     return content
   }
 
-  return content.replace(/(["'])@\/([^"']+)\1/g, (_match, quote, aliasTarget) => {
+  let transformed = content.replace(/(["'])@\/([^"']+)\1/g, (_match, quote, aliasTarget) => {
     const absoluteTarget = path.join(coreOutDir, aliasTarget)
     const relativeTarget = makeRelativeImport(filePath, absoluteTarget)
 
     return `${quote}${relativeTarget}${quote}`
   })
+
+  transformed = transformLucideIconsToPlaceholders(transformed, filePath)
+
+  return transformed
 }
 
 function rewriteRenderImports(filePath, content) {
@@ -137,22 +362,22 @@ function registryFiles() {
     const relativeToRoot = toPosix(path.relative(root, file))
     const relativeToCore = toPosix(path.relative(coreOutDir, file))
 
-    files.push({
-      path: relativeToRoot,
-      type: "registry:file",
-      target: `@components/maily/${relativeToCore}`,
-    })
+  files.push({
+    path: relativeToRoot,
+    type: "registry:component",
+    target: `@components/maily/${relativeToCore}`,
+  })
   }
 
   for (const file of walk(renderOutDir)) {
     const relativeToRoot = toPosix(path.relative(root, file))
     const relativeToRender = toPosix(path.relative(renderOutDir, file))
 
-    files.push({
-      path: relativeToRoot,
-      type: "registry:file",
-      target: `@lib/maily-render/${relativeToRender}`,
-    })
+  files.push({
+    path: relativeToRoot,
+    type: "registry:lib",
+    target: `@lib/maily-render/${relativeToRender}`,
+  })
   }
 
   return files
@@ -188,6 +413,20 @@ function buildRegistryJson() {
     }
   }
 
+const iconLibraryDeps = [
+  "lucide-react",
+  "@tabler/icons-react",
+  "@hugeicons/react",
+  "@hugeicons/core-free-icons",
+  "@phosphor-icons/react",
+  "@remixicon/react",
+]
+
+for (const name of iconLibraryDeps) {
+  dependencies.set(name, "latest")
+}
+
+
   const registry = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
     name: "maily-prod-ready",
@@ -221,6 +460,112 @@ function buildRegistryJson() {
   fs.writeFileSync(registryPath, `${JSON.stringify(registry, null, 2)}\n`)
 }
 
+/**
+ * Print the icon-conversion report to stdout and save it to
+ * .sisyphus/evidence/icon-conversion-report.md.
+ */
+function writeIconReport() {
+  const lines = []
+  lines.push("# Icon Conversion Report")
+  lines.push("")
+  lines.push(
+    "Generated by `scripts/build-shadcn-registry.mjs` using `scripts/icon-map.mjs`."
+  )
+  lines.push("")
+  lines.push("## Summary")
+  lines.push("")
+  lines.push(`- Files with icon imports: **${report.totals.filesWithIcons}**`)
+  lines.push(`- Icons converted to IconPlaceholder: **${report.totals.converted}**`)
+  lines.push(`- Icons preserved as lucide-react: **${report.totals.preserved}**`)
+  lines.push(`- Icons unmapped (JSX, no iconMap entry): **${report.totals.unmapped}**`)
+  lines.push(`- Total icons in iconMap: **${Object.keys(iconMap).length}**`)
+  lines.push("")
+
+  // Converted
+  lines.push("## Converted")
+  lines.push("")
+  if (report.files.some((f) => f.converted.length > 0)) {
+    for (const entry of report.files) {
+      if (entry.converted.length === 0) continue
+      lines.push(`### \`${entry.file}\``)
+      for (const name of entry.converted) {
+        const m = iconMap[name]
+        lines.push(
+          `- ${name} → tabler:${m.tabler} | phosphor:${m.phosphor} | hugeicons:${m.hugeicons} | remixicon:${m.remixicon}`
+        )
+      }
+      lines.push("")
+    }
+  } else {
+    lines.push("_none_")
+    lines.push("")
+  }
+
+  // Preserved
+  lines.push("## Preserved (lucide-react retained)")
+  lines.push("")
+  if (report.files.some((f) => f.preserved.length > 0)) {
+    for (const entry of report.files) {
+      if (entry.preserved.length === 0) continue
+      lines.push(`### \`${entry.file}\``)
+      for (const p of entry.preserved) {
+        lines.push(`- ${p.name} — ${p.reason}`)
+      }
+      lines.push("")
+    }
+  } else {
+    lines.push("_none_")
+    lines.push("")
+  }
+
+  // Unmapped
+  lines.push("## Unmapped (JSX usage, no iconMap entry — stays lucide-react)")
+  lines.push("")
+  const allUnmapped = report.files.flatMap((f) =>
+    f.unmapped.map((name) => ({ name, file: f.file }))
+  )
+  if (allUnmapped.length > 0) {
+    lines.push("These icons are used as JSX but have no verified 5-library mapping:")
+    lines.push("")
+    for (const u of allUnmapped) {
+      const reason = iconMapMeta.notes.omitted[u.name] || "No mapping available."
+      lines.push(`- ${u.name} (\`${u.file}\`) — ${reason}`)
+    }
+    lines.push("")
+  } else {
+    lines.push("_none_")
+    lines.push("")
+  }
+
+  // Approximations
+  if (Object.keys(iconMapMeta.notes.approximations).length > 0) {
+    lines.push("## Conceptual Approximations")
+    lines.push("")
+    lines.push(
+      "These mappings use the closest available icon (verified to exist) rather than an exact visual match:"
+    )
+    lines.push("")
+    for (const [name, note] of Object.entries(iconMapMeta.notes.approximations)) {
+      lines.push(`- ${name} — ${note}`)
+    }
+    lines.push("")
+  }
+
+  const reportText = lines.join("\n")
+
+  // Print to stdout.
+  console.log("")
+  console.log(reportText)
+
+  // Save to evidence directory.
+  const evidenceDir = path.join(root, ".sisyphus/evidence")
+  ensureDir(evidenceDir)
+  fs.writeFileSync(
+    path.join(evidenceDir, "icon-conversion-report.md"),
+    reportText + "\n"
+  )
+}
+
 fs.rmSync(registryRoot, { recursive: true, force: true })
 ensureDir(itemRoot)
 
@@ -229,5 +574,8 @@ copySource(sharedSourceDir, sharedOutDir, (_filePath, content) => content)
 copySource(renderSourceDir, renderOutDir, rewriteRenderImports)
 
 buildRegistryJson()
+
+// ── Icon-conversion report ────────────────────────────────────────────────
+writeIconReport()
 
 console.log("Generated registry/default/maily and registry.json")

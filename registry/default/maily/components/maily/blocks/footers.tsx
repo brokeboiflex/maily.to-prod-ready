@@ -1,15 +1,19 @@
-import {
-  CopyrightIcon,
-  LayoutTemplateIcon,
-  RectangleHorizontalIcon,
-} from 'lucide-react';
+import { IconPlaceholder } from "@/components/icon-placeholder"
+
 import { BlockItem } from './types';
 
 export const footerCopyrightText: BlockItem = {
   title: 'Footer Copyright',
   description: 'Copyright text for the footer.',
   searchTerms: ['footer', 'copyright'],
-  icon: <CopyrightIcon className="mly:h-4 mly:w-4" />,
+  icon: <IconPlaceholder
+  lucide="CopyrightIcon"
+  tabler="IconCopyright"
+  hugeicons="CopyrightIcon"
+  phosphor="Copyright"
+  remixicon="RiCopyrightLine"
+  className="mly:h-4 mly:w-4"
+/>,
   command: ({ editor, range }) => {
     const currentYear = new Date().getFullYear();
 
@@ -36,7 +40,14 @@ export const footerCommunityFeedbackCta: BlockItem = {
   title: 'Footer Community Feedback CTA',
   description: 'Community feedback CTA for the footer.',
   searchTerms: ['footer', 'community', 'feedback', 'cta'],
-  icon: <RectangleHorizontalIcon className="mly:h-4 mly:w-4" />,
+  icon: <IconPlaceholder
+  lucide="RectangleHorizontalIcon"
+  tabler="IconRectangle"
+  hugeicons="Square01Icon"
+  phosphor="Rectangle"
+  remixicon="RiRectangleLine"
+  className="mly:h-4 mly:w-4"
+/>,
   command: ({ editor, range }) => {
     editor
       .chain()
@@ -85,7 +96,14 @@ export const footerCompanySignature: BlockItem = {
   title: 'Footer Company Signature',
   description: 'Company signature for the footer.',
   searchTerms: ['footer', 'company', 'signature'],
-  icon: <LayoutTemplateIcon className="mly:h-4 mly:w-4" />,
+  icon: <IconPlaceholder
+  lucide="LayoutTemplateIcon"
+  tabler="IconLayout"
+  hugeicons="LayoutGridIcon"
+  phosphor="Layout"
+  remixicon="RiLayoutLine"
+  className="mly:h-4 mly:w-4"
+/>,
   command: ({ editor, range }) => {
     editor
       .chain()

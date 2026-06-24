@@ -1,4 +1,6 @@
-import { ChevronDownIcon, PilcrowIcon } from 'lucide-react';
+import { IconPlaceholder } from "@/components/icon-placeholder"
+import { PilcrowIcon } from "lucide-react"
+
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
 import {
   TurnIntoBlockCategory,
@@ -41,7 +43,14 @@ export function TurnIntoBlock(props: TurnIntoBlockProps) {
             )}
           >
             <ActiveIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5]" />
-            <ChevronDownIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5]" />
+            <IconPlaceholder
+  lucide="ChevronDownIcon"
+  tabler="IconChevronDown"
+  hugeicons="ChevronDownIcon"
+  phosphor="CaretDown"
+  remixicon="RiArrowDownSLine"
+  className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5]"
+/>
           </PopoverTrigger>
         </TooltipTrigger>
         <TooltipContent sideOffset={8}>Turn into</TooltipContent>

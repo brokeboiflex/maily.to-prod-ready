@@ -1,8 +1,5 @@
-import {
-  AlignVerticalDistributeCenter,
-  AlignVerticalDistributeEnd,
-  AlignVerticalDistributeStart,
-} from 'lucide-react';
+import { AlignVerticalDistributeCenter, AlignVerticalDistributeEnd, AlignVerticalDistributeStart } from "lucide-react"
+
 import { BubbleMenuButton } from './bubble-menu-button';
 import { AllowedColumnVerticalAlign } from '../nodes/columns/column';
 

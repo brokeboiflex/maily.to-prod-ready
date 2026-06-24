@@ -1,3 +1,5 @@
+import { IconPlaceholder } from "@/components/icon-placeholder"
+import { ImageOffIcon } from "lucide-react"
 import {
   type CSSProperties,
   useCallback,
@@ -6,7 +8,7 @@ import {
   useState,
 } from 'react';
 import { type NodeViewProps, NodeViewWrapper } from '@tiptap/react';
-import { Ban, BracesIcon, GrabIcon, ImageOffIcon, Loader2 } from 'lucide-react';
+
 import { useImageUploadOptions } from '../../extensions/image-upload/image-upload';
 import { cn } from '../../utils/classname';
 import { useEvent } from '../../utils/use-event';
@@ -456,26 +458,54 @@ export function ImageStatusLabel(props: ImageStatusLabelProps) {
 
       {status === 'idle' && isDropZone && (
         <>
-          <GrabIcon className="mly:size-4 mly:stroke-[2.5]" />
+          <IconPlaceholder
+  lucide="GrabIcon"
+  tabler="IconHandMove"
+  hugeicons="HandGrabIcon"
+  phosphor="HandGrabbing"
+  remixicon="RiDragMove2Line"
+  className="mly:size-4 mly:stroke-[2.5]"
+/>
           <span>Click or Drop image here</span>
         </>
       )}
 
       {status === 'loading' && (
         <>
-          <Loader2 className="mly:size-4 mly:animate-spin mly:stroke-[2.5]" />
+          <IconPlaceholder
+  lucide="Loader2"
+  tabler="IconLoader2"
+  hugeicons="Loading03Icon"
+  phosphor="CircleNotch"
+  remixicon="RiLoader2Line"
+  className="mly:size-4 mly:animate-spin mly:stroke-[2.5]"
+/>
           <span>Loading image...</span>
         </>
       )}
       {status === 'error' && (
         <>
-          <Ban className="mly:size-4 mly:stroke-[2.5]" />
+          <IconPlaceholder
+  lucide="Ban"
+  tabler="IconBan"
+  hugeicons="Cancel01Icon"
+  phosphor="Prohibit"
+  remixicon="RiForbidLine"
+  className="mly:size-4 mly:stroke-[2.5]"
+/>
           <span>Error loading image</span>
         </>
       )}
       {status === 'variable' && (
         <>
-          <BracesIcon className="mly:size-4 mly:stroke-[2.5]" />
+          <IconPlaceholder
+  lucide="BracesIcon"
+  tabler="IconBraces"
+  hugeicons="BracesIcon"
+  phosphor="BracketsCurly"
+  remixicon="RiBracesLine"
+  className="mly:size-4 mly:stroke-[2.5]"
+/>
           <span>Variable Image URL</span>
         </>
       )}

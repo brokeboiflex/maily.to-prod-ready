@@ -1,16 +1,8 @@
+import { BoldIcon, CodeIcon, ItalicIcon, List, ListOrdered, StrikethroughIcon, UnderlineIcon } from "lucide-react"
 import { Editor } from '@tiptap/core';
 import { BubbleMenuItem } from './text-bubble-menu';
 
-import {
-  BoldIcon,
-  CodeIcon,
-  ItalicIcon,
-  List,
-  ListOrdered,
-  LucideIcon,
-  StrikethroughIcon,
-  UnderlineIcon,
-} from 'lucide-react';
+
 import { BubbleMenuButton } from '../bubble-menu-button';
 import { AlignmentSwitch } from '../alignment-switch';
 import { TextDirectionSwitch } from '../text-direction-switch';
