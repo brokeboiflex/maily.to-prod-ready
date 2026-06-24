@@ -3,10 +3,21 @@ import path from "node:path"
 
 const root = process.cwd()
 
-const sourceDir = path.join(root, "packages/core/src")
-const outDir = path.join(root, "registry/default/maily-core")
+const registryRoot = path.join(root, "registry/default")
+const itemRoot = path.join(registryRoot, "maily")
 const registryPath = path.join(root, "registry.json")
+
+const coreSourceDir = path.join(root, "packages/core/src")
+const renderSourceDir = path.join(root, "packages/render/src")
+const sharedSourceDir = path.join(root, "packages/shared/src")
+
+const coreOutDir = path.join(itemRoot, "components/maily")
+const renderOutDir = path.join(itemRoot, "lib/maily-render")
+const sharedOutDir = path.join(renderOutDir, "shared")
+
 const corePackagePath = path.join(root, "packages/core/package.json")
+const renderPackagePath = path.join(root, "packages/render/package.json")
+const sharedPackagePath = path.join(root, "packages/shared/package.json")
 
 const textExtensions = new Set([
   ".ts",
@@ -22,6 +33,10 @@ function toPosix(value) {
   return value.split(path.sep).join("/")
 }
 
+function ensureDir(dir) {
+  fs.mkdirSync(dir, { recursive: true })
+}
+
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
     const fullPath = path.join(dir, entry.name)
@@ -34,33 +49,54 @@ function walk(dir) {
   })
 }
 
-function ensureDir(dir) {
-  fs.mkdirSync(dir, { recursive: true })
+function readJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, "utf8"))
 }
 
-function rewriteAliasImports(filePath, content) {
+function makeRelativeImport(fromFile, toPath) {
+  let relativePath = toPosix(path.relative(path.dirname(fromFile), toPath))
+
+  if (!relativePath.startsWith(".")) {
+    relativePath = `./${relativePath}`
+  }
+
+  return relativePath
+}
+
+function rewriteCoreImports(filePath, content) {
   const ext = path.extname(filePath)
 
   if (![".ts", ".tsx", ".js", ".jsx"].includes(ext)) {
     return content
   }
 
-  return content.replace(/(["'])@\/([^"']+)\1/g, (match, quote, aliasTarget) => {
-    const absoluteTarget = path.join(outDir, aliasTarget)
-    let relativeTarget = toPosix(path.relative(path.dirname(filePath), absoluteTarget))
-
-    if (!relativeTarget.startsWith(".")) {
-      relativeTarget = `./${relativeTarget}`
-    }
+  return content.replace(/(["'])@\/([^"']+)\1/g, (_match, quote, aliasTarget) => {
+    const absoluteTarget = path.join(coreOutDir, aliasTarget)
+    const relativeTarget = makeRelativeImport(filePath, absoluteTarget)
 
     return `${quote}${relativeTarget}${quote}`
   })
 }
 
-function copyCoreSource() {
-  fs.rmSync(outDir, { recursive: true, force: true })
-  ensureDir(outDir)
+function rewriteRenderImports(filePath, content) {
+  const ext = path.extname(filePath)
 
+  if (![".ts", ".tsx", ".js", ".jsx"].includes(ext)) {
+    return content
+  }
+
+  return content.replace(
+    /(["'])@maily-to\/shared(?:\/([^"']+))?\1/g,
+    (_match, quote, subPath = "") => {
+      const absoluteTarget = path.join(sharedOutDir, subPath)
+      const relativeTarget = makeRelativeImport(filePath, absoluteTarget)
+
+      return `${quote}${relativeTarget}${quote}`
+    }
+  )
+}
+
+function copySource(sourceDir, outDir, rewrite) {
   const sourceFiles = walk(sourceDir)
 
   for (const sourceFile of sourceFiles) {
@@ -72,43 +108,85 @@ function copyCoreSource() {
 
     if (textExtensions.has(ext)) {
       const source = fs.readFileSync(sourceFile, "utf8")
-      const rewritten = rewriteAliasImports(targetFile, source)
-      fs.writeFileSync(targetFile, rewritten)
+      fs.writeFileSync(targetFile, rewrite(targetFile, source))
     } else {
       fs.copyFileSync(sourceFile, targetFile)
     }
   }
 }
 
-function dependencyList(deps = {}) {
-  return Object.entries(deps).map(([name, version]) => `${name}@${version}`)
+function addDeps(map, deps = {}) {
+  for (const [name, version] of Object.entries(deps)) {
+    if (name.startsWith("@maily-to/")) continue
+    if (name === "tsconfig") continue
+    if (name === "typescript") continue
+    if (name.startsWith("@types/")) continue
+
+    map.set(name, version)
+  }
+}
+
+function dependencyList(map) {
+  return [...map.entries()].map(([name, version]) => `${name}@${version}`)
+}
+
+function registryFiles() {
+  const files = []
+
+  for (const file of walk(coreOutDir)) {
+    const relativeToRoot = toPosix(path.relative(root, file))
+    const relativeToCore = toPosix(path.relative(coreOutDir, file))
+
+    files.push({
+      path: relativeToRoot,
+      type: "registry:file",
+      target: `@components/maily/${relativeToCore}`,
+    })
+  }
+
+  for (const file of walk(renderOutDir)) {
+    const relativeToRoot = toPosix(path.relative(root, file))
+    const relativeToRender = toPosix(path.relative(renderOutDir, file))
+
+    files.push({
+      path: relativeToRoot,
+      type: "registry:file",
+      target: `@lib/maily-render/${relativeToRender}`,
+    })
+  }
+
+  return files
 }
 
 function buildRegistryJson() {
-  const corePackage = JSON.parse(fs.readFileSync(corePackagePath, "utf8"))
+  const corePackage = readJson(corePackagePath)
+  const renderPackage = readJson(renderPackagePath)
+  const sharedPackage = readJson(sharedPackagePath)
 
-  const files = walk(outDir).map((file) => {
-    const relativeToRoot = toPosix(path.relative(root, file))
-    const relativeToItem = toPosix(path.relative(outDir, file))
+  const dependencies = new Map()
+  const devDependencies = new Map()
 
-    return {
-      path: relativeToRoot,
-      type: "registry:file",
-      target: `@components/maily/${relativeToItem}`,
-    }
-  })
+  addDeps(dependencies, corePackage.dependencies)
+  addDeps(dependencies, renderPackage.dependencies)
+  addDeps(dependencies, sharedPackage.dependencies)
 
-  const requiredCssDevDeps = [
+  // packages/render/src imports this at runtime even though the package lists it as devDependency.
+  if (renderPackage.devDependencies?.["@antfu/utils"]) {
+    dependencies.set("@antfu/utils", renderPackage.devDependencies["@antfu/utils"])
+  }
+
+  const cssBuildDeps = [
     "@tailwindcss/typography",
     "tailwind-scrollbar",
     "tw-animate-css",
   ]
 
-  const devDependencies = Object.fromEntries(
-    Object.entries(corePackage.devDependencies ?? {}).filter(([name]) =>
-      requiredCssDevDeps.includes(name)
-    )
-  )
+  for (const name of cssBuildDeps) {
+    const version = corePackage.devDependencies?.[name]
+    if (version) {
+      devDependencies.set(name, version)
+    }
+  }
 
   const registry = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
@@ -116,21 +194,25 @@ function buildRegistryJson() {
     homepage: "https://github.com/brokeboiflex/maily.to-prod-ready",
     items: [
       {
-        name: "maily-core",
+        name: "maily",
         type: "registry:block",
-        title: "Maily Core",
+        title: "Maily",
         description:
-          "A local, shadcn-installable copy of Maily Core for building email editors.",
-        dependencies: dependencyList(corePackage.dependencies),
+          "A local, shadcn-installable Maily email editor with HTML email rendering.",
+        dependencies: dependencyList(dependencies),
         devDependencies: dependencyList(devDependencies),
-        files,
+        files: registryFiles(),
         docs: [
-          "Import the editor from your configured components path, for example:",
+          "Editor usage:",
           "",
           "import { Editor } from '@/components/maily'",
           "import '@/components/maily/styles/index.css'",
           "",
-          "If your project does not use the @ alias, use the import alias configured in components.json.",
+          "Renderer usage:",
+          "",
+          "import { render } from '@/lib/maily-render'",
+          "",
+          "const html = await render(editorJson)",
         ].join("\n"),
       },
     ],
@@ -139,7 +221,13 @@ function buildRegistryJson() {
   fs.writeFileSync(registryPath, `${JSON.stringify(registry, null, 2)}\n`)
 }
 
-copyCoreSource()
+fs.rmSync(registryRoot, { recursive: true, force: true })
+ensureDir(itemRoot)
+
+copySource(coreSourceDir, coreOutDir, rewriteCoreImports)
+copySource(sharedSourceDir, sharedOutDir, (_filePath, content) => content)
+copySource(renderSourceDir, renderOutDir, rewriteRenderImports)
+
 buildRegistryJson()
 
-console.log("Generated registry/default/maily-core and registry.json")
+console.log("Generated registry/default/maily and registry.json")
