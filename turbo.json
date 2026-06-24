@@ -13,17 +13,6 @@
         ".vercel/**"
       ]
     },
-    "@maily-to/web#build": {
-      "dependsOn": ["^build"],
-      "env": [
-        "NODE_ENV",
-        "VITE_GA_TRACKING_ID",
-        "VITE_SUPABASE_URL",
-        "VITE_SUPABASE_ANON_KEY",
-        "VITE_APP_URL"
-      ],
-      "outputs": [".vercel/**"]
-    },
     "lint": {
       "dependsOn": ["^build"]
     },
@@ -36,11 +25,6 @@
       "cache": false
     },
     "dev": {
-      "cache": false,
-      "persistent": true
-    },
-    "@maily-to/web#dev": {
-      "dependsOn": ["^build"],
       "cache": false,
       "persistent": true
     }
