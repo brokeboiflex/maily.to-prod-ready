@@ -12,7 +12,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
-    "registry:build": "node scripts/build-shadcn-registry.mjs"
+    "registry:build": "node scripts/build-shadcn-registry.mjs && node scripts/normalize-shadcn-registry.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
