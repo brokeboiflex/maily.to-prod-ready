@@ -58,6 +58,13 @@ bunx --bun shadcn@latest add  @maily/maily --overwrite   # (re)install the edito
 the editor's npm dependencies. `src/App.tsx` renders `<Editor />` from
 `@/components/maily` as a smoke test.
 
+The installed editor ships an `i18n/` directory (`default-labels.ts`,
+`translate.ts`); `pnpm playground:sync` carries those files into the served block.
+To smoke-test translation, pass a `labels` prop to `<Editor>` in `src/App.tsx` —
+copy `defaultLabels`, change a few values, and confirm the chrome and default-block
+menu update. Omitting a key is a TypeScript error naming the missing key. See the
+"Translating the editor" section in `packages/core/README.md` for the full API.
+
 ## Known issue — `verbatimModuleSyntax`
 
 `shadcn init -t vite` enables `verbatimModuleSyntax: true` in `tsconfig.app.json`.
