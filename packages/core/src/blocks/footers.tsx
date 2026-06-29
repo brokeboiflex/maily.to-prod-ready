@@ -4,10 +4,11 @@ import {
   RectangleHorizontalIcon,
 } from 'lucide-react';
 import { BlockItem } from './types';
+import type { TranslateFn } from '@/editor/i18n';
 
-export const footerCopyrightText: BlockItem = {
-  title: 'Footer Copyright',
-  description: 'Copyright text for the footer.',
+export const footerCopyrightText = (t: TranslateFn): BlockItem => ({
+  title: t('block.footerCopyrightText.title'),
+  description: t('block.footerCopyrightText.description'),
   searchTerms: ['footer', 'copyright'],
   icon: <CopyrightIcon className="h-4 w-4" />,
   command: ({ editor, range }) => {
@@ -30,11 +31,11 @@ export const footerCopyrightText: BlockItem = {
       })
       .run();
   },
-};
+});
 
-export const footerCommunityFeedbackCta: BlockItem = {
-  title: 'Footer Community Feedback CTA',
-  description: 'Community feedback CTA for the footer.',
+export const footerCommunityFeedbackCta = (t: TranslateFn): BlockItem => ({
+  title: t('block.footerCommunityFeedbackCta.title'),
+  description: t('block.footerCommunityFeedbackCta.description'),
   searchTerms: ['footer', 'community', 'feedback', 'cta'],
   icon: <RectangleHorizontalIcon className="h-4 w-4" />,
   command: ({ editor, range }) => {
@@ -79,11 +80,11 @@ export const footerCommunityFeedbackCta: BlockItem = {
       ])
       .run();
   },
-};
+});
 
-export const footerCompanySignature: BlockItem = {
-  title: 'Footer Company Signature',
-  description: 'Company signature for the footer.',
+export const footerCompanySignature = (t: TranslateFn): BlockItem => ({
+  title: t('block.footerCompanySignature.title'),
+  description: t('block.footerCompanySignature.description'),
   searchTerms: ['footer', 'company', 'signature'],
   icon: <LayoutTemplateIcon className="h-4 w-4" />,
   command: ({ editor, range }) => {
@@ -241,4 +242,4 @@ export const footerCompanySignature: BlockItem = {
       ])
       .run();
   },
-};
+});
