@@ -26,7 +26,7 @@ import {
   MailyContextType,
   MailyProvider,
 } from './provider';
-import { cn } from './utils/classname';
+import { cn } from '@/lib/utils';
 import { replaceDeprecatedNode } from './utils/replace-deprecated';
 
 type ParitialMailContextType = Partial<MailyContextType>;

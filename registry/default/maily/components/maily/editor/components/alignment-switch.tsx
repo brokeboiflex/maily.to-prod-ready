@@ -2,7 +2,7 @@ import { AlignCenter, AlignLeft, AlignRight } from "lucide-react"
 import { BubbleMenuButton } from './bubble-menu-button';
 import { AllowedLogoAlignment, allowedLogoAlignment } from '../nodes/logo/logo';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
-import { cn } from '../utils/classname';
+import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 type AlignmentSwitchProps = {

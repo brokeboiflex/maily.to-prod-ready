@@ -1,5 +1,5 @@
 import { BlockGroupItem, BlockItem } from '../../../blocks/types';
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 import { Editor, Range } from '@tiptap/core';
 import { ReactRenderer } from '@tiptap/react';
 import { SuggestionOptions } from '@tiptap/suggestion';

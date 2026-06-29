@@ -1,6 +1,6 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 import { AUTOCOMPLETE_PASSWORD_MANAGERS_OFF } from '../../utils/constants';
 
 type ColumnsWidthConfigProps = {

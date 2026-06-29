@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { type NodeViewProps, NodeViewWrapper } from '@tiptap/react';
 import { useImageUploadOptions } from '../../extensions/image-upload/image-upload';
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 import { useEvent } from '../../utils/use-event';
 import { getAspectRatio, getNewHeight } from '../../utils/aspect-ratio';
 

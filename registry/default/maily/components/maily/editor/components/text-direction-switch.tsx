@@ -4,7 +4,7 @@ import {
   allowedTextDirection,
 } from '../nodes/paragraph/paragraph';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
-import { cn } from '../utils/classname';
+import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { LtrIcon, RtlIcon } from './icons/text-direction-icon';
 

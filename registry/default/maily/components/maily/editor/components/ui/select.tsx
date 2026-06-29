@@ -2,7 +2,7 @@ import { IconPlaceholder } from "@/components/icon-placeholder"
 import { LucideIcon } from "lucide-react"
 import { useId } from 'react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './tooltip';
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 import { SVGIcon } from '../icons/grid-lines';
 
 type SelectProps = {

@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
 } from '../../components/ui/tooltip';
 import { useCallback, useState, useRef, useEffect, RefObject } from 'react';
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 
 type SlashCommandItemProps = {
   item: BlockItem;

@@ -30,6 +30,25 @@ const corePackagePath = path.join(root, "packages/core/package.json")
 const renderPackagePath = path.join(root, "packages/render/package.json")
 const sharedPackagePath = path.join(root, "packages/shared/package.json")
 
+// Modules the installed editor should resolve from the consumer's OWN shadcn
+// files instead of bundling a private copy. Keyed by path relative to
+// packages/core/src (no extension); the value is the literal import the
+// consumer resolves through their components.json aliases.
+//
+// For each entry the build (a) excludes the source file from the emitted
+// registry and (b) rewrites every import of it — `@/...` or relative — to the
+// literal alias. The source file stays in packages/core for standalone builds;
+// only the registry output defers to the consumer. (Same idea as the lucide →
+// IconPlaceholder transform: don't hardcode a choice the consumer already owns.)
+const EXTERNALIZED_MODULES = {
+  // cn() — every shadcn project already ships an identical one at @/lib/utils.
+  "editor/utils/classname": "@/lib/utils",
+}
+
+function externalizedModuleKey(relativePosixPath) {
+  return relativePosixPath.replace(/\.(tsx?|jsx?)$/, "")
+}
+
 const textExtensions = new Set([
   ".ts",
   ".tsx",
@@ -284,6 +303,24 @@ function transformLucideIconsToPlaceholders(content, filePath) {
   return transformed
 }
 
+/**
+ * Resolve an import specifier (alias `@/…` or relative `./…`/`../…`) to its
+ * module path relative to coreOutDir, with the extension stripped. Returns null
+ * for bare module specifiers (npm packages). `filePath` is the output path.
+ */
+function resolveCoreModule(filePath, specifier) {
+  let absolute
+  if (specifier.startsWith("@/")) {
+    absolute = path.join(coreOutDir, specifier.slice(2))
+  } else if (specifier.startsWith(".")) {
+    absolute = path.resolve(path.dirname(filePath), specifier)
+  } else {
+    return null
+  }
+
+  return externalizedModuleKey(toPosix(path.relative(coreOutDir, absolute)))
+}
+
 function rewriteCoreImports(filePath, content) {
   const ext = path.extname(filePath)
 
@@ -291,12 +328,28 @@ function rewriteCoreImports(filePath, content) {
     return content
   }
 
-  let transformed = content.replace(/(["'])@\/([^"']+)\1/g, (_match, quote, aliasTarget) => {
-    const absoluteTarget = path.join(coreOutDir, aliasTarget)
-    const relativeTarget = makeRelativeImport(filePath, absoluteTarget)
+  let transformed = content.replace(
+    /(["'])((?:@\/|\.\.?\/)[^"']+)\1/g,
+    (match, quote, specifier) => {
+      const moduleKey = resolveCoreModule(filePath, specifier)
 
-    return `${quote}${relativeTarget}${quote}`
-  })
+      // Externalized module → emit the consumer-resolved alias literally.
+      if (moduleKey && EXTERNALIZED_MODULES[moduleKey]) {
+        return `${quote}${EXTERNALIZED_MODULES[moduleKey]}${quote}`
+      }
+
+      // Internal `@/` alias → relative path within the installed maily tree.
+      if (specifier.startsWith("@/")) {
+        const absoluteTarget = path.join(coreOutDir, specifier.slice(2))
+        const relativeTarget = makeRelativeImport(filePath, absoluteTarget)
+
+        return `${quote}${relativeTarget}${quote}`
+      }
+
+      // Relative import that isn't externalized — already correct, leave as-is.
+      return match
+    }
+  )
 
   transformed = transformLucideIconsToPlaceholders(transformed, filePath)
 
@@ -321,11 +374,16 @@ function rewriteRenderImports(filePath, content) {
   )
 }
 
-function copySource(sourceDir, outDir, rewrite) {
+function copySource(sourceDir, outDir, rewrite, shouldSkip) {
   const sourceFiles = walk(sourceDir)
 
   for (const sourceFile of sourceFiles) {
     const relativePath = path.relative(sourceDir, sourceFile)
+
+    if (shouldSkip && shouldSkip(toPosix(relativePath))) {
+      continue
+    }
+
     const targetFile = path.join(outDir, relativePath)
     const ext = path.extname(sourceFile)
 
@@ -578,7 +636,12 @@ function writeIconReport() {
 fs.rmSync(registryRoot, { recursive: true, force: true })
 ensureDir(itemRoot)
 
-copySource(coreSourceDir, coreOutDir, rewriteCoreImports)
+copySource(coreSourceDir, coreOutDir, rewriteCoreImports, (relativePosixPath) =>
+  Object.prototype.hasOwnProperty.call(
+    EXTERNALIZED_MODULES,
+    externalizedModuleKey(relativePosixPath)
+  )
+)
 copySource(sharedSourceDir, sharedOutDir, (_filePath, content) => content)
 copySource(renderSourceDir, renderOutDir, rewriteRenderImports)
 

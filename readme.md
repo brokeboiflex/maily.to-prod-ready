@@ -1,87 +1,169 @@
-<h1 align="center"><img height="150" src="https://maily.to/brand/icon.svg" /><br> maily.to</h1>
+# maily.to-prod-ready
 
-<p align="center">
-  <a href="https://github.com/arikchakma/maily.to/blob/main/license">
-    <img src="https://img.shields.io/badge/License-MIT-222222.svg" />
-  </a>
-  <a href="https://buymeacoffee.com/arikchakma">
-    	<img src="https://img.shields.io/badge/-buy_me_a%C2%A0coffee-222222?logo=buy-me-a-coffee" alt="Buy me a coffee" />
-  </a>
-  <a href="https://maily.to">
-    	<img src="https://img.shields.io/badge/%E2%9C%A8-Get%20Editor-0a0a0a.svg?style=flat&colorA=222222" alt="Get Maily Editor" />
-  </a>
-</p>
+A **shadcn-installable** build of [maily.to](https://github.com/arikchakma/maily.to) — the
+TipTap-based WYSIWYG editor for composing beautiful, mobile-ready emails from pre-designed
+blocks (buttons, logos, images, columns, sections, variables, footers, repeat/conditional
+blocks, …), plus a renderer that turns the editor's JSON into email-safe HTML.
 
-<p align="center">
-  <b>Powerful editor for creating beautiful, pre-designed, mobile-ready emails.</b></br>
-  <sub>Just bring your text, use our pre-designed components, and be done.</sub><br>
-</p>
-<br />
+The upstream project ships Maily as npm packages. **This fork distributes the source instead:**
+run one `shadcn add` and the editor and renderer land in your codebase as plain files you
+own, theme, and edit — like any other shadcn component. No opaque dependency, no shipped
+stylesheet; the UI renders entirely from **your** shadcn theme tokens.
 
-## Start Using
+> This is a fork. Credit for Maily itself goes to [Arik Chakma](https://github.com/arikchakma)
+> and the upstream contributors. See [Credits](#credits).
 
-Just follow this link to [access the editor](https://maily.to/playground)
+## What you get
 
-## Why use Maily Editor?
+A single registry block named **`maily`** that installs two things:
 
-Designing emails that work across all email platforms, browsers, etc is hard. **Maily** is an opinionated editor that lets you craft emails in a hassle-free manner. We have a bunch of pre-designed components that make it easy for you to design any kind of email. Here is the list of components supported by **maily** with more being added.
+| Part         | Installs to            | Import from           | Purpose                                  |
+| ------------ | ---------------------- | --------------------- | ---------------------------------------- |
+| **Editor**   | `components/maily/**`  | `@/components/maily`  | The `<Editor />` WYSIWYG email composer. |
+| **Renderer** | `lib/maily-render/**`  | `@/lib/maily-render`  | `render()` — editor JSON → email HTML.   |
 
-- Logo
-- Buttons and Variants
-- Variables
-- Text Formatting
-- Image
-- Alignment
-- Divider
-- Spacer
-- Footer
-- Inline Code
-- Link Cards
-- Section
-- Columns
-- Repeat
-- Show If Condition
+## Requirements
 
-<br/>
+- **React 18 or 19**
+- **Tailwind CSS v4** with the standard **shadcn theme tokens** defined
+  (`--background`, `--foreground`, `--primary`, `--muted`, `--border`, …). Maily ships no CSS
+  of its own — its chrome **and** writing surface read these tokens, so it follows your
+  light/dark theme automatically.
+- **`@tailwindcss/typography`** — the content area uses `prose`. The block wires this in for
+  you on install (via its `css` key, which appends `@plugin "@tailwindcss/typography";`).
+- A project already initialised with the **shadcn CLI** (`components.json` present).
 
-## Sponsors
+## Install
 
-Sponsorship at any level is appreciated and encouraged. If you built a paid product using Maily, consider one of the [sponsorship tiers](https://github.com/sponsors/arikchakma).
+The block is consumed from a shadcn **registry namespace**. Point your `components.json` at
+wherever this repo's `maily.json` is served, then `add` it:
 
-<br/>
+```jsonc
+// components.json
+"registries": {
+  "@maily": "https://your-host/r/{name}.json"
+}
+```
 
-<h3 align="center">Gold</h3>
+```bash
+npx shadcn@latest add @maily/maily
+```
 
-<table align="center" style="justify-content: center;align-items: center;display: flex;">
-  <tr>
-    <td align="center">
-      <p></p>
-      <p></p>
-      <a href="https://novu.co?ref=maily.to">
-        <picture height="60px">
-          <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/5e2b9ef1-5ded-4863-995d-62c7e40f946a">
-          <img alt="Novu Logo" height="60px" src="https://github.com/user-attachments/assets/d2fdaf14-2211-4946-ab67-a4ce547aabc0">
-        </picture>
-      </a>
-      <p></p>
-      <p></p>
-    </td>
-  </tr>
-</table>
+This writes the editor and renderer source into your project and installs their npm
+dependencies (TipTap, lowlight, tippy.js, the renderer's `@react-email/*`, etc.).
 
-<br/>
+> **Local / from this repo:** the included `playground/` serves the registry on
+> `http://localhost:5173/r/` for exactly this flow. See [`playground/README.md`](playground/README.md).
 
-## Contributions
+## Usage
 
-Feel free to submit pull requests, create issues, or spread the word. For getting a development version of it up & running, go through the following steps.
+### Editor
 
-1. Clone the repo: `git clone https://github.com/arikchakma/maily.to`
-2. Change directory: `cd maily.to`
-3. Copy the example config file: `cp ./apps/web/.env.example ./apps/web/.env`
-4. Add `Google` & `Github` providers in your `supabase` project. You can find more information about it [here](https://supabase.com/docs/guides/auth).
-5. `pnpm install` to install all the dependencies.
-6. `pnpm dev` to start the development server.
+```tsx
+import { Editor } from '@/components/maily';
+
+export function ComposeEmail() {
+  return (
+    <Editor
+      contentJson={{ type: 'doc', content: [] }}
+      onUpdate={(editor) => {
+        // persist editor.getJSON() — feed it to the renderer when you send
+        console.log(editor.getJSON());
+      }}
+    />
+  );
+}
+```
+
+`<Editor />` is self-contained: the toolbar, slash-command menu, and all bubble menus are
+included. It renders nothing of its own theme — it inherits yours.
+
+#### Key props
+
+All props are optional. The editor accepts content as JSON or HTML and reports changes
+through callbacks.
+
+| Prop            | Type                          | Description                                                       |
+| --------------- | ----------------------------- | ---------------------------------------------------------------- |
+| `contentJson`   | `JSONContent`                 | Initial content as TipTap JSON (a `doc` node, or an array of nodes). |
+| `contentHtml`   | `string`                      | Initial content as HTML (used when `contentJson` is absent).     |
+| `onCreate`      | `(editor) => void`            | Called once the editor instance is ready.                        |
+| `onUpdate`      | `(editor) => void`            | Called on every change. Read `editor.getJSON()` here.            |
+| `editable`      | `boolean`                     | Toggle read-only mode. Defaults to `true`.                       |
+| `extensions`    | `AnyExtension[]`              | Extra TipTap extensions, merged with the defaults.               |
+| `blocks`        | `BlockGroupItem[]`            | Override the slash-command block list.                           |
+| `config`        | `object`                      | Chrome toggles & class hooks — see below.                        |
+
+`config` fields: `hasMenuBar` (show the top toolbar, default `true`), `hideContextMenu`,
+`spellCheck`, `autofocus`, `immediatelyRender`, and the class hooks `wrapClassName`,
+`toolbarClassName`, `bodyClassName`, `contentClassName`.
+
+### Renderer
+
+```ts
+import { render } from '@/lib/maily-render';
+
+const html = await render(editorJson, {
+  preview: 'Inbox preview text',
+  theme: {
+    /* optional theme overrides for the rendered email */
+  },
+});
+```
+
+`render()` is independent of the editor's on-screen theming — it produces the final,
+email-client-safe HTML from the saved JSON.
+
+## Theming & customisation
+
+- **Tokens, not CSS.** Restyle by editing your shadcn theme variables; the editor follows.
+- **Toolbar position/layout** is a per-instance concern — pass utilities via
+  `config.toolbarClassName` (e.g. `sticky top-0`, `justify-center`, `mb-6`). These are merged
+  with `tailwind-merge`, so conflicting utilities you pass win over the defaults.
+- **Deeper restyling** is just editing the source you now own — e.g. the toolbar lives in
+  `components/maily/editor/components/editor-menu-bar.tsx`. That's the whole point of
+  distributing source rather than a package: customise by editing, not by prop sprawl.
+
+## Known issue — `verbatimModuleSyntax`
+
+If your project has `verbatimModuleSyntax: true` (the modern shadcn/Vite default), the editor
+source currently value-imports some type-only symbols (e.g. `import { Command } from
+'@tiptap/core'`) and the browser throws *"does not provide an export named 'Command'"*. Until
+this is fixed at the source, set `verbatimModuleSyntax: false` in your `tsconfig`. Details in
+[`playground/README.md`](playground/README.md).
+
+## Status & roadmap
+
+This fork is being hardened toward production. In progress:
+
+- **Generic i18n** — override every user-facing string with a caller-provided value
+  (framework-agnostic, English defaults).
+- **Image upload** — accept uploaded files via a caller-provided handler, in addition to URLs.
+
+See [`AGENTS.md`](AGENTS.md) for the north-star goals and current architecture.
+
+## Contributing & local development
+
+This is a **pnpm + Turborepo monorepo**. `packages/core`, `packages/render`, and
+`packages/shared` are the source of truth; `registry/**` and `registry.json` are **generated**
+— never hand-edit them. Edit the packages, then regenerate:
+
+```bash
+pnpm install         # install workspace deps
+pnpm dev             # turbo dev across packages
+pnpm test            # vitest
+pnpm registry:build  # regenerate registry/** and registry.json from packages/*/src
+pnpm playground:sync # registry:build + serve the JSON for the playground
+```
+
+Full architecture, conventions, and the registry build mechanics are documented in
+[`AGENTS.md`](AGENTS.md). The local consumer harness is [`playground/README.md`](playground/README.md).
+
+## Credits
+
+Built on [maily.to](https://github.com/arikchakma/maily.to) by
+[Arik Chakma](https://twitter.com/imarikchakma) and contributors.
 
 ## License
 
-MIT &copy; [Arik Chakma](https://twitter.com/imarikchakma)
+MIT

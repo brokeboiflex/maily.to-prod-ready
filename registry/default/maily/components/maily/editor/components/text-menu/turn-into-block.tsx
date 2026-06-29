@@ -8,7 +8,7 @@ import {
 } from './use-turn-into-block-options';
 import { useMemo } from 'react';
 import { BaseButton } from '../base-button';
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 type TurnIntoBlockProps = {

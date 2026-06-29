@@ -15,7 +15,7 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 import { Divider } from './ui/divider';
 import { DragHandle } from '../plugins/drag-handle/drag-handle';
-import { cn } from '../utils/classname';
+import { cn } from '@/lib/utils';
 
 export type ContentMenuProps = {
   editor: Editor;

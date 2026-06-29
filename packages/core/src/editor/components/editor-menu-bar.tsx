@@ -12,9 +12,8 @@ import {
   StrikethroughIcon,
   UnderlineIcon,
 } from 'lucide-react';
-
 import { EditorProps } from '@/editor';
-
+import { cn } from '../utils/classname';
 import { BubbleMenuButton } from './bubble-menu-button';
 import { BubbleMenuItem } from './text-menu/text-bubble-menu';
 
@@ -141,7 +140,7 @@ export const EditorMenuBar = (props: EditorMenuBarProps) => {
   }
 
   return (
-    <div className={`flex items-center gap-3 ${config?.toolbarClassName}`}>
+    <div className={cn('flex items-center gap-3', config?.toolbarClassName)}>
       {groups.map((group, index) => (
         <div
           key={index}

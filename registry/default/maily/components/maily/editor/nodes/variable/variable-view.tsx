@@ -6,7 +6,7 @@ import {
 } from '../../components/popover';
 import { Divider } from '../../components/ui/divider';
 import { TooltipProvider } from '../../components/ui/tooltip';
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 import { AUTOCOMPLETE_PASSWORD_MANAGERS_OFF } from '../../utils/constants';
 import { getNodeOptions } from '../../utils/node-options';
 import { NodeViewProps } from '@tiptap/core';

@@ -47,6 +47,8 @@ playground/                   — local dev harness: a Vite + shadcn app that in
 
 The build step also rewrites hardcoded `lucide-react` icon JSX into a shadcn-friendly `<IconPlaceholder>` so installers can swap in their preferred icon library. See `.sisyphus/plans/` and `.sisyphus/evidence/` for the icon-conversion design notes.
 
+The build step **externalizes modules the consumer already owns** rather than shipping a private copy. These are listed in `EXTERNALIZED_MODULES` in `scripts/build-shadcn-registry.mjs`, keyed by package-source path; for each, the source file is excluded from the emitted registry and every import of it (`@/…` or relative) is rewritten to the consumer's shadcn alias. Today this covers `cn` (`editor/utils/classname` → `@/lib/utils`), so the editor uses the consumer's own `cn` instead of a bundled duplicate. The source file stays in `packages/core` for standalone builds — only the registry output defers to the consumer. Note: most of `editor/components/ui/` is **not** externalizable — `select` is a custom native `<select>`, `popover` is a fork with editor-specific inline (`portal`/`mly-editor`) rendering, and `divider` is a trivial token `<div>` with no stock equivalent — so those stay bundled. `tooltip` is API-compatible with stock shadcn but kept bundled deliberately to preserve the editor's tuned styling.
+
 ## Tech stack
 
 - **React 18/19**, **TypeScript**

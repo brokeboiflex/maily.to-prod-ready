@@ -1,5 +1,5 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 import { BubbleMenu } from '@tiptap/react';
 import { useCallback } from 'react';
 import { sticky } from 'tippy.js';

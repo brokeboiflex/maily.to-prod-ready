@@ -11,7 +11,7 @@ import { Divider } from '../../components/ui/divider';
 import { LinkInputPopover } from '../../components/ui/link-input-popover';
 import { Select } from '../../components/ui/select';
 import { TooltipProvider } from '../../components/ui/tooltip';
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 import { useVariableOptions } from '../../utils/node-options';
 import { NodeViewProps, NodeViewWrapper } from '@tiptap/react';
 import { CSSProperties, useMemo } from 'react';

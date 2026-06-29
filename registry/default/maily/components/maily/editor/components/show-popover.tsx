@@ -1,7 +1,7 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Editor } from '@tiptap/core';
 import { memo, useMemo, useRef, useState } from 'react';
-import { cn } from '../utils/classname';
+import { cn } from '@/lib/utils';
 import { useVariableOptions } from '../utils/node-options';
 import { processVariables } from '../utils/variable';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';

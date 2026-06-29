@@ -1,5 +1,5 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
-import { cn } from '../../utils/classname';
+import { cn } from '@/lib/utils';
 import { isTextSelected } from '../../utils/is-text-selected';
 import { BubbleMenu, findChildren } from '@tiptap/react';
 import { useCallback, useMemo, useRef, useState } from 'react';
