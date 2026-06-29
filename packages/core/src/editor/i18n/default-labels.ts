@@ -191,6 +191,13 @@ export const defaultLabels = {
   'edgeSpacing.bottom': 'B',
   'edgeSpacing.left': 'L',
 
+  // ── Spacing scale (section margin/padding dropdowns; keyed by short code) ──
+  'spacing.xs': 'Extra Small',
+  'spacing.sm': 'Small',
+  'spacing.md': 'Medium',
+  'spacing.lg': 'Large',
+  'spacing.xl': 'Extra Large',
+
   // ── Misc ──
   'colorPicker.recentlyUsed': 'Recently used',
   'inputAutocomplete.placeholder': 'e.g. items',
