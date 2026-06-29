@@ -6,7 +6,6 @@ import { EditorBubbleMenuProps } from '../text-menu/text-bubble-menu';
 import { TooltipProvider } from '../ui/tooltip';
 import { useInlineImageState } from './use-inline-image-state';
 import { LinkInputPopover } from '../ui/link-input-popover';
-
 import { isTextSelected } from '../../utils/is-text-selected';
 import {
   DEFAULT_INLINE_IMAGE_HEIGHT,
@@ -44,10 +43,10 @@ export function InlineImageBubbleMenu(props: EditorBubbleMenuProps) {
   return (
     <BubbleMenu
       {...bubbleMenuProps}
-      className="mly:flex mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:p-0.5 mly:shadow-md"
+      className="border-border bg-background flex rounded-lg border p-0.5 shadow-md"
     >
       <TooltipProvider>
-        <div className="mly:flex mly:gap-x-0.5">
+        <div className="flex gap-x-0.5">
           <LinkInputPopover
             defaultValue={state?.src ?? ''}
             onValueChange={(value, isVariable) => {

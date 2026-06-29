@@ -1,6 +1,5 @@
 import { cn } from '../../utils/classname';
 import { BubbleMenu } from '@tiptap/react';
-
 import { useCallback } from 'react';
 import { sticky } from 'tippy.js';
 import { getRenderContainer } from '../../utils/get-render-container';
@@ -58,16 +57,16 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
   return (
     <BubbleMenu
       {...bubbleMenuProps}
-      className="mly:flex mly:items-stretch mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:p-0.5 mly:shadow-md"
+      className="border-border bg-background flex items-stretch rounded-lg border p-0.5 shadow-md"
     >
       <TooltipProvider>
-        <div className="mly:flex mly:items-center mly:h-7 mly:rounded-md mly:bg-accent mly:px-0.5">
+        <div className="bg-accent flex h-7 items-center rounded-md px-0.5">
           <Tooltip>
             <TooltipTrigger asChild>
               <button
                 className={cn(
-                  'mly:flex mly:size-6 mly:shrink-0 mly:items-center mly:justify-center mly:rounded mly:focus-visible:relative mly:focus-visible:z-10 mly:focus-visible:outline-hidden mly:focus-visible:ring-2 mly:focus-visible:ring-ring mly:focus-visible:ring-offset-2',
-                  activeTab === 'code' && 'mly:bg-popover mly:text-popover-foreground'
+                  'focus-visible:ring-ring flex size-6 shrink-0 items-center justify-center rounded focus-visible:relative focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden',
+                  activeTab === 'code' && 'bg-background'
                 )}
                 disabled={activeTab === 'code'}
                 onClick={() => {
@@ -76,7 +75,7 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
                   });
                 }}
               >
-                <CodeXmlIcon className="mly:size-3 mly:shrink-0 mly:stroke-[2.5]" />
+                <CodeXmlIcon className="size-3 shrink-0 stroke-[2.5]" />
               </button>
             </TooltipTrigger>
             <TooltipContent sideOffset={8}>HTML Code</TooltipContent>
@@ -85,8 +84,8 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
             <TooltipTrigger asChild>
               <button
                 className={cn(
-                  'mly:flex mly:size-6 mly:shrink-0 mly:items-center mly:justify-center mly:rounded mly:focus-visible:relative mly:focus-visible:z-10 mly:focus-visible:outline-hidden mly:focus-visible:ring-2 mly:focus-visible:ring-ring mly:focus-visible:ring-offset-2',
-                  activeTab === 'preview' && 'mly:bg-popover mly:text-popover-foreground'
+                  'focus-visible:ring-ring flex size-6 shrink-0 items-center justify-center rounded focus-visible:relative focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden',
+                  activeTab === 'preview' && 'bg-background'
                 )}
                 disabled={activeTab === 'preview'}
                 onClick={() => {
@@ -95,7 +94,7 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
                   });
                 }}
               >
-                <ViewIcon className="mly:size-3 mly:shrink-0 mly:stroke-[2.5]" />
+                <ViewIcon className="size-3 shrink-0 stroke-[2.5]" />
               </button>
             </TooltipTrigger>
             <TooltipContent sideOffset={8}>Preview</TooltipContent>

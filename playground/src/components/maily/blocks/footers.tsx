@@ -5,7 +5,7 @@ export const footerCopyrightText: BlockItem = {
   title: 'Footer Copyright',
   description: 'Copyright text for the footer.',
   searchTerms: ['footer', 'copyright'],
-  icon: <CopyrightIcon className="mly:h-4 mly:w-4" />,
+  icon: <CopyrightIcon className="h-4 w-4" />,
   command: ({ editor, range }) => {
     const currentYear = new Date().getFullYear();
 
@@ -32,7 +32,7 @@ export const footerCommunityFeedbackCta: BlockItem = {
   title: 'Footer Community Feedback CTA',
   description: 'Community feedback CTA for the footer.',
   searchTerms: ['footer', 'community', 'feedback', 'cta'],
-  icon: <RectangleHorizontalIcon className="mly:h-4 mly:w-4" />,
+  icon: <RectangleHorizontalIcon className="h-4 w-4" />,
   command: ({ editor, range }) => {
     editor
       .chain()
@@ -81,7 +81,7 @@ export const footerCompanySignature: BlockItem = {
   title: 'Footer Company Signature',
   description: 'Company signature for the footer.',
   searchTerms: ['footer', 'company', 'signature'],
-  icon: <LayoutTemplateIcon className="mly:h-4 mly:w-4" />,
+  icon: <LayoutTemplateIcon className="h-4 w-4" />,
   command: ({ editor, range }) => {
     editor
       .chain()
@@ -130,7 +130,7 @@ export const footerCompanySignature: BlockItem = {
                     href: 'https://maily.to',
                     target: '_blank',
                     rel: 'noopener noreferrer nofollow',
-                    class: 'mly:no-underline',
+                    class: 'no-underline',
                     isUrlVariable: false,
                   },
                 },
@@ -153,7 +153,7 @@ export const footerCompanySignature: BlockItem = {
                     href: 'https://maily.to',
                     target: '_blank',
                     rel: 'noopener noreferrer nofollow',
-                    class: 'mly:no-underline',
+                    class: 'no-underline',
                     isUrlVariable: false,
                   },
                 },
@@ -176,7 +176,7 @@ export const footerCompanySignature: BlockItem = {
                     href: 'https://maily.to',
                     target: '_blank',
                     rel: 'noopener noreferrer nofollow',
-                    class: 'mly:no-underline',
+                    class: 'no-underline',
                     isUrlVariable: false,
                   },
                 },

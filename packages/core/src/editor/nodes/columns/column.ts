@@ -105,7 +105,10 @@ export const ColumnExtension = Node.create({
       'div',
       mergeAttributes(HTMLAttributes, {
         'data-type': 'column',
-        class: 'hide-scrollbars',
+        // table-cell + flex sizing, hidden scrollbars, reset edge margins, and a
+        // solid outline when this column itself is focused.
+        class:
+          'table-cell basis-0 grow overflow-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&.has-focus]:outline-solid',
       }),
       0,
     ];

@@ -1,5 +1,4 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
-
 import { BlockItem } from './types';
 
 export const footerCopyrightText: BlockItem = {
@@ -12,7 +11,7 @@ export const footerCopyrightText: BlockItem = {
   hugeicons="CopyrightIcon"
   phosphor="Copyright"
   remixicon="RiCopyrightLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     const currentYear = new Date().getFullYear();
@@ -46,7 +45,7 @@ export const footerCommunityFeedbackCta: BlockItem = {
   hugeicons="Square01Icon"
   phosphor="Rectangle"
   remixicon="RiRectangleLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     editor
@@ -102,7 +101,7 @@ export const footerCompanySignature: BlockItem = {
   hugeicons="LayoutGridIcon"
   phosphor="Layout"
   remixicon="RiLayoutLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     editor
@@ -152,7 +151,7 @@ export const footerCompanySignature: BlockItem = {
                     href: 'https://maily.to',
                     target: '_blank',
                     rel: 'noopener noreferrer nofollow',
-                    class: 'mly:no-underline',
+                    class: 'no-underline',
                     isUrlVariable: false,
                   },
                 },
@@ -175,7 +174,7 @@ export const footerCompanySignature: BlockItem = {
                     href: 'https://maily.to',
                     target: '_blank',
                     rel: 'noopener noreferrer nofollow',
-                    class: 'mly:no-underline',
+                    class: 'no-underline',
                     isUrlVariable: false,
                   },
                 },
@@ -198,7 +197,7 @@ export const footerCompanySignature: BlockItem = {
                     href: 'https://maily.to',
                     target: '_blank',
                     rel: 'noopener noreferrer nofollow',
-                    class: 'mly:no-underline',
+                    class: 'no-underline',
                     isUrlVariable: false,
                   },
                 },

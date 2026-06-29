@@ -1,5 +1,4 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
-
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
 import { cn } from '../../utils/classname';
 import { AUTOCOMPLETE_PASSWORD_MANAGERS_OFF } from '../../utils/constants';
@@ -22,18 +21,18 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
 
   return (
     <Popover>
-      <PopoverTrigger className="mly:flex mly:size-7 mly:items-center mly:justify-center mly:gap-1 mly:rounded-md mly:text-sm mly:data-[state=open]:bg-accent mly:hover:bg-accent mly:hover:text-accent-foreground">
+      <PopoverTrigger className="data-[state=open]:bg-accent hover:bg-accent flex size-7 items-center justify-center gap-1 rounded-md text-sm">
         <IconPlaceholder
   lucide="SlidersVertical"
   tabler="IconAdjustments"
   hugeicons="SlidersVerticalIcon"
   phosphor="Sliders"
   remixicon="RiEqualizerLine"
-  className="mly:h-3 mly:w-3 mly:stroke-[2.5]"
+  className="h-3 w-3 stroke-[2.5]"
 />
       </PopoverTrigger>
       <PopoverContent
-        className="mly:w-[300px] mly:rounded-lg mly:p-0.5!"
+        className="w-[300px] rounded-lg p-0.5!"
         side="top"
         sideOffset={8}
         align="center"
@@ -44,7 +43,7 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
           e.preventDefault();
         }}
       >
-        <div className="mly:grid mly:grid-cols-2 mly:gap-1">
+        <div className="grid grid-cols-2 gap-1">
           <SwitchButton
             onClick={() => onColumnsCountChange(2)}
             isActive={columnsCount === 2}
@@ -55,7 +54,7 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
   hugeicons="LayoutTwoColumnIcon"
   phosphor="Columns"
   remixicon="RiLayoutColumnLine"
-  className="mly:h-4 mly:w-4 mly:stroke-[2.5]"
+  className="h-4 w-4 stroke-[2.5]"
 />
             <span>2 Columns</span>
           </SwitchButton>
@@ -69,16 +68,16 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
   hugeicons="LayoutThreeColumnIcon"
   phosphor="Columns"
   remixicon="RiLayout3Line"
-  className="mly:h-4 mly:w-4 mly:stroke-[2.5]"
+  className="h-4 w-4 stroke-[2.5]"
 />
             <span>3 Columns</span>
           </SwitchButton>
         </div>
 
-        <hr className="mly:my-0.5 mly:border-border" />
+        <hr className="border-border my-0.5" />
 
         <div
-          className="mly:grid mly:gap-1 mly:p-1"
+          className="grid gap-1 p-1"
           style={{ gridTemplateColumns: `repeat(${columnsCount}, 1fr)` }}
         >
           {Array.from({ length: columnsCount }).map((_, index) => {
@@ -96,24 +95,24 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
                     : 'Right';
 
             return (
-              <div className="mly:flex mly:flex-col mly:gap-1" key={index}>
-                <span className="mly:text-xs mly:text-muted-foreground">{label}</span>
+              <div className="flex flex-col gap-1" key={index}>
+                <span className="text-muted-foreground text-xs">{label}</span>
 
-                <label className="mly:relative">
+                <label className="relative">
                   <input
                     {...AUTOCOMPLETE_PASSWORD_MANAGERS_OFF}
                     placeholder="auto"
                     min={1}
                     max={90}
                     type="number"
-                    className="hide-number-controls mly:w-full mly:appearance-none mly:rounded-md mly:bg-accent mly:px-1.5 mly:py-1 mly:pr-6 mly:text-sm mly:tabular-nums mly:outline-hidden mly:focus:bg-accent mly:focus:outline-hidden mly:focus:ring-1 mly:focus:ring-ring/50"
+                    className="bg-accent focus:bg-accent focus:ring-foreground/50 w-full [appearance:textfield] appearance-none rounded-md px-1.5 py-1 pr-6 text-sm tabular-nums outline-hidden focus:ring-1 focus:outline-hidden [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                     value={value}
                     onChange={(e) => {
                       const value = e.target.value;
                       onColumnWidthChange?.(index, value);
                     }}
                   />
-                  <span className="mly:absolute mly:inset-y-0 mly:right-0 mly:flex mly:aspect-square mly:items-center mly:justify-center mly:text-xs mly:tabular-nums mly:text-muted-foreground">
+                  <span className="text-muted-foreground absolute inset-y-0 right-0 flex aspect-square items-center justify-center text-xs tabular-nums">
                     %
                   </span>
                 </label>
@@ -138,8 +137,8 @@ function SwitchButton(props: SwitchButtonProps) {
   return (
     <button
       className={cn(
-        'mly:flex mly:h-7 mly:items-center mly:gap-1 mly:rounded-md mly:px-2 mly:text-sm mly:text-muted-foreground mly:hover:bg-accent mly:hover:text-accent-foreground',
-        isActive && 'mly:bg-accent mly:text-foreground'
+        'text-muted-foreground hover:bg-accent hover:text-foreground flex h-7 items-center gap-1 rounded-md px-2 text-sm',
+        isActive && 'bg-accent text-foreground'
       )}
       onClick={onClick}
     >

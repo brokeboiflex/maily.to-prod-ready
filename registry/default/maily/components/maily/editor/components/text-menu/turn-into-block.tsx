@@ -1,6 +1,5 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { PilcrowIcon } from "lucide-react"
-
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
 import {
   TurnIntoBlockCategory,
@@ -39,17 +38,17 @@ export function TurnIntoBlock(props: TurnIntoBlockProps) {
         <TooltipTrigger asChild>
           <PopoverTrigger
             className={cn(
-              'mly:flex mly:aspect-square mly:h-7 mly:items-center mly:justify-center mly:gap-1 mly:rounded-md mly:px-1.5 mly:text-sm mly:data-[state=open]:bg-accent mly:hover:bg-accent mly:hover:text-accent-foreground mly:focus-visible:relative mly:focus-visible:z-10 mly:focus-visible:outline-hidden mly:focus-visible:ring-2 mly:focus-visible:ring-ring mly:focus-visible:ring-offset-2'
+              'data-[state=open]:bg-accent hover:bg-accent focus-visible:ring-ring flex aspect-square h-7 items-center justify-center gap-1 rounded-md px-1.5 text-sm focus-visible:relative focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden'
             )}
           >
-            <ActiveIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5]" />
+            <ActiveIcon className="h-3 w-3 shrink-0 stroke-[2.5]" />
             <IconPlaceholder
   lucide="ChevronDownIcon"
   tabler="IconChevronDown"
   hugeicons="ChevronDownIcon"
   phosphor="CaretDown"
   remixicon="RiArrowDownSLine"
-  className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5]"
+  className="h-3 w-3 shrink-0 stroke-[2.5]"
 />
           </PopoverTrigger>
         </TooltipTrigger>
@@ -59,7 +58,7 @@ export function TurnIntoBlock(props: TurnIntoBlockProps) {
         align="start"
         side="bottom"
         sideOffset={8}
-        className="mly:flex mly:w-[160px] mly:flex-col mly:rounded-md mly:p-1"
+        className="flex w-[160px] flex-col rounded-md p-1"
       >
         {options.map((option, index) => {
           if (isOption(option)) {
@@ -68,9 +67,9 @@ export function TurnIntoBlock(props: TurnIntoBlockProps) {
                 key={option.id}
                 onClick={option.onClick}
                 variant="ghost"
-                className="mly:mb-0.5 mly:h-auto mly:justify-start mly:gap-2 mly:rounded! mly:px-2 mly:py-1 mly:text-sm mly:font-normal mly:text-foreground"
+                className="text-foreground mb-0.5 h-auto justify-start gap-2 rounded! px-2 py-1 text-sm font-normal"
               >
-                <option.icon className="mly:size-[15px] mly:shrink-0" />
+                <option.icon className="size-[15px] shrink-0" />
                 {option.label}
               </BaseButton>
             );
@@ -79,8 +78,8 @@ export function TurnIntoBlock(props: TurnIntoBlockProps) {
               <label
                 key={option.id}
                 className={cn(
-                  'mly:px-2 mly:text-xs mly:font-medium mly:text-foreground/60',
-                  index === 0 ? 'mly:mb-2 mly:mt-1' : 'mly:my-2'
+                  'text-foreground/60 px-2 text-xs font-medium',
+                  index === 0 ? 'mt-1 mb-2' : 'my-2'
                 )}
               >
                 {option.label}

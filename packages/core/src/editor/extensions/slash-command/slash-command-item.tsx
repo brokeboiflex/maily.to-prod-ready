@@ -54,17 +54,17 @@ export function SlashCommandItem(props: SlashCommandItemProps) {
 
   let value = (
     <>
-      <div className="mly:flex mly:h-6 mly:w-6 mly:shrink-0 mly:items-center mly:justify-center">
+      <div className="flex h-6 w-6 shrink-0 items-center justify-center">
         {item.icon}
       </div>
-      <div className="mly:grow">
-        <p className="mly:font-medium">{item.title}</p>
-        <p className="mly:text-xs mly:text-gray-400">{item.description}</p>
+      <div className="grow">
+        <p className="font-medium">{item.title}</p>
+        <p className="text-muted-foreground text-xs">{item.description}</p>
       </div>
 
       {isSubCommand && (
-        <span className="mly:block mly:px-1 mly:text-gray-400">
-          <ChevronRightIcon className="mly:size-3.5 mly:stroke-[2.5]" />
+        <span className="text-muted-foreground block px-1">
+          <ChevronRightIcon className="size-3.5 stroke-[2.5]" />
         </span>
       )}
     </>
@@ -108,10 +108,8 @@ export function SlashCommandItem(props: SlashCommandItemProps) {
       <TooltipTrigger asChild>
         <button
           className={cn(
-            'mly:flex mly:w-full mly:items-center mly:gap-2 mly:rounded-md mly:px-2 mly:py-1 mly:text-left mly:text-sm mly:text-gray-900 mly:hover:bg-gray-100 mly:hover:text-gray-900',
-            isActive
-              ? 'mly:bg-gray-100 mly:text-gray-900'
-              : 'mly:bg-transparent'
+            'text-foreground hover:bg-muted hover:text-foreground flex w-full items-center gap-2 rounded-md px-2 py-1 text-left text-sm',
+            isActive ? 'bg-muted text-foreground' : 'bg-transparent'
           )}
           onClick={() => selectItem(groupIndex, commandIndex)}
           onMouseEnter={() => onHover(true)}
@@ -125,20 +123,20 @@ export function SlashCommandItem(props: SlashCommandItemProps) {
       <TooltipContent
         side="right"
         sideOffset={10}
-        className="mly:w-52 mly:rounded-lg mly:border-none mly:p-1 mly:shadow"
+        className="w-52 rounded-lg border-none p-1 shadow"
       >
         {typeof item.preview === 'function' ? (
           item?.preview(editor)
         ) : (
           <>
-            <figure className="mly:relative mly:aspect-[2.5] mly:w-full mly:overflow-hidden mly:rounded-md mly:border mly:border-gray-200">
+            <figure className="border-border relative aspect-[2.5] w-full overflow-hidden rounded-md border">
               <img
                 src={item?.preview}
                 alt={item?.title}
-                className="mly:absolute mly:inset-0 mly:h-full mly:w-full mly:object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
               />
             </figure>
-            <p className="mly:mt-2 mly:px-0.5 mly:text-gray-500">
+            <p className="text-muted-foreground mt-2 px-0.5">
               {item.description}
             </p>
           </>

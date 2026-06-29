@@ -94,20 +94,20 @@ export function RepeatBubbleMenu(props: EditorBubbleMenuProps) {
   return (
     <BubbleMenu
       {...bubbleMenuProps}
-      className="mly:flex mly:items-stretch mly:rounded-lg mly:border mly:border-gray-200 mly:bg-white mly:p-0.5 mly:shadow-md"
+      className="border-border bg-background flex items-stretch rounded-lg border p-0.5 shadow-md"
     >
       <TooltipProvider>
-        <div className="mly:flex mly:items-center mly:gap-1.5 mly:px-1.5 mly:text-sm mly:leading-none">
+        <div className="flex items-center gap-1.5 px-1.5 text-sm leading-none">
           Repeat
           <Tooltip>
             <TooltipTrigger>
               <InfoIcon
-                className={cn('mly:size-3 mly:stroke-[2.5] mly:text-gray-500')}
+                className={cn('text-muted-foreground size-3 stroke-[2.5]')}
               />
             </TooltipTrigger>
             <TooltipContent
               sideOffset={14}
-              className="mly:max-w-[260px]"
+              className="max-w-[260px]"
               align="start"
             >
               Ensure the selected variable is iterable, such as an array of

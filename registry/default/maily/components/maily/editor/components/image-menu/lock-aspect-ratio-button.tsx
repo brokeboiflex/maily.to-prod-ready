@@ -1,6 +1,5 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { LockOpenIcon } from "lucide-react"
-
 import { BaseButton } from '../base-button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
@@ -19,7 +18,7 @@ export function LockAspectRatioButton(props: LockAspectRatioButtonProps) {
           variant="ghost"
           size="sm"
           type="button"
-          className="mly:size-7"
+          className="size-7"
           data-state={isLocked}
           onClick={onClick}
         >
@@ -30,10 +29,10 @@ export function LockAspectRatioButton(props: LockAspectRatioButtonProps) {
   hugeicons="LockIcon"
   phosphor="Lock"
   remixicon="RiLockLine"
-  className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-foreground"
+  className="text-foreground h-3 w-3 shrink-0 stroke-[2.5]"
 />
           ) : (
-            <LockOpenIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-foreground" />
+            <LockOpenIcon className="text-foreground h-3 w-3 shrink-0 stroke-[2.5]" />
           )}
         </BaseButton>
       </TooltipTrigger>

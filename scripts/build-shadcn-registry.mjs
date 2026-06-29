@@ -400,11 +400,7 @@ function buildRegistryJson() {
     dependencies.set("@antfu/utils", renderPackage.devDependencies["@antfu/utils"])
   }
 
-  const cssBuildDeps = [
-    "@tailwindcss/typography",
-    "tailwind-scrollbar",
-    "tw-animate-css",
-  ]
+  const cssBuildDeps = ["@tailwindcss/typography", "tw-animate-css"]
 
   for (const name of cssBuildDeps) {
     const version = corePackage.devDependencies?.[name]
@@ -441,11 +437,24 @@ for (const name of iconLibraryDeps) {
         dependencies: dependencyList(dependencies),
         devDependencies: dependencyList(devDependencies),
         files: registryFiles(),
+        // Maily is a plain-Tailwind shadcn component: it ships no stylesheet and
+        // paints its chrome and canvas entirely with the consumer's shadcn theme
+        // tokens. The only build requirement is the typography plugin, which
+        // provides the `prose` utilities used by the editor content area. The
+        // `css` key makes `shadcn add` wire it into the consumer's stylesheet.
+        css: {
+          '@plugin "@tailwindcss/typography"': {},
+        },
         docs: [
           "Editor usage:",
           "",
           "import { Editor } from '@/components/maily'",
-          "import '@/components/maily/styles/index.css'",
+          "",
+          "Maily ships no CSS — its chrome and canvas use your shadcn theme",
+          "tokens directly. Ensure your app defines the standard shadcn tokens",
+          "(--background, --foreground, --primary, --muted, --border, …) and has",
+          "the Tailwind typography plugin enabled (added automatically on install",
+          "via this item's `css`): @plugin \"@tailwindcss/typography\";",
           "",
           "Renderer usage:",
           "",

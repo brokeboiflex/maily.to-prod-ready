@@ -2,7 +2,6 @@ import { IconPlaceholder } from "@/components/icon-placeholder"
 import { NodeSelection, Selection, TextSelection } from '@tiptap/pm/state';
 import type { BlockItem } from './types';
 
-
 export const image: BlockItem = {
   title: 'Image',
   description: 'Full width image',
@@ -13,7 +12,7 @@ export const image: BlockItem = {
   hugeicons="Image01Icon"
   phosphor="ImageSquare"
   remixicon="RiImage2Line"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -31,7 +30,7 @@ export const logo: BlockItem = {
   hugeicons="Image01Icon"
   phosphor="ImageSquare"
   remixicon="RiImage2Line"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -49,7 +48,7 @@ export const inlineImage: BlockItem = {
   hugeicons="Image01Icon"
   phosphor="ImageSquare"
   remixicon="RiImage2Line"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore

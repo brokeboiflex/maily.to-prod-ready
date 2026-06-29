@@ -1,5 +1,4 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
-
 import { button, linkCard } from '../../../blocks/button';
 import { htmlCodeBlock } from '../../../blocks/code';
 import { image, inlineImage, logo } from '../../../blocks/image';
@@ -67,7 +66,7 @@ export const DEFAULT_SLASH_COMMANDS: BlockGroupItem[] = [
   hugeicons="Heading01Icon"
   phosphor="TextHOne"
   remixicon="RiHeading"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
         preview: 'https://cdn.usemaily.com/previews/header-preview-xyz.png',
         commands: [
@@ -87,7 +86,7 @@ export const DEFAULT_SLASH_COMMANDS: BlockGroupItem[] = [
   hugeicons="FootprintsIcon"
   phosphor="Footprints"
   remixicon="RiFootprintLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
         commands: [
           footerCopyrightText,

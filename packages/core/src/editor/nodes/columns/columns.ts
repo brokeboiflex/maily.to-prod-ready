@@ -109,7 +109,10 @@ export const ColumnsExtension = Node.create({
       'div',
       mergeAttributes(HTMLAttributes, {
         'data-type': 'columns',
-        class: 'mly:relative',
+        // layout + a dashed boundary hint on child columns when the group is
+        // hovered or focused (replaces the former editor stylesheet rules).
+        class:
+          'relative flex m-0 p-0 [&.has-focus_[data-type=column]]:outline-dashed [&.has-focus_[data-type=column]]:outline-[1.5px] [&.has-focus_[data-type=column]]:outline-border [&:hover_[data-type=column]]:outline-dashed [&:hover_[data-type=column]]:outline-[1.5px] [&:hover_[data-type=column]]:outline-border',
       }),
       0,
     ];

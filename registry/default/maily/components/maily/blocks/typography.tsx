@@ -1,7 +1,6 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import type { BlockItem } from './types';
 
-
 export const text: BlockItem = {
   title: 'Text',
   description: 'Just start typing with plain text.',
@@ -12,7 +11,7 @@ export const text: BlockItem = {
   hugeicons="TextFontIcon"
   phosphor="Text"
   remixicon="RiParagraph"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     editor
@@ -34,7 +33,7 @@ export const heading1: BlockItem = {
   hugeicons="Heading01Icon"
   phosphor="TextHOne"
   remixicon="RiHeading"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     editor
@@ -56,7 +55,7 @@ export const heading2: BlockItem = {
   hugeicons="Heading02Icon"
   phosphor="TextHTwo"
   remixicon="RiHeading"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     editor
@@ -78,7 +77,7 @@ export const heading3: BlockItem = {
   hugeicons="Heading03Icon"
   phosphor="TextHThree"
   remixicon="RiHeading"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     editor
@@ -100,7 +99,7 @@ export const hardBreak: BlockItem = {
   hugeicons="DivideSignIcon"
   phosphor="Divide"
   remixicon="RiDivideLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -118,7 +117,7 @@ export const blockquote: BlockItem = {
   hugeicons="QuoteUpIcon"
   phosphor="Quotes"
   remixicon="RiDoubleQuotesL"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -136,7 +135,7 @@ export const footer: BlockItem = {
   hugeicons="FootprintsIcon"
   phosphor="Footprints"
   remixicon="RiFootprintLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -154,7 +153,7 @@ export const clearLine: BlockItem = {
   hugeicons="EraserIcon"
   phosphor="Eraser"
   remixicon="RiEraserLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore

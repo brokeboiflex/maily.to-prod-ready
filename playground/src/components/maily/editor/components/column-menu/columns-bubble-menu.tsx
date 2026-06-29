@@ -53,7 +53,7 @@ export function ColumnsBubbleMenu(props: EditorBubbleMenuProps) {
   return (
     <BubbleMenu
       {...bubbleMenuProps}
-      className="mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:p-0.5 mly:shadow-md"
+      className="border-border bg-background rounded-lg border p-0.5 shadow-md"
     >
       <ColumnsBubbleMenuContent editor={editor} />
     </BubbleMenu>

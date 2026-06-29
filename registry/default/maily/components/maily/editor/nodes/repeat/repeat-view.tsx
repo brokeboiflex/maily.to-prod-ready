@@ -1,7 +1,6 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { NodeViewProps, NodeViewWrapper, NodeViewContent } from '@tiptap/react';
 
-
 export function RepeatView(props: NodeViewProps) {
   const { editor, getPos } = props;
 
@@ -10,14 +9,14 @@ export function RepeatView(props: NodeViewProps) {
       data-type="repeat"
       draggable={editor.isEditable}
       data-drag-handle={editor.isEditable}
-      className="mly:relative"
+      className="relative [&_[data-node-view-content]>div>*:first-child]:mt-0 [&_[data-node-view-content]>div>*:last-child]:mb-0 [&.has-focus_[data-repeat-indicator]]:opacity-100"
     >
       <NodeViewContent className="is-editable" />
 
       <div
         role="button"
         data-repeat-indicator=""
-        className="mly:absolute mly:inset-y-0 mly:right-0 mly:flex mly:translate-x-full mly:cursor-pointer mly:flex-col mly:items-center mly:gap-1 mly:opacity-60"
+        className="absolute inset-y-0 right-0 flex translate-x-full cursor-pointer flex-col items-center gap-1 opacity-60"
         contentEditable={false}
         onClick={() => {
           editor.commands.setNodeSelection(getPos());
@@ -29,9 +28,9 @@ export function RepeatView(props: NodeViewProps) {
   hugeicons="RepeatIcon"
   phosphor="Repeat"
   remixicon="RiRepeatLine"
-  className="mly:size-3 mly:stroke-[2.5] mly:text-midnight-gray"
+  className="text-foreground size-3 stroke-[2.5]"
 />
-        <div className="mly:w-[1.5px] mly:grow mly:rounded-full mly:bg-rose-300" />
+        <div className="w-[1.5px] grow rounded-full bg-rose-300" />
       </div>
     </NodeViewWrapper>
   );

@@ -50,7 +50,7 @@ export const MailyKit = Extension.create<MailyKitOptions>({
         HTMLAttributes: {
           target: '_blank',
           rel: 'noopener noreferrer nofollow',
-          class: 'mly:no-underline',
+          class: 'no-underline',
         },
         openOnClick: false,
       },
@@ -66,23 +66,22 @@ export const MailyKit = Extension.create<MailyKitOptions>({
         code: {
           HTMLAttributes: {
             class:
-              'mly:px-1 mly:relative mly:py-0.5 mly:bg-[#efefef] mly:text-sm mly:rounded-md mly:tracking-normal mly:font-normal',
+              'px-1 relative py-0.5 bg-muted text-sm rounded-md tracking-normal font-normal',
           },
         },
         blockquote: {
           HTMLAttributes: {
-            class:
-              'mly:not-prose mly:border-l-4 mly:border-gray-300 mly:pl-4 mly:mt-4 mly:mb-4 mly:relative',
+            class: 'not-prose border-l-4 border-border pl-4 mt-4 mb-4 relative',
           },
         },
         bulletList: {
           HTMLAttributes: {
-            class: 'mly:relative',
+            class: 'relative',
           },
         },
         orderedList: {
           HTMLAttributes: {
-            class: 'mly:relative',
+            class: 'relative',
           },
         },
         heading: false,
@@ -101,19 +100,19 @@ export const MailyKit = Extension.create<MailyKitOptions>({
       Footer,
       Focus,
       Dropcursor.configure({
-        color: '#555',
+        color: 'var(--foreground)',
         width: 3,
         class: 'ProseMirror-dropcursor',
       }),
       HeadingExtension.configure({
         levels: [1, 2, 3],
         HTMLAttributes: {
-          class: 'mly:relative',
+          class: 'relative',
         },
       }),
       ParagraphExtension.configure({
         HTMLAttributes: {
-          class: 'mly:relative',
+          class: 'relative',
         },
       }),
     ];

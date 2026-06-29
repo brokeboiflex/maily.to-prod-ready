@@ -3,7 +3,6 @@ import { AllowedLogoSize, allowedLogoSize } from '../../nodes/logo/logo';
 import { getNewHeight, getNewWidth } from '../../utils/aspect-ratio';
 import { borderRadius } from '../../utils/border-radius';
 import { BubbleMenu } from '@tiptap/react';
-
 import { sticky } from 'tippy.js';
 import { AlignmentSwitch } from '../alignment-switch';
 import { BubbleMenuButton } from '../bubble-menu-button';
@@ -53,7 +52,7 @@ export function ImageBubbleMenu(props: EditorBubbleMenuProps) {
   return (
     <BubbleMenu
       {...bubbleMenuProps}
-      className="mly:flex mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:p-0.5 mly:shadow-md"
+      className="border-border bg-background flex rounded-lg border p-0.5 shadow-md"
     >
       <TooltipProvider>
         {state.isLogoActive && state.imageSrc && (
@@ -79,7 +78,7 @@ export function ImageBubbleMenu(props: EditorBubbleMenuProps) {
           </>
         )}
 
-        <div className="mly:flex mly:gap-x-0.5">
+        <div className="flex gap-x-0.5">
           <AlignmentSwitch
             alignment={state.alignment}
             onAlignmentChange={(alignment) => {
@@ -162,10 +161,10 @@ export function ImageBubbleMenu(props: EditorBubbleMenuProps) {
                   .run();
               }}
               tooltip="Border Radius"
-              className="mly:capitalize"
+              className="capitalize"
             />
 
-            <div className="mly:flex mly:gap-x-0.5">
+            <div className="flex gap-x-0.5">
               <ImageSize
                 dimension="width"
                 value={state?.width ?? ''}
@@ -182,8 +181,7 @@ export function ImageBubbleMenu(props: EditorBubbleMenuProps) {
                     : currentHeight > 0
                       ? currentWidth / currentHeight
                       : 1;
-                  const isHeightAuto =
-                    !state.height || state.height === 'auto';
+                  const isHeightAuto = !state.height || state.height === 'auto';
                   const shouldUpdateHeight =
                     (lockAspectRatio || isHeightAuto) &&
                     value &&

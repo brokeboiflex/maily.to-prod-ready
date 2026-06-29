@@ -1,7 +1,6 @@
 import { FootprintsIcon, Heading1Icon, Heading2Icon, Heading3Icon, ListIcon, ListOrderedIcon, LucideIcon, PilcrowIcon } from "lucide-react"
 import { Editor, useEditorState } from '@tiptap/react';
 
-
 export type TurnIntoBlockOptions = {
   label: string;
   id: string;

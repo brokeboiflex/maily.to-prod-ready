@@ -30,11 +30,11 @@ export function EdgeSpacingControl(props: EdgeSpacingControlProps) {
 
   return (
     <Popover>
-      <PopoverTrigger className="mly:rounded mly:hover:bg-gray-100">
+      <PopoverTrigger className="hover:bg-muted rounded">
         <ChevronUp size={14} />
       </PopoverTrigger>
       <PopoverContent
-        className="mly:flex mly:max-w-max mly:gap-0.5 mly:rounded-md mly:border mly:border-gray-200 mly:p-0.5! mly:shadow-none"
+        className="border-border flex max-w-max gap-0.5 rounded-md border p-0.5! shadow-none"
         side="top"
         sideOffset={8}
       >
@@ -42,25 +42,25 @@ export function EdgeSpacingControl(props: EdgeSpacingControlProps) {
           label="T"
           value={top ?? 0}
           onChange={(value) => onTopValueChange?.(value)}
-          inputClassName="mly:rounded"
+          inputClassName="rounded"
         />
         <InputWithLabel
           label="R"
           value={right ?? 0}
           onChange={(value) => onRightValueChange?.(value)}
-          inputClassName="mly:rounded"
+          inputClassName="rounded"
         />
         <InputWithLabel
           label="B"
           value={bottom ?? 0}
           onChange={(value) => onBottomValueChange?.(value)}
-          inputClassName="mly:rounded"
+          inputClassName="rounded"
         />
         <InputWithLabel
           label="L"
           value={left ?? 0}
           onChange={(value) => onLeftValueChange?.(value)}
-          inputClassName="mly:rounded"
+          inputClassName="rounded"
         />
       </PopoverContent>
     </Popover>
@@ -81,12 +81,7 @@ function InputWithLabel(props: InputWithLabelProps) {
   const id = `${label}${useId()}`;
 
   return (
-    <div
-      className={cn(
-        'mly:flex mly:flex-col mly:items-center mly:gap-1',
-        className
-      )}
-    >
+    <div className={cn('flex flex-col items-center gap-1', className)}>
       <input
         {...AUTOCOMPLETE_PASSWORD_MANAGERS_OFF}
         id={id}
@@ -97,12 +92,12 @@ function InputWithLabel(props: InputWithLabelProps) {
         value={value + ''}
         onChange={(e) => onChange(Number(e.target.value))}
         className={cn(
-          'hide-number-controls mly:size-5 mly:border-0 mly:border-none mly:bg-gray-200 mly:p-0.5 mly:text-center mly:text-xs mly:tabular-nums mly:outline-hidden focus-visible:outline-none',
+          'bg-muted size-5 [appearance:textfield] border-0 border-none p-0.5 text-center text-xs tabular-nums outline-hidden focus-visible:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
           inputClassName
         )}
       />
       <label
-        className="mly:text-[10px] mly:leading-none mly:text-gray-500"
+        className="text-muted-foreground text-[10px] leading-none"
         htmlFor={id}
       >
         {label}

@@ -28,22 +28,23 @@ const BaseButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = asChild ? Slot : 'button';
     const baseClass =
-      'mly:inline-flex mly:items-center mly:justify-center mly:rounded-md mly:text-sm mly:font-medium mly:ring-offset-white mly:transition-colors mly:focus-visible:outline-hidden mly:focus-visible:ring-2 mly:focus-visible:ring-gray-400 mly:focus-visible:ring-offset-2 mly:focus-visible:relative mly:focus-visible:z-10 mly:disabled:opacity-50 ';
+      'inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:relative focus-visible:z-10 disabled:opacity-50 ';
     const variantClasses = {
-      default: 'mly:bg-gray-900 mly:text-gray-50 mly:hover:bg-soft-gray',
-      destructive: 'mly:bg-red-500 mly:text-gray-50 mly:hover:bg-red-500/90',
+      default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+      destructive:
+        'bg-destructive text-destructive-foreground hover:bg-destructive/90',
       outline:
-        'mly:border mly:border-gray-200 mly:bg-white mly:hover:bg-gray-100 mly:hover:text-gray-900',
-      secondary: 'mly:bg-gray-100 mly:text-gray-900 mly:hover:bg-gray-100/80',
+        'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
+      secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
       ghost:
-        'mly:hover:bg-soft-gray bg-transparent mly:hover:text-gray-900 mly:data-[state=true]:bg-soft-gray mly:data-[state=true]:text-gray-900',
-      link: 'mly:text-gray-900 mly:underline-offset-4 mly:hover:underline',
+        'bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=true]:bg-accent data-[state=true]:text-accent-foreground',
+      link: 'text-primary underline-offset-4 hover:underline',
     };
     const sizeClasses = {
-      default: 'mly:h-10 mly:px-4 mly:py-2',
-      sm: 'mly:h-9 mly:rounded-md mly:px-3',
-      lg: 'mly:h-11 mly:rounded-md mly:px-8',
-      icon: 'mly:h-10 mly:w-10',
+      default: 'h-10 px-4 py-2',
+      sm: 'h-9 rounded-md px-3',
+      lg: 'h-11 rounded-md px-8',
+      icon: 'h-10 w-10',
     };
 
     const classes = cn(

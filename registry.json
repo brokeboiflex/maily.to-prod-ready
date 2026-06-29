@@ -55,7 +55,6 @@
       ],
       "devDependencies": [
         "@tailwindcss/typography@^0.5.16",
-        "tailwind-scrollbar@^4.0.2",
         "tw-animate-css@^1.3.6"
       ],
       "files": [
@@ -690,16 +689,6 @@
           "target": "@components/maily/index.ts"
         },
         {
-          "path": "registry/default/maily/components/maily/styles/index.css",
-          "type": "registry:component",
-          "target": "@components/maily/styles/index.css"
-        },
-        {
-          "path": "registry/default/maily/components/maily/styles/_editor.css",
-          "type": "registry:component",
-          "target": "@components/maily/styles/_editor.css"
-        },
-        {
           "path": "registry/default/maily/lib/maily-render/index.ts",
           "type": "registry:lib",
           "target": "@lib/maily-render/index.ts"
@@ -755,7 +744,10 @@
           "target": "@lib/maily-render/utils.ts"
         }
       ],
-      "docs": "Editor usage:\n\nimport { Editor } from '@/components/maily'\nimport '@/components/maily/styles/index.css'\n\nRenderer usage:\n\nimport { render } from '@/lib/maily-render'\n\nconst html = await render(editorJson)"
+      "css": {
+        "@plugin \"@tailwindcss/typography\"": {}
+      },
+      "docs": "Editor usage:\n\nimport { Editor } from '@/components/maily'\n\nMaily ships no CSS — its chrome and canvas use your shadcn theme\ntokens directly. Ensure your app defines the standard shadcn tokens\n(--background, --foreground, --primary, --muted, --border, …) and has\nthe Tailwind typography plugin enabled (added automatically on install\nvia this item's `css`): @plugin \"@tailwindcss/typography\";\n\nRenderer usage:\n\nimport { render } from '@/lib/maily-render'\n\nconst html = await render(editorJson)"
     }
   ]
 }

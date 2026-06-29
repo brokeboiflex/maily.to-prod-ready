@@ -149,7 +149,10 @@ export function LogoView(props: NodeViewProps) {
         lineHeight: '0px',
         display: 'block',
       }}
-      className={cn('mly-image-drop-zone', isDraggingOver && 'mly-drag-over')}
+      className={cn(
+        "mly-image-drop-zone after:pointer-events-none after:absolute after:inset-0 after:rounded after:border-2 after:border-dashed after:border-[#00bcff] after:opacity-0 after:transition-opacity after:duration-200 after:content-['']",
+        isDraggingOver && 'mly-drag-over after:opacity-100'
+      )}
       {...(isDroppable
         ? {
             onDragOver: handleDragOver,
@@ -185,7 +188,7 @@ export function LogoView(props: NodeViewProps) {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          className="mly:absolute mly:inset-0 mly:opacity-0"
+          className="absolute inset-0 opacity-0"
           multiple={false}
         />
       )}

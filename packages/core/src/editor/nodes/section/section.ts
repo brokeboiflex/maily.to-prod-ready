@@ -306,25 +306,26 @@ export const SectionExtension = Node.create({
         border: 0,
         cellpadding: 0,
         cellspacing: 0,
-        class: 'mly:w-full mly:border-separate mly:relative mly:table-fixed',
+        class: 'w-full border-separate relative table-fixed m-0 p-0',
         style: `margin-top: ${marginTop}px; margin-right: ${marginRight}px; margin-bottom: ${marginBottom}px; margin-left: ${marginLeft}px;`,
       },
       [
         'tbody',
         {
-          class: 'mly:w-full',
+          class: 'w-full',
         },
         [
           'tr',
           {
-            class: 'mly:w-full',
+            class: 'w-full',
           },
           [
             'td',
             mergeAttributes(HTMLAttributes, {
               'data-type': 'section-cell',
               style: 'border-style: solid',
-              class: 'mly:w-full mly:[text-align:revert-layer]',
+              class:
+                'w-full [text-align:revert-layer] p-0 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0',
             }),
             0,
           ],

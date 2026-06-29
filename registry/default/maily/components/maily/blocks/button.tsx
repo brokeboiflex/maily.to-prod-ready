@@ -1,7 +1,6 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import type { BlockItem } from './types';
 
-
 export const button: BlockItem = {
   title: 'Button',
   description: 'Add a call to action button to email.',
@@ -12,7 +11,7 @@ export const button: BlockItem = {
   hugeicons="Cursor01Icon"
   phosphor="Cursor"
   remixicon="RiCursorLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -30,7 +29,7 @@ export const linkCard: BlockItem = {
   hugeicons="ArrowUpRight01Icon"
   phosphor="ArrowUpRight"
   remixicon="RiArrowRightUpLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore

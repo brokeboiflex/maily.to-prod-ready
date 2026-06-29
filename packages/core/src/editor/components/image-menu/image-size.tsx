@@ -10,18 +10,18 @@ export function ImageSize(props: ImageSizeProps) {
   const { value, onValueChange, dimension } = props;
 
   return (
-    <label className="mly:relative mly:flex mly:items-center">
-      <span className="mly:absolute mly:inset-y-0 mly:left-2 mly:flex mly:items-center mly:text-xs mly:leading-none mly:text-gray-400">
+    <label className="relative flex items-center">
+      <span className="text-muted-foreground absolute inset-y-0 left-2 flex items-center text-xs leading-none">
         {dimension === 'width' ? 'W' : 'H'}
       </span>
       <input
         {...AUTOCOMPLETE_PASSWORD_MANAGERS_OFF}
-        className="hide-number-controls mly:h-auto mly:max-w-20 mly:appearance-none mly:border-0 mly:border-none mly:p-1 mly:px-[26px] mly:text-sm mly:uppercase mly:tabular-nums mly:outline-hidden mly:focus-visible:outline-hidden"
+        className="h-auto max-w-20 [appearance:textfield] appearance-none border-0 border-none p-1 px-[26px] text-sm uppercase tabular-nums outline-hidden focus-visible:outline-hidden [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
         type="number"
         value={value}
         onChange={(e) => onValueChange(e.target.value)}
       />
-      <span className="mly:absolute mly:inset-y-0 mly:right-1 mly:flex mly:items-center mly:text-xs mly:leading-none mly:text-gray-400">
+      <span className="text-muted-foreground absolute inset-y-0 right-1 flex items-center text-xs leading-none">
         PX
       </span>
     </label>

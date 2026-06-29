@@ -1,5 +1,4 @@
 import { AlignCenter, AlignLeft, AlignRight } from "lucide-react"
-
 import { BubbleMenuButton } from './bubble-menu-button';
 import { AllowedLogoAlignment, allowedLogoAlignment } from '../nodes/logo/logo';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
@@ -51,16 +50,16 @@ export function AlignmentSwitch(props: AlignmentSwitchProps) {
         <TooltipTrigger asChild>
           <PopoverTrigger
             className={cn(
-              'mly:flex mly:size-7 mly:items-center mly:justify-center mly:gap-1 mly:rounded-md mly:px-1.5 mly:text-sm mly:data-[state=open]:bg-accent mly:hover:bg-accent mly:hover:text-accent-foreground mly:focus-visible:relative mly:focus-visible:z-10 mly:focus-visible:outline-hidden mly:focus-visible:ring-2 mly:focus-visible:ring-ring mly:focus-visible:ring-offset-2'
+              'data-[state=open]:bg-accent hover:bg-accent focus-visible:ring-ring flex size-7 items-center justify-center gap-1 rounded-md px-1.5 text-sm focus-visible:relative focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden'
             )}
           >
-            <activeAlignment.icon className="mly:h-3 mly:w-3 mly:stroke-[2.5]" />
+            <activeAlignment.icon className="h-3 w-3 stroke-[2.5]" />
           </PopoverTrigger>
         </TooltipTrigger>
         <TooltipContent sideOffset={8}>Alignment</TooltipContent>
       </Tooltip>
       <PopoverContent
-        className="mly:flex mly:w-max mly:gap-0.5 mly:rounded-lg mly:p-0.5!"
+        className="flex w-max gap-0.5 rounded-lg p-0.5!"
         side="top"
         sideOffset={8}
         align="center"

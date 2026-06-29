@@ -84,12 +84,12 @@ export function ButtonView(props: NodeViewProps) {
           <div>
             <button
               className={cn(
-                'mly:inline-flex mly:items-center mly:justify-center mly:rounded-md mly:text-sm mly:font-medium mly:ring-offset-white mly:transition-colors mly:disabled:pointer-events-none mly:disabled:opacity-50',
-                'mly:font-semibold mly:no-underline',
+                'ring-offset-background inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50',
+                'font-semibold no-underline',
                 {
-                  'mly:rounded-full!': _radius === 'round',
-                  'mly:rounded-md!': _radius === 'smooth',
-                  'mly:rounded-none!': _radius === 'sharp',
+                  'rounded-full!': _radius === 'round',
+                  'rounded-md!': _radius === 'smooth',
+                  'rounded-none!': _radius === 'sharp',
                 }
               )}
               tabIndex={-1}
@@ -97,26 +97,23 @@ export function ButtonView(props: NodeViewProps) {
                 {
                   backgroundColor:
                     variant === 'filled'
-                      ? buttonColor || 'var(--mly-button-background-color)'
+                      ? buttonColor || '#000000'
                       : 'transparent',
-                  color: textColor || 'var(--mly-button-text-color)',
+                  color: textColor || '#ffffff',
 
                   borderWidth: 2,
                   borderStyle: 'solid',
-                  borderColor:
-                    buttonColor || 'var(--mly-button-background-color)',
+                  borderColor: buttonColor || '#000000',
                   // decrease the border color opacity to 80%
                   // so that it's not too prominent
                   '--button-var-border-color': textColor
                     ? `${textColor}80`
-                    : 'color-mix(in srgb, var(--mly-button-text-color) 80%, transparent)',
+                    : 'color-mix(in srgb, #ffffff 80%, transparent)',
 
-                  paddingTop: paddingTop || 'var(--mly-button-padding-top)',
-                  paddingRight:
-                    paddingRight || 'var(--mly-button-padding-right)',
-                  paddingBottom:
-                    paddingBottom || 'var(--mly-button-padding-bottom)',
-                  paddingLeft: paddingLeft || 'var(--mly-button-padding-left)',
+                  paddingTop: paddingTop || '10px',
+                  paddingRight: paddingRight || '32px',
+                  paddingBottom: paddingBottom || '10px',
+                  paddingLeft: paddingLeft || '32px',
                 } as CSSProperties
               }
               onClick={(e) => {
@@ -143,13 +140,13 @@ export function ButtonView(props: NodeViewProps) {
         <PopoverContent
           align="end"
           side="top"
-          className="mly:w-max mly:rounded-lg mly:p-0.5!"
+          className="w-max rounded-lg p-0.5!"
           sideOffset={8}
           onOpenAutoFocus={(e) => e.preventDefault()}
           onCloseAutoFocus={(e) => e.preventDefault()}
         >
           <TooltipProvider>
-            <div className="mly:flex mly:items-stretch mly:text-midnight-gray">
+            <div className="text-foreground flex items-stretch">
               <ButtonLabelInput
                 value={text}
                 onValueChange={(value, isVariable) => {
@@ -164,7 +161,7 @@ export function ButtonView(props: NodeViewProps) {
 
               <Divider />
 
-              <div className="mly:flex mly:gap-x-0.5">
+              <div className="flex gap-x-0.5">
                 <Select
                   label="Border Radius"
                   value={_radius}
@@ -178,7 +175,7 @@ export function ButtonView(props: NodeViewProps) {
                     });
                   }}
                   tooltip="Border Radius"
-                  className="mly:capitalize"
+                  className="capitalize"
                 />
 
                 <Select
@@ -194,7 +191,7 @@ export function ButtonView(props: NodeViewProps) {
                     });
                   }}
                   tooltip="Style"
-                  className="mly:capitalize"
+                  className="capitalize"
                 />
 
                 <Select
@@ -223,7 +220,7 @@ export function ButtonView(props: NodeViewProps) {
 
               <Divider />
 
-              <div className="mly:flex mly:gap-x-0.5">
+              <div className="flex gap-x-0.5">
                 <AlignmentSwitch
                   alignment={alignment}
                   onAlignmentChange={(alignment) => {
@@ -249,7 +246,7 @@ export function ButtonView(props: NodeViewProps) {
 
               <Divider />
 
-              <div className="mly:flex mly:gap-x-0.5">
+              <div className="flex gap-x-0.5">
                 <BackgroundColorPickerPopup
                   variant={variant}
                   color={buttonColor || 'transparent'}
@@ -304,14 +301,9 @@ function BackgroundColorPickerPopup(props: ColorPickerProps) {
       onColorChange={onChange}
       tooltip="Background Color"
     >
-      <BaseButton
-        variant="ghost"
-        size="sm"
-        type="button"
-        className="mly:size-7"
-      >
+      <BaseButton variant="ghost" size="sm" type="button" className="size-7">
         <div
-          className="mly:h-4 mly:w-4 mly:shrink-0 mly:rounded-full mly:shadow"
+          className="h-4 w-4 shrink-0 rounded-full shadow"
           style={{
             backgroundColor: variant === 'filled' ? color : 'transparent',
             borderStyle: 'solid',
@@ -329,18 +321,13 @@ function TextColorPickerPopup(props: ColorPickerProps) {
 
   return (
     <ColorPicker color={color} onColorChange={onChange} tooltip="Text Color">
-      <BaseButton
-        variant="ghost"
-        size="sm"
-        type="button"
-        className="mly:size-7"
-      >
-        <div className="mly:flex mly:flex-col mly:items-center mly:justify-center mly:gap-px">
-          <span className="mly:font-bolder mly:font-mono mly:text-xs mly:text-midnight-gray">
+      <BaseButton variant="ghost" size="sm" type="button" className="size-7">
+        <div className="flex flex-col items-center justify-center gap-px">
+          <span className="font-bolder text-foreground font-mono text-xs">
             A
           </span>
           <div
-            className="mly:h-[2px] mly:w-3 mly:shrink-0 mly:rounded-md mly:shadow"
+            className="h-[2px] w-3 shrink-0 rounded-md shadow"
             style={{ backgroundColor: color }}
           />
         </div>

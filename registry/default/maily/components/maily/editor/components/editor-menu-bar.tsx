@@ -2,7 +2,6 @@ import { AlignCenter, AlignLeft, AlignRight, BoldIcon, EraserIcon, ItalicIcon, L
 import { useMemo } from 'react';
 import { Editor as EditorType } from '@tiptap/core';
 
-
 import { EditorProps } from '..';
 
 import { BubbleMenuButton } from './bubble-menu-button';
@@ -131,13 +130,11 @@ export const EditorMenuBar = (props: EditorMenuBarProps) => {
   }
 
   return (
-    <div
-      className={`mly:flex mly:items-center mly:gap-3 ${config?.toolbarClassName}`}
-    >
+    <div className={`flex items-center gap-3 ${config?.toolbarClassName}`}>
       {groups.map((group, index) => (
         <div
           key={index}
-          className="mly:flex mly:items-center mly:gap-1 mly:rounded-md mly:border mly:border-border mly:bg-background mly:p-1"
+          className="border-border bg-background flex items-center gap-1 rounded-md border p-1"
         >
           {items
             .filter((item) => item.group === group)

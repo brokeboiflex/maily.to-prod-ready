@@ -123,32 +123,32 @@ export function ContentMenu(props: ContentMenuProps) {
         zIndex: 99,
       }}
       onNodeChange={handleNodeChange}
-      className={cn(editor.isEditable ? 'mly:visible' : 'mly:hidden')}
+      className={cn(editor.isEditable ? 'visible' : 'hidden')}
     >
       <TooltipProvider>
-        <div className="mly:flex mly:items-center mly:pr-1.5">
+        <div className="flex items-center pr-1.5">
           <Tooltip>
             <TooltipTrigger asChild>
               <BaseButton
                 variant="ghost"
                 size="icon"
-                className="mly:size-5! mly:cursor-grab mly:text-gray-500 mly:hover:text-black"
+                className="text-muted-foreground hover:text-foreground size-5! cursor-grab"
                 onClick={handleAddNewNode}
                 type="button"
               >
-                <Plus className="mly:size-3.5 mly:shrink-0" />
+                <Plus className="size-3.5 shrink-0" />
               </BaseButton>
             </TooltipTrigger>
             <TooltipContent sideOffset={8}>Add new node</TooltipContent>
           </Tooltip>
           <Popover open={menuOpen} onOpenChange={setMenuOpen}>
-            <div className="mly:relative mly:flex mly:flex-col">
+            <div className="relative flex flex-col">
               <Tooltip>
                 <TooltipTrigger asChild>
                   <BaseButton
                     variant="ghost"
                     size="icon"
-                    className="mly:relative mly:z-1 mly:size-5! mly:cursor-grab mly:text-gray-500 mly:hover:text-black"
+                    className="text-muted-foreground hover:text-foreground relative z-1 size-5! cursor-grab"
                     onClick={(e) => {
                       e.preventDefault();
                       setMenuOpen(true);
@@ -156,34 +156,34 @@ export function ContentMenu(props: ContentMenuProps) {
                     }}
                     type="button"
                   >
-                    <GripVertical className="mly:size-3.5 mly:shrink-0" />
+                    <GripVertical className="size-3.5 shrink-0" />
                   </BaseButton>
                 </TooltipTrigger>
                 <TooltipContent sideOffset={8}>Node actions</TooltipContent>
               </Tooltip>
-              <PopoverTrigger className="mly:absolute mly:left-0 mly:top-0 mly:z-0 mly:h-5 mly:w-5" />
+              <PopoverTrigger className="absolute top-0 left-0 z-0 h-5 w-5" />
             </div>
 
             <PopoverContent
               align="start"
               side="bottom"
               sideOffset={8}
-              className="mly:flex mly:w-max mly:flex-col mly:rounded-md mly:p-1"
+              className="flex w-max flex-col rounded-md p-1"
             >
               <BaseButton
                 variant="ghost"
                 onClick={duplicateNode}
-                className="mly:h-auto mly:justify-start mly:gap-2 mly:rounded! mly:px-2 mly:py-1 mly:text-sm mly:font-normal"
+                className="h-auto justify-start gap-2 rounded! px-2 py-1 text-sm font-normal"
               >
-                <Copy className="mly:size-[15px] mly:shrink-0" />
+                <Copy className="size-[15px] shrink-0" />
                 Duplicate
               </BaseButton>
               <Divider type="horizontal" />
               <BaseButton
                 onClick={deleteCurrentNode}
-                className="mly:h-auto mly:justify-start mly:gap-2 mly:rounded! mly:bg-red-100 mly:px-2 mly:py-1 mly:text-sm mly:font-normal mly:text-red-600 mly:hover:bg-red-200 mly:focus:bg-red-200"
+                className="bg-destructive/10 text-destructive h-auto justify-start gap-2 rounded! px-2 py-1 text-sm font-normal hover:bg-red-200 focus:bg-red-200"
               >
-                <Trash2 className="mly:size-[15px] mly:shrink-0" />
+                <Trash2 className="size-[15px] shrink-0" />
                 Delete
               </BaseButton>
             </PopoverContent>

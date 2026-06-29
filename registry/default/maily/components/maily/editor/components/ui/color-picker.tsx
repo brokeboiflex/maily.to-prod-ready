@@ -54,13 +54,13 @@ export function ColorPicker(props: ColorPickerProps) {
       {children || (
         <BaseButton
           variant="ghost"
-          className="mly:h-7 mly:w-7 mly:shrink-0"
+          className="h-7 w-7 shrink-0"
           size="sm"
           type="button"
         >
           <div
             className={cn(
-              'mly:h-4 mly:w-4 mly:shrink-0 mly:rounded mly:border-2 mly:border-border',
+              'border-border h-4 w-4 shrink-0 rounded border-2',
               className
             )}
             style={{
@@ -91,43 +91,41 @@ export function ColorPicker(props: ColorPickerProps) {
       )}
 
       <PopoverContent
-        className="mly:w-full mly:rounded-none mly:border-0 mly:bg-transparent! mly:p-0! mly:shadow-none mly:drop-shadow-md"
+        className="w-full rounded-none border-0 bg-transparent! p-0! shadow-none drop-shadow-md"
         sideOffset={8}
       >
-        <div className="mly:min-w-[260px] mly:rounded-xl mly:border mly:border-border mly:bg-popover mly:p-4">
+        <div className="border-border bg-background min-w-[260px] rounded-xl border p-4">
           <HexColorPicker
             color={color}
             onChange={handleColorChange}
-            className="mly:flex mly:w-full! mly:flex-col mly:gap-4"
+            className="flex w-full! flex-col gap-4"
           />
           <HexColorInput
             alpha={true}
             color={color}
             onChange={handleColorChange}
-            className="mly:mt-4 mly:w-full mly:min-w-0 mly:rounded-lg mly:border mly:border-input mly:bg-transparent mly:px-2 mly:py-1.5 mly:text-sm mly:text-foreground mly:uppercase mly:focus-visible:border-ring mly:focus-visible:outline-hidden"
+            className="border-border bg-background focus-visible:border-ring mt-4 w-full min-w-0 rounded-lg border px-2 py-1.5 text-sm uppercase focus-visible:outline-hidden"
             prefixed
           />
 
           {suggestedColors.length > 0 && (
             <div>
-              <div className="-mly:mx-4 mly:my-4 mly:h-px mly:bg-border" />
+              <div className="bg-muted -mx-4 my-4 h-px" />
 
-              <h2 className="mly:text-xs mly:text-muted-foreground">
-                Recently used
-              </h2>
+              <h2 className="text-muted-foreground text-xs">Recently used</h2>
 
-              <div className="mly:mt-2 mly:flex mly:flex-wrap mly:gap-0.5">
+              <div className="mt-2 flex flex-wrap gap-0.5">
                 {suggestedColors.map((suggestedColor) => (
                   <BaseButton
                     key={suggestedColor}
                     variant="ghost"
                     size="sm"
-                    className="!mly:size-7 mly:shrink-0"
+                    className="!size-7 shrink-0"
                     type="button"
                     onClick={() => handleColorChange(suggestedColor)}
                   >
                     <div
-                      className="mly:h-4 mly:w-4 mly:shrink-0 mly:rounded"
+                      className="h-4 w-4 shrink-0 rounded"
                       style={{
                         backgroundColor: suggestedColor,
                       }}

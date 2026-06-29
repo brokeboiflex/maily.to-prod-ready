@@ -1,6 +1,5 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { Link, LucideIcon } from "lucide-react"
-
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
 import { BaseButton } from '../base-button';
 import { useRef, useState } from 'react';
@@ -67,10 +66,10 @@ export function LinkInputPopover(props: LinkInputPopoverProps) {
         variant="ghost"
         size="sm"
         type="button"
-        className="mly:h-7! mly:w-7!"
+        className="h-7! w-7!"
         data-state={!!defaultValue}
       >
-        <Icon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-foreground" />
+        <Icon className="text-foreground h-3 w-3 shrink-0 stroke-[2.5]" />
       </BaseButton>
     </PopoverTrigger>
   );
@@ -99,7 +98,7 @@ export function LinkInputPopover(props: LinkInputPopoverProps) {
       <PopoverContent
         align="end"
         side="top"
-        className="mly:w-max mly:rounded-none mly:border-none mly:bg-transparent mly:p-0! mly:shadow-none"
+        className="w-max rounded-none border-none bg-transparent p-0! shadow-none"
         sideOffset={8}
         onCloseAutoFocus={(e) => e.preventDefault()}
       >
@@ -115,9 +114,9 @@ export function LinkInputPopover(props: LinkInputPopoverProps) {
             setIsOpen(false);
           }}
         >
-          <div className="mly:isolate mly:flex mly:rounded-lg">
+          <div className="isolate flex rounded-lg">
             {!isEditing && (
-              <div className="mly:flex mly:h-8 mly:items-center mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:px-0.5">
+              <div className="border-border bg-background flex h-8 items-center rounded-lg border px-0.5">
                 <button
                   onClick={() => {
                     setIsEditing(true);
@@ -140,15 +139,15 @@ export function LinkInputPopover(props: LinkInputPopoverProps) {
             )}
 
             {isEditing && (
-              <div className="mly:relative">
-                <div className="mly:absolute mly:inset-y-0 mly:left-1.5 mly:z-10 mly:flex mly:items-center">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-1.5 z-10 flex items-center">
                   <IconPlaceholder
   lucide="LinkIcon"
   tabler="IconLink"
   hugeicons="Link01Icon"
   phosphor="Link"
   remixicon="RiLink"
-  className="mly:h-3 mly:w-3 mly:stroke-[2.5] mly:text-foreground"
+  className="text-foreground h-3 w-3 stroke-[2.5]"
 />
                 </div>
 
@@ -161,7 +160,7 @@ export function LinkInputPopover(props: LinkInputPopoverProps) {
                   autoCompleteOptions={autoCompleteOptions}
                   ref={linkInputRef}
                   placeholder={placeholderUrl}
-                  className="-mly:ms-px mly:block mly:h-8 mly:w-56 mly:rounded-lg mly:border mly:border-input mly:px-2 mly:py-1.5 mly:pl-6 mly:pr-6 mly:text-sm mly:shadow-sm mly:outline-hidden mly:placeholder:text-muted-foreground"
+                  className="border-border placeholder:text-muted-foreground -ms-px block h-8 w-56 rounded-lg border px-2 py-1.5 pr-6 pl-6 text-sm shadow-sm outline-hidden"
                   triggerChar={variableTriggerCharacter}
                   onSelectOption={(value) => {
                     const isVariable =

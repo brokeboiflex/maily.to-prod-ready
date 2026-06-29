@@ -84,8 +84,7 @@ export const Footer = Node.create<FooterOptions>({
     return [
       'small',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
-        class:
-          'footer mly:block mly:text-[13px] mly:text-slate-500 mly:relative',
+        class: 'footer block text-[13px] text-muted-foreground relative mb-5',
       }),
       0,
     ];

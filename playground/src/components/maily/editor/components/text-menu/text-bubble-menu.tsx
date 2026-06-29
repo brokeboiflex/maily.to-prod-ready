@@ -5,7 +5,6 @@ import { SectionExtension } from '../../nodes/section/section';
 import { isCustomNodeSelected } from '../../utils/is-custom-node-selected';
 import { isTextSelected } from '../../utils/is-text-selected';
 import { BubbleMenu, BubbleMenuProps } from '@tiptap/react';
-
 import { SVGIcon } from '../icons/grid-lines';
 import { Divider } from '../ui/divider';
 import { TooltipProvider } from '../ui/tooltip';
@@ -96,12 +95,12 @@ export function TextBubbleMenu(props: EditorBubbleMenuProps) {
   return (
     <BubbleMenu
       {...bubbleMenuProps}
-      className="mly:flex mly:gap-0.5 mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:p-0.5 mly:shadow-md"
+      className="border-border bg-background flex gap-0.5 rounded-lg border p-0.5 shadow-md"
     >
       <TooltipProvider>
         <TurnIntoBlock options={turnIntoBlockOptions} />
 
-        <Divider className="mly:mx-0" />
+        <Divider className="mx-0" />
 
         <TextBubbleContent editor={editor} />
       </TooltipProvider>

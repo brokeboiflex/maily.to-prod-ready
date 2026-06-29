@@ -31,6 +31,30 @@ import { replaceDeprecatedNode } from './utils/replace-deprecated';
 
 type ParitialMailContextType = Partial<MailyContextType>;
 
+// Everything the editor's content area used to get from a dedicated stylesheet,
+// expressed as token-based Tailwind so the writing surface follows the host's
+// shadcn theme. `prose` comes from the consumer's @tailwindcss/typography plugin.
+const EDITOR_CONTENT_CLASS = [
+  'prose w-full max-w-none focus:outline-none',
+  // prose colors -> shadcn tokens (keeps the canvas readable in light & dark)
+  '[--tw-prose-body:var(--foreground)] [--tw-prose-headings:var(--foreground)] [--tw-prose-bold:var(--foreground)] [--tw-prose-links:var(--foreground)] [--tw-prose-quotes:var(--foreground)] [--tw-prose-code:var(--foreground)] [--tw-prose-bullets:var(--muted-foreground)] [--tw-prose-counters:var(--muted-foreground)] [--tw-prose-hr:var(--border)] [--tw-prose-quote-borders:var(--border)] text-foreground',
+  // email-content typography sizing / spacing
+  'prose-strong:text-current prose-headings:mt-0 prose-headings:mb-3 prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-p:text-[15px] prose-p:mb-5 prose-ol:mt-0 prose-ol:mb-5 prose-ul:mt-0 prose-ul:mb-5 prose-li:mb-2 prose-img:mt-0 prose-img:mb-8 prose-hr:my-8 prose-code:before:content-none prose-code:after:content-none',
+  '[&_p.text-sm]:text-base [&_:is(h1,h2,h3,hr,table)+p]:mt-0',
+  // ProseMirror text rendering
+  "[font-variant-ligatures:none] [font-feature-settings:'liga'_0]",
+  // variable-pill icon scales with heading level
+  '[--variable-icon-size:12px] [--variable-icon-gap:4px] [&_h1]:[--variable-icon-size:28px] [&_h2]:[--variable-icon-size:24px] [&_h3]:[--variable-icon-size:20px] [&_:is(h1,h2,h3)]:[--variable-icon-gap:8px]',
+  // block-node spacing
+  '[&_.node-button]:mt-0 [&_.node-button]:mb-5 [&_.node-linkCard]:mt-0 [&_.node-linkCard]:mb-5 [&_.node-image]:mt-0 [&_.node-image]:mb-8 [&_.node-image]:leading-none [&_.node-image]:outline-none [&_.node-logo]:mt-0 [&_.node-logo]:mb-8',
+  // spacer collapses surrounding margins
+  '[&_.spacer+*]:mt-0 [&_*:has(+.spacer)]:mb-0!',
+  // selected-node ring (literal accent blue, not theme-driven)
+  "[&_.ProseMirror-selectednode]:after:content-[''] [&_.ProseMirror-selectednode]:after:absolute [&_.ProseMirror-selectednode]:after:-inset-0.5 [&_.ProseMirror-selectednode]:after:pointer-events-none [&_.ProseMirror-selectednode]:after:rounded-md [&_.ProseMirror-selectednode]:after:bg-[rgba(35,131,226,0.14)]",
+  // gap cursor
+  '[&_.ProseMirror-gapcursor]:after:w-6 [&_.ProseMirror-gapcursor]:after:border-[1.5px] [&_.ProseMirror-gapcursor]:after:border-solid [&_.ProseMirror-gapcursor]:after:border-foreground',
+].join(' ');
+
 export type EditorProps = {
   contentHtml?: string;
   contentJson?: JSONContent;
@@ -109,7 +133,7 @@ export function Editor(props: EditorProps) {
       scrollThreshold,
       scrollMargin,
       attributes: {
-        class: cn('mly:prose mly:w-full', contentClassName),
+        class: cn(EDITOR_CONTENT_CLASS, contentClassName),
         spellCheck: spellCheck ? 'true' : 'false',
       },
     },
@@ -138,7 +162,7 @@ export function Editor(props: EditorProps) {
       <div
         id="mly-editor"
         className={cn(
-          'mly-editor mly:antialiased',
+          'mly-editor antialiased',
           editor.isEditable ? 'mly-editable' : 'mly-not-editable',
           wrapClassName
         )}
@@ -147,7 +171,7 @@ export function Editor(props: EditorProps) {
         {hasMenuBar && <EditorMenuBar config={props.config} editor={editor} />}
         <div
           className={cn(
-            'mly:mt-4 mly:rounded mly:border mly:border-gray-200 mly:bg-white mly:p-4',
+            'border-border bg-background mt-4 rounded border p-4',
             bodyClassName
           )}
         >

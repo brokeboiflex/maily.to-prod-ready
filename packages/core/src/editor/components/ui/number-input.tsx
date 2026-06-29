@@ -19,13 +19,8 @@ export const NumberInput = forwardRef<HTMLLabelElement, NumberInputProps>(
     const { value, onValueChange, icon: Icon, max, tooltip } = props;
 
     const content = (
-      <label
-        ref={ref}
-        className="mly:relative mly:flex mly:items-center mly:justify-center"
-      >
-        {Icon ? (
-          <Icon className="mly:absolute mly:left-1.5 mly:size-3.5" />
-        ) : null}
+      <label ref={ref} className="relative flex items-center justify-center">
+        {Icon ? <Icon className="absolute left-1.5 size-3.5" /> : null}
         <input
           {...AUTOCOMPLETE_PASSWORD_MANAGERS_OFF}
           min={0}
@@ -36,8 +31,8 @@ export const NumberInput = forwardRef<HTMLLabelElement, NumberInputProps>(
           value={value + ''}
           onChange={(e) => onValueChange(Number(e.target.value))}
           className={cn(
-            'hide-number-controls mly:h-auto mly:max-w-12 mly:border-0 mly:border-none mly:p-1 mly:text-center mly:text-sm mly:tabular-nums mly:outline-hidden focus-visible:outline-none',
-            Icon ? 'mly:pl-[26px]' : ''
+            'h-auto max-w-12 [appearance:textfield] border-0 border-none p-1 text-center text-sm tabular-nums outline-hidden focus-visible:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+            Icon ? 'pl-[26px]' : ''
           )}
         />
       </label>

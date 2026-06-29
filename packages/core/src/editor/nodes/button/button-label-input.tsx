@@ -41,7 +41,7 @@ export function ButtonLabelInput(props: ButtonLabelInputProps) {
   }, [variables, value, editor]);
 
   return (
-    <div className="mly:isolate mly:flex mly:rounded-lg">
+    <div className="isolate flex rounded-lg">
       {!isEditing && (
         <button
           onClick={() => {
@@ -73,7 +73,7 @@ export function ButtonLabelInput(props: ButtonLabelInputProps) {
           autoCompleteOptions={autoCompleteOptions}
           ref={linkInputRef}
           placeholder={placeholderUrl}
-          className="mly:h-7 mly:w-40 mly:rounded-md mly:px-2 mly:pr-6 mly:text-sm mly:text-midnight-gray mly:hover:bg-soft-gray mly:focus:bg-soft-gray mly:focus:outline-hidden"
+          className="text-foreground hover:bg-accent focus:bg-accent h-7 w-40 rounded-md px-2 pr-6 text-sm focus:outline-hidden"
           triggerChar={variableTriggerCharacter}
           onSelectOption={(value) => {
             const isVariable = autoCompleteOptions.includes(value) ?? false;

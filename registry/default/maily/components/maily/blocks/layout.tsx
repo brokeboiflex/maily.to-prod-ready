@@ -1,7 +1,6 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import type { BlockItem } from './types';
 
-
 export const columns: BlockItem = {
   title: 'Columns',
   description: 'Add columns to email.',
@@ -12,7 +11,7 @@ export const columns: BlockItem = {
   hugeicons="LayoutTwoColumnIcon"
   phosphor="Columns"
   remixicon="RiLayoutColumnLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -37,7 +36,7 @@ export const section: BlockItem = {
   hugeicons="Square01Icon"
   phosphor="Rectangle"
   remixicon="RiRectangleLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -55,7 +54,7 @@ export const repeat: BlockItem = {
   hugeicons="RepeatIcon"
   phosphor="Repeat"
   remixicon="RiRepeatLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -73,7 +72,7 @@ export const spacer: BlockItem = {
   hugeicons="MoveIcon"
   phosphor="ArrowsVertical"
   remixicon="RiExpandUpDownLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore
@@ -91,7 +90,7 @@ export const divider: BlockItem = {
   hugeicons="MinusSignIcon"
   phosphor="Minus"
   remixicon="RiSubtractLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore

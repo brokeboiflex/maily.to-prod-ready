@@ -2,7 +2,6 @@ import { BoldIcon, CodeIcon, ItalicIcon, List, ListOrdered, StrikethroughIcon, U
 import { Editor } from '@tiptap/core';
 import { BubbleMenuItem } from './text-bubble-menu';
 
-
 import { BubbleMenuButton } from '../bubble-menu-button';
 import { AlignmentSwitch } from '../alignment-switch';
 import { TextDirectionSwitch } from '../text-direction-switch';
@@ -152,14 +151,14 @@ export function TextBubbleContent(props: TextBubbleContentProps) {
           variant="ghost"
           size="sm"
           type="button"
-          className="mly:h-7 mly:w-7 mly:shrink-0 mly:p-0"
+          className="h-7 w-7 shrink-0 p-0"
         >
-          <div className="mly:flex mly:flex-col mly:items-center mly:justify-center mly:gap-px">
-            <span className="mly:font-bolder mly:font-mono mly:text-xs mly:text-foreground">
+          <div className="flex flex-col items-center justify-center gap-px">
+            <span className="font-bolder text-foreground font-mono text-xs">
               A
             </span>
             <div
-              className="mly:h-[2px] mly:w-3"
+              className="h-[2px] w-3"
               style={{ backgroundColor: state.currentTextColor }}
             />
           </div>

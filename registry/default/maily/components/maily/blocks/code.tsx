@@ -1,5 +1,4 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
-
 import { BlockItem } from './types';
 
 export const htmlCodeBlock: BlockItem = {
@@ -12,7 +11,7 @@ export const htmlCodeBlock: BlockItem = {
   hugeicons="SourceCodeIcon"
   phosphor="Code"
   remixicon="RiCodeLine"
-  className="mly:h-4 mly:w-4"
+  className="h-4 w-4"
 />,
   command: ({ editor, range }) => {
     // @ts-ignore

@@ -1,5 +1,4 @@
 import { cn } from '../../utils/classname';
-
 import {
   forwardRef,
   useEffect,
@@ -83,19 +82,16 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
     }));
 
     return (
-      <div className="mly:z-50 mly:w-64 mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:shadow-md mly:transition-all">
-        <div className="mly:flex mly:items-center mly:justify-between mly:gap-2 mly:border-b mly:border-border mly:bg-muted/40 mly:px-1 mly:py-1.5 mly:text-muted-foreground">
-          <span className="mly:text-xs mly:uppercase">Variables</span>
+      <div className="border-border bg-background z-50 w-64 rounded-lg border shadow-md transition-all">
+        <div className="border-border bg-accent/40 text-muted-foreground flex items-center justify-between gap-2 border-b px-1 py-1.5">
+          <span className="text-xs uppercase">Variables</span>
           <VariableIcon>
-            <Braces className="mly:size-3 mly:stroke-[2.5]" />
+            <Braces className="size-3 stroke-[2.5]" />
           </VariableIcon>
         </div>
 
-        <div
-          ref={scrollContainerRef}
-          className="mly:max-h-52 mly:overflow-y-auto mly:scrollbar-thin mly:scrollbar-track-transparent mly:scrollbar-thumb-gray-200"
-        >
-          <div className="mly:flex mly:w-fit mly:min-w-full mly:flex-col mly:gap-0.5 mly:p-1">
+        <div ref={scrollContainerRef} className="max-h-52 overflow-y-auto">
+          <div className="flex w-fit min-w-full flex-col gap-0.5 p-1">
             {items?.length ? (
               items?.map((item, index: number) => (
                 <button
@@ -103,36 +99,34 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
                   ref={(el) => (itemRefs.current[index] = el)}
                   onClick={() => onSelectItem(item)}
                   className={cn(
-                    'mly:flex mly:w-fit mly:min-w-full mly:items-center mly:gap-2 mly:rounded-md mly:px-2 mly:py-1 mly:text-left mly:font-mono mly:text-sm mly:text-foreground mly:hover:bg-accent mly:hover:text-accent-foreground',
-                    index === selectedIndex
-                      ? 'mly:bg-accent'
-                      : 'mly:bg-popover mly:text-popover-foreground'
+                    'text-foreground hover:bg-accent flex w-fit min-w-full items-center gap-2 rounded-md px-2 py-1 text-left font-mono text-sm',
+                    index === selectedIndex ? 'bg-accent' : 'bg-background'
                   )}
                 >
-                  <Braces className="mly:size-3 mly:stroke-[2.5] mly:text-rose-600" />
+                  <Braces className="size-3 stroke-[2.5] text-rose-600" />
                   {item?.label || item.name}
                 </button>
               ))
             ) : (
-              <div className="mly:flex mly:h-7 mly:w-full mly:items-center mly:gap-2 mly:rounded-md mly:px-2 mly:py-1 mly:text-left mly:font-mono mly:text-[13px] mly:text-foreground mly:hover:bg-accent mly:hover:text-accent-foreground">
+              <div className="text-foreground hover:bg-accent flex h-7 w-full items-center gap-2 rounded-md px-2 py-1 text-left font-mono text-[13px]">
                 No result
               </div>
             )}
           </div>
         </div>
 
-        <div className="mly:flex mly:items-center mly:justify-between mly:gap-2 mly:border-t mly:border-border mly:px-1 mly:py-1.5 mly:text-muted-foreground">
-          <div className="mly:flex mly:items-center mly:gap-1">
+        <div className="border-border text-muted-foreground flex items-center justify-between gap-2 border-t px-1 py-1.5">
+          <div className="flex items-center gap-1">
             <VariableIcon>
-              <ArrowDownIcon className="mly:size-3 mly:stroke-[2.5]" />
+              <ArrowDownIcon className="size-3 stroke-[2.5]" />
             </VariableIcon>
             <VariableIcon>
-              <ArrowUpIcon className="mly:size-3 mly:stroke-[2.5]" />
+              <ArrowUpIcon className="size-3 stroke-[2.5]" />
             </VariableIcon>
-            <span className="mly:text-xs mly:text-muted-foreground">Navigate</span>
+            <span className="text-muted-foreground text-xs">Navigate</span>
           </div>
           <VariableIcon>
-            <CornerDownLeftIcon className="mly:size-3 mly:stroke-[2.5]" />
+            <CornerDownLeftIcon className="size-3 stroke-[2.5]" />
           </VariableIcon>
         </div>
       </div>
@@ -150,7 +144,7 @@ function VariableIcon(props: VariableIconProps) {
   return (
     <div
       className={cn(
-        'mly:flex mly:size-5 mly:items-center mly:justify-center mly:rounded-md mly:border mly:border-border',
+        'border-border flex size-5 items-center justify-center rounded-md border',
         className
       )}
     >

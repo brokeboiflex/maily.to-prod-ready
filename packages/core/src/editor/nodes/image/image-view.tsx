@@ -122,7 +122,7 @@ export function ImageView(props: NodeViewProps) {
           tabIndex={0}
           onMouseDown={handleMouseDown}
           data-direction={direction}
-          className="mly:bg-rose-500"
+          className="bg-rose-500"
           style={{
             position: 'absolute',
             height: '10px',
@@ -297,7 +297,10 @@ export function ImageView(props: NodeViewProps) {
       as="div"
       draggable={editor.isEditable}
       data-drag-handle={editor.isEditable}
-      className={cn('mly-image-drop-zone', isDraggingOver && 'mly-drag-over')}
+      className={cn(
+        "mly-image-drop-zone relative after:pointer-events-none after:absolute after:inset-0 after:rounded after:border-2 after:border-dashed after:border-[#00bcff] after:opacity-0 after:transition-opacity after:duration-200 after:content-['']",
+        isDraggingOver && 'mly-drag-over after:opacity-100'
+      )}
       style={{
         ...(hasImageSrc && status === 'loaded'
           ? {
@@ -355,7 +358,7 @@ export function ImageView(props: NodeViewProps) {
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          className="mly:absolute mly:inset-0 mly:opacity-0"
+          className="absolute inset-0 opacity-0"
           multiple={false}
         />
       )}
@@ -383,9 +386,7 @@ export function ImageView(props: NodeViewProps) {
                   : 'auto',
             }}
             draggable={editor.isEditable}
-            className={cn(
-              isPlaceholderImage && 'mly:animate-pulse mly:opacity-40'
-            )}
+            className={cn(isPlaceholderImage && 'animate-pulse opacity-40')}
           />
 
           {selected && editor.isEditable && !isPlaceholderImage && (
@@ -399,7 +400,7 @@ export function ImageView(props: NodeViewProps) {
               ].map((style, i) => (
                 <div
                   key={i}
-                  className="mly:bg-rose-500"
+                  className="bg-rose-500"
                   style={{
                     position: 'absolute',
                     ...style,
@@ -431,10 +432,10 @@ export function ImageStatusLabel(props: ImageStatusLabelProps) {
     <div
       {...rest}
       className={cn(
-        'mly:flex mly:items-center mly:justify-center mly:gap-2 mly:rounded-lg mly:bg-soft-gray mly:px-4 mly:py-2 mly:text-sm mly:font-medium',
+        'bg-accent flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium',
         {
-          'mly:text-gray-500 mly:hover:bg-soft-gray/60': status === 'loading',
-          'mly:text-red-500 mly:hover:bg-soft-gray/60': status === 'error',
+          'text-muted-foreground hover:bg-accent/60': status === 'loading',
+          'text-destructive hover:bg-accent/60': status === 'error',
         },
         className
       )}
@@ -449,33 +450,33 @@ export function ImageStatusLabel(props: ImageStatusLabelProps) {
     >
       {status === 'idle' && !isDropZone && (
         <>
-          <ImageOffIcon className="mly:size-4 mly:stroke-[2.5]" />
+          <ImageOffIcon className="size-4 stroke-[2.5]" />
           <span>No image selected</span>
         </>
       )}
 
       {status === 'idle' && isDropZone && (
         <>
-          <GrabIcon className="mly:size-4 mly:stroke-[2.5]" />
+          <GrabIcon className="size-4 stroke-[2.5]" />
           <span>Click or Drop image here</span>
         </>
       )}
 
       {status === 'loading' && (
         <>
-          <Loader2 className="mly:size-4 mly:animate-spin mly:stroke-[2.5]" />
+          <Loader2 className="size-4 animate-spin stroke-[2.5]" />
           <span>Loading image...</span>
         </>
       )}
       {status === 'error' && (
         <>
-          <Ban className="mly:size-4 mly:stroke-[2.5]" />
+          <Ban className="size-4 stroke-[2.5]" />
           <span>Error loading image</span>
         </>
       )}
       {status === 'variable' && (
         <>
-          <BracesIcon className="mly:size-4 mly:stroke-[2.5]" />
+          <BracesIcon className="size-4 stroke-[2.5]" />
           <span>Variable Image URL</span>
         </>
       )}

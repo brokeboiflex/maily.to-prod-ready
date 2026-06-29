@@ -12,7 +12,6 @@ import {
 import { ShowPopover } from '../show-popover';
 import { ColumnsWidthConfig } from './columns-width-config';
 import { Select } from '../ui/select';
-
 import { BubbleMenuButton } from '../bubble-menu-button';
 import { deleteNode } from '../../utils/delete-node';
 import { spacing } from '../../utils/spacing';
@@ -33,7 +32,7 @@ export function ColumnsBubbleMenuContent(props: ColumnsBubbleMenuProps) {
 
   return (
     <TooltipProvider>
-      <div className="mly:flex mly:items-stretch">
+      <div className="flex items-stretch">
         {state.isColumnActive && (
           <>
             <ColumnsWidthConfig
