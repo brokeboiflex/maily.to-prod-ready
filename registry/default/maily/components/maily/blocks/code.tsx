@@ -1,9 +1,10 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { BlockItem } from './types';
+import type { TranslateFn } from '../editor/i18n';
 
-export const htmlCodeBlock: BlockItem = {
-  title: 'Custom HTML',
-  description: 'Insert a custom HTML block',
+export const htmlCodeBlock = (t: TranslateFn): BlockItem => ({
+  title: t('block.htmlCodeBlock.title'),
+  description: t('block.htmlCodeBlock.description'),
   searchTerms: ['html', 'code', 'custom'],
   icon: <IconPlaceholder
   lucide="CodeXmlIcon"
@@ -23,4 +24,4 @@ export const htmlCodeBlock: BlockItem = {
       .setHtmlCodeBlock({ language: 'html' })
       .run();
   },
-};
+});

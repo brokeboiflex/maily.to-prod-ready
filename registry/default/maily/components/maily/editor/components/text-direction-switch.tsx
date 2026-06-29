@@ -7,6 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from './popover';
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { LtrIcon, RtlIcon } from './icons/text-direction-icon';
+import { useMailyContext } from '../provider';
 
 type TextDirectionSwitchProps = {
   direction: AllowedTextDirection;
@@ -15,6 +16,7 @@ type TextDirectionSwitchProps = {
 
 export function TextDirectionSwitch(props: TextDirectionSwitchProps) {
   const { direction: rawDirection, onDirectionChange } = props;
+  const { t } = useMailyContext();
   const direction = allowedTextDirection.includes(
     rawDirection as AllowedTextDirection
   )
@@ -24,14 +26,14 @@ export function TextDirectionSwitch(props: TextDirectionSwitchProps) {
   const directions = {
     ltr: {
       icon: LtrIcon,
-      tooltip: 'Left to Right',
+      tooltip: t('direction.ltr'),
       onClick: () => {
         onDirectionChange('ltr');
       },
     },
     rtl: {
       icon: RtlIcon,
-      tooltip: 'Right to Left',
+      tooltip: t('direction.rtl'),
       onClick: () => {
         onDirectionChange('rtl');
       },
@@ -52,7 +54,7 @@ export function TextDirectionSwitch(props: TextDirectionSwitchProps) {
             <activeDirection.icon className="h-3 w-3 stroke-[2.5]" />
           </PopoverTrigger>
         </TooltipTrigger>
-        <TooltipContent sideOffset={8}>Text Direction</TooltipContent>
+        <TooltipContent sideOffset={8}>{t('direction.label')}</TooltipContent>
       </Tooltip>
       <PopoverContent
         className="flex w-max gap-0.5 rounded-lg p-0.5!"

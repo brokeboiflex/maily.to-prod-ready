@@ -1,10 +1,11 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import { NodeSelection, Selection, TextSelection } from '@tiptap/pm/state';
 import type { BlockItem } from './types';
+import type { TranslateFn } from '../editor/i18n';
 
-export const image: BlockItem = {
-  title: 'Image',
-  description: 'Full width image',
+export const image = (t: TranslateFn): BlockItem => ({
+  title: t('block.image.title'),
+  description: t('block.image.description'),
   searchTerms: ['image'],
   icon: <IconPlaceholder
   lucide="ImageIcon"
@@ -18,11 +19,11 @@ export const image: BlockItem = {
     // @ts-ignore
     editor.chain().focus().deleteRange(range).setImage({ src: '' }).run();
   },
-};
+});
 
-export const logo: BlockItem = {
-  title: 'Logo',
-  description: 'Add your brand logo',
+export const logo = (t: TranslateFn): BlockItem => ({
+  title: t('block.logo.title'),
+  description: t('block.logo.description'),
   searchTerms: ['image', 'logo'],
   icon: <IconPlaceholder
   lucide="ImageIcon"
@@ -36,11 +37,11 @@ export const logo: BlockItem = {
     // @ts-ignore
     editor.chain().focus().deleteRange(range).setLogoImage({ src: '' }).run();
   },
-};
+});
 
-export const inlineImage: BlockItem = {
-  title: 'Inline Image',
-  description: 'Inline image',
+export const inlineImage = (t: TranslateFn): BlockItem => ({
+  title: t('block.inlineImage.title'),
+  description: t('block.inlineImage.description'),
   searchTerms: ['image', 'inline'],
   icon: <IconPlaceholder
   lucide="ImageIcon"
@@ -80,4 +81,4 @@ export const inlineImage: BlockItem = {
       })
       .run();
   },
-};
+});

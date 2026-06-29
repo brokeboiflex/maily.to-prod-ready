@@ -16,7 +16,8 @@ import {
   useState,
 } from 'react';
 import tippy, { GetReferenceClientRect, Instance } from 'tippy.js';
-import { DEFAULT_SLASH_COMMANDS } from './default-slash-commands';
+import { getDefaultBlocks } from './default-slash-commands';
+import { englishTranslator, type TranslateFn } from '../../i18n';
 import { TooltipProvider } from '../../components/ui/tooltip';
 import { SlashCommandItem } from './slash-command-item';
 import { filterSlashCommands } from './slash-command-search';
@@ -27,10 +28,20 @@ type CommandListProps = {
   editor: Editor;
   range: Range;
   query: string;
+  navigateLabel?: string;
+  selectLabel?: string;
 };
 
 const CommandList = forwardRef<unknown, CommandListProps>((props, ref) => {
-  const { items: groups, command, editor, range, query } = props;
+  const {
+    items: groups,
+    command,
+    editor,
+    range,
+    query,
+    navigateLabel = englishTranslator('slashCommand.navigate'),
+    selectLabel = englishTranslator('slashCommand.select'),
+  } = props;
 
   const [selectedGroupIndex, setSelectedGroupIndex] = useState(0);
   const [selectedCommandIndex, setSelectedCommandIndex] = useState(0);
@@ -240,7 +251,7 @@ const CommandList = forwardRef<unknown, CommandListProps>((props, ref) => {
               <kbd className="border-border ml-1 rounded border p-1 px-2 font-medium">
                 ↓
               </kbd>{' '}
-              to navigate
+              {navigateLabel}
             </p>
             <span aria-hidden="true" className="px-1 select-none">
               ·
@@ -249,7 +260,7 @@ const CommandList = forwardRef<unknown, CommandListProps>((props, ref) => {
               <kbd className="border-border rounded border p-1 px-1.5 font-medium">
                 Enter
               </kbd>{' '}
-              to select
+              {selectLabel}
             </p>
           </div>
         </div>
@@ -259,8 +270,23 @@ const CommandList = forwardRef<unknown, CommandListProps>((props, ref) => {
 });
 
 export function getSlashCommandSuggestions(
-  groups: BlockGroupItem[] = DEFAULT_SLASH_COMMANDS
+  groups: BlockGroupItem[] = getDefaultBlocks(englishTranslator),
+  t: TranslateFn = englishTranslator
 ): Omit<SuggestionOptions, 'editor'> {
+  const navigateLabel = t('slashCommand.navigate');
+  const selectLabel = t('slashCommand.select');
+
+  const BoundCommandList = forwardRef<unknown, CommandListProps>(
+    (props, ref) => (
+      <CommandList
+        {...props}
+        navigateLabel={navigateLabel}
+        selectLabel={selectLabel}
+        ref={ref}
+      />
+    )
+  );
+
   return {
     items: ({ query, editor }) => {
       return filterSlashCommands({ query, editor, groups });
@@ -279,7 +305,7 @@ export function getSlashCommandSuggestions(
 
       return {
         onStart: (props) => {
-          component = new ReactRenderer(CommandList, {
+          component = new ReactRenderer(BoundCommandList, {
             props,
             editor: props.editor,
           });

@@ -23,6 +23,8 @@ import { TooltipProvider } from '../ui/tooltip';
 import { useSectionState } from './use-section-state';
 import { getClosestNodeByName } from '../../utils/columns';
 import { spacing } from '../../utils/spacing';
+import { useMailyContext } from '../../provider';
+import type { LabelKey } from '../../i18n';
 
 export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
   const { appendTo, editor } = props;
@@ -85,11 +87,20 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
   };
 
   const state = useSectionState(editor);
+  const { t } = useMailyContext();
 
   const borderRadiusOptions = [
-    { value: '0', label: 'Sharp' },
-    { value: '6', label: 'Smooth' },
-    { value: '9999', label: 'Round' },
+    { value: '0', label: t('sectionMenu.radius.sharp') },
+    { value: '6', label: t('sectionMenu.radius.smooth') },
+    { value: '9999', label: t('sectionMenu.radius.round') },
+  ];
+
+  const spacingOptions = (noneKey: LabelKey) => [
+    { value: '0', label: t(noneKey) },
+    ...spacing.map((space) => ({
+      label: t(`spacing.${space.short}` as LabelKey),
+      value: String(space.value),
+    })),
   ];
 
   return (
@@ -111,7 +122,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
 
         <div className="flex gap-x-0.5">
           <Select
-            label="Border Radius"
+            label={t('sectionMenu.borderRadius')}
             value={String(state.currentBorderRadius)}
             options={borderRadiusOptions}
             onValueChange={(value) => {
@@ -119,25 +130,25 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
                 borderRadius: Number(value),
               });
             }}
-            tooltip="Border Radius"
+            tooltip={t('sectionMenu.borderRadius')}
             className="capitalize"
           />
 
           <Select
-            label="Border Width"
+            label={t('sectionMenu.borderWidth')}
             value={String(state.currentBorderWidth)}
             options={[
-              { value: '0', label: 'None' },
-              { value: '1', label: 'Thin' },
-              { value: '2', label: 'Medium' },
-              { value: '3', label: 'Thick' },
+              { value: '0', label: t('sectionMenu.borderWidth.none') },
+              { value: '1', label: t('sectionMenu.borderWidth.thin') },
+              { value: '2', label: t('sectionMenu.borderWidth.medium') },
+              { value: '3', label: t('sectionMenu.borderWidth.thick') },
             ]}
             onValueChange={(value) => {
               editor?.commands?.updateSection({
                 borderWidth: Number(value),
               });
             }}
-            tooltip="Border Width"
+            tooltip={t('sectionMenu.borderWidth')}
             className="capitalize"
           />
         </div>
@@ -147,15 +158,9 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
         <Select
           icon={MarginIcon}
           iconClassName="stroke-[1.2] size-3.5"
-          label="Margin"
+          label={t('sectionMenu.margin')}
           value={String(state.currentMarginTop)}
-          options={[
-            { value: '0', label: 'None' },
-            ...spacing.map((space) => ({
-              label: space.name,
-              value: String(space.value),
-            })),
-          ]}
+          options={spacingOptions('sectionMenu.margin.none')}
           onValueChange={(_value) => {
             const value = Number(_value);
             editor?.commands?.updateSection({
@@ -165,7 +170,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
               marginLeft: value,
             });
           }}
-          tooltip="Margin"
+          tooltip={t('sectionMenu.margin')}
           className="capitalize"
         />
 
@@ -174,15 +179,9 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
         <Select
           icon={PaddingIcon}
           iconClassName="stroke-[1]"
-          label="Padding"
+          label={t('sectionMenu.padding')}
           value={String(state.currentPaddingTop)}
-          options={[
-            { value: '0', label: 'None' },
-            ...spacing.map((space) => ({
-              label: space.name,
-              value: String(space.value),
-            })),
-          ]}
+          options={spacingOptions('sectionMenu.padding.none')}
           onValueChange={(_value) => {
             const value = Number(_value);
             editor?.commands?.updateSection({
@@ -192,7 +191,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
               paddingLeft: value,
             });
           }}
-          tooltip="Padding"
+          tooltip={t('sectionMenu.padding')}
           className="capitalize"
         />
 
@@ -206,7 +205,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
                 borderColor: color,
               });
             }}
-            tooltip="Border Color"
+            tooltip={t('sectionMenu.borderColor')}
           >
             <BaseButton
               variant="ghost"
@@ -231,7 +230,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
               });
             }}
             backgroundColor={state.currentBackgroundColor}
-            tooltip="Background Color"
+            tooltip={t('sectionMenu.backgroundColor')}
             className="border-background rounded-full border-[1.5px] shadow"
           />
         </div>
@@ -240,7 +239,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
 
         <BubbleMenuButton
           icon={Trash}
-          tooltip="Delete Section"
+          tooltip={t('sectionMenu.delete')}
           command={() => {
             deleteNode(editor, 'section');
           }}
@@ -263,7 +262,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
             <Divider />
             <Popover>
               <PopoverTrigger className="data-[state=open]:bg-accent data-[state=open]:text-accent-foreground hover:bg-accent hover:text-accent-foreground flex items-center gap-1 rounded-md px-1.5 text-sm">
-                Column
+                {t('sectionMenu.column')}
                 <IconPlaceholder
   lucide="ChevronUp"
   tabler="IconChevronUp"

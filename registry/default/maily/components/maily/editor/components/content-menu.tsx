@@ -16,6 +16,7 @@ import { Popover, PopoverContent, PopoverTrigger } from './popover';
 import { Divider } from './ui/divider';
 import { DragHandle } from '../plugins/drag-handle/drag-handle';
 import { cn } from '@/lib/utils';
+import { useMailyContext } from '../provider';
 
 export type ContentMenuProps = {
   editor: Editor;
@@ -23,6 +24,7 @@ export type ContentMenuProps = {
 
 export function ContentMenu(props: ContentMenuProps) {
   const { editor } = props;
+  const { t } = useMailyContext();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentNode, setCurrentNode] = useState<Node | null>(null);
@@ -147,7 +149,7 @@ export function ContentMenu(props: ContentMenuProps) {
 />
               </BaseButton>
             </TooltipTrigger>
-            <TooltipContent sideOffset={8}>Add new node</TooltipContent>
+            <TooltipContent sideOffset={8}>{t('contentMenu.addNode')}</TooltipContent>
           </Tooltip>
           <Popover open={menuOpen} onOpenChange={setMenuOpen}>
             <div className="relative flex flex-col">
@@ -174,7 +176,7 @@ export function ContentMenu(props: ContentMenuProps) {
 />
                   </BaseButton>
                 </TooltipTrigger>
-                <TooltipContent sideOffset={8}>Node actions</TooltipContent>
+                <TooltipContent sideOffset={8}>{t('contentMenu.nodeActions')}</TooltipContent>
               </Tooltip>
               <PopoverTrigger className="absolute top-0 left-0 z-0 h-5 w-5" />
             </div>
@@ -198,7 +200,7 @@ export function ContentMenu(props: ContentMenuProps) {
   remixicon="RiFileCopyLine"
   className="size-[15px] shrink-0"
 />
-                Duplicate
+                {t('contentMenu.duplicate')}
               </BaseButton>
               <Divider type="horizontal" />
               <BaseButton
@@ -213,7 +215,7 @@ export function ContentMenu(props: ContentMenuProps) {
   remixicon="RiDeleteBinLine"
   className="size-[15px] shrink-0"
 />
-                Delete
+                {t('contentMenu.delete')}
               </BaseButton>
             </PopoverContent>
           </Popover>

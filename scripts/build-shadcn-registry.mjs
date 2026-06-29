@@ -49,6 +49,12 @@ function externalizedModuleKey(relativePosixPath) {
   return relativePosixPath.replace(/\.(tsx?|jsx?)$/, "")
 }
 
+// Tests are dev-only — never ship them into the installable registry (they also
+// import vitest, which consumers don't have).
+function isTestFile(relativePosixPath) {
+  return /\.(test|spec)(-d)?\.(tsx?|jsx?)$/.test(relativePosixPath)
+}
+
 const textExtensions = new Set([
   ".ts",
   ".tsx",
@@ -636,14 +642,24 @@ function writeIconReport() {
 fs.rmSync(registryRoot, { recursive: true, force: true })
 ensureDir(itemRoot)
 
-copySource(coreSourceDir, coreOutDir, rewriteCoreImports, (relativePosixPath) =>
-  Object.prototype.hasOwnProperty.call(
-    EXTERNALIZED_MODULES,
-    externalizedModuleKey(relativePosixPath)
-  )
+copySource(
+  coreSourceDir,
+  coreOutDir,
+  rewriteCoreImports,
+  (relativePosixPath) =>
+    isTestFile(relativePosixPath) ||
+    Object.prototype.hasOwnProperty.call(
+      EXTERNALIZED_MODULES,
+      externalizedModuleKey(relativePosixPath)
+    )
 )
-copySource(sharedSourceDir, sharedOutDir, (_filePath, content) => content)
-copySource(renderSourceDir, renderOutDir, rewriteRenderImports)
+copySource(
+  sharedSourceDir,
+  sharedOutDir,
+  (_filePath, content) => content,
+  isTestFile
+)
+copySource(renderSourceDir, renderOutDir, rewriteRenderImports, isTestFile)
 
 buildRegistryJson()
 

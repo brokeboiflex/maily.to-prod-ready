@@ -4,6 +4,7 @@ import { useId } from 'react';
 import { Divider } from './divider';
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
 import { AUTOCOMPLETE_PASSWORD_MANAGERS_OFF } from '../../utils/constants';
+import { useMailyContext } from '../../provider';
 
 type EdgeSpacingControlProps = {
   top?: number;
@@ -27,6 +28,7 @@ export function EdgeSpacingControl(props: EdgeSpacingControlProps) {
     left,
     onLeftValueChange,
   } = props;
+  const { t } = useMailyContext();
 
   return (
     <Popover>
@@ -46,25 +48,25 @@ export function EdgeSpacingControl(props: EdgeSpacingControlProps) {
         sideOffset={8}
       >
         <InputWithLabel
-          label="T"
+          label={t('edgeSpacing.top')}
           value={top ?? 0}
           onChange={(value) => onTopValueChange?.(value)}
           inputClassName="rounded"
         />
         <InputWithLabel
-          label="R"
+          label={t('edgeSpacing.right')}
           value={right ?? 0}
           onChange={(value) => onRightValueChange?.(value)}
           inputClassName="rounded"
         />
         <InputWithLabel
-          label="B"
+          label={t('edgeSpacing.bottom')}
           value={bottom ?? 0}
           onChange={(value) => onBottomValueChange?.(value)}
           inputClassName="rounded"
         />
         <InputWithLabel
-          label="L"
+          label={t('edgeSpacing.left')}
           value={left ?? 0}
           onChange={(value) => onLeftValueChange?.(value)}
           inputClassName="rounded"

@@ -19,6 +19,7 @@ import { useRepeatState } from './use-repeat-state';
 import { getClosestNodeByName } from '../../utils/columns';
 import { processVariables } from '../../utils/variable';
 import { useVariableOptions } from '../../utils/node-options';
+import { useMailyContext } from '../../provider';
 
 export function RepeatBubbleMenu(props: EditorBubbleMenuProps) {
   const { appendTo, editor } = props;
@@ -27,6 +28,7 @@ export function RepeatBubbleMenu(props: EditorBubbleMenuProps) {
   }
 
   const state = useRepeatState(editor);
+  const { t } = useMailyContext();
 
   const getReferenceClientRect = useCallback(() => {
     const renderContainer = getRenderContainer(editor!, 'repeat');
@@ -98,7 +100,7 @@ export function RepeatBubbleMenu(props: EditorBubbleMenuProps) {
     >
       <TooltipProvider>
         <div className="flex items-center gap-1.5 px-1.5 text-sm leading-none">
-          Repeat
+          {t('repeatMenu.label')}
           <Tooltip>
             <TooltipTrigger>
               <IconPlaceholder
@@ -115,8 +117,7 @@ export function RepeatBubbleMenu(props: EditorBubbleMenuProps) {
               className="max-w-[260px]"
               align="start"
             >
-              Ensure the selected variable is iterable, such as an array of
-              objects.
+              {t('repeatMenu.iterableHint')}
             </TooltipContent>
           </Tooltip>
         </div>
@@ -154,7 +155,7 @@ export function RepeatBubbleMenu(props: EditorBubbleMenuProps) {
           >
             <InputAutocomplete
               editor={editor}
-              placeholder="ie. payload.items"
+              placeholder={t('repeatMenu.placeholder')}
               value={state?.each || ''}
               onValueChange={(value) => {
                 editor.commands.updateRepeat({

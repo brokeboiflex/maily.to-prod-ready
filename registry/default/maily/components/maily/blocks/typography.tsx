@@ -1,9 +1,10 @@
 import { IconPlaceholder } from "@/components/icon-placeholder"
 import type { BlockItem } from './types';
+import type { TranslateFn } from '../editor/i18n';
 
-export const text: BlockItem = {
-  title: 'Text',
-  description: 'Just start typing with plain text.',
+export const text = (t: TranslateFn): BlockItem => ({
+  title: t('block.text.title'),
+  description: t('block.text.description'),
   searchTerms: ['p', 'paragraph'],
   icon: <IconPlaceholder
   lucide="Text"
@@ -21,11 +22,11 @@ export const text: BlockItem = {
       .toggleNode('paragraph', 'paragraph')
       .run();
   },
-};
+});
 
-export const heading1: BlockItem = {
-  title: 'Heading 1',
-  description: 'Big heading.',
+export const heading1 = (t: TranslateFn): BlockItem => ({
+  title: t('block.heading1.title'),
+  description: t('block.heading1.description'),
   searchTerms: ['h1', 'title', 'big', 'large'],
   icon: <IconPlaceholder
   lucide="Heading1"
@@ -43,11 +44,11 @@ export const heading1: BlockItem = {
       .setNode('heading', { level: 1 })
       .run();
   },
-};
+});
 
-export const heading2: BlockItem = {
-  title: 'Heading 2',
-  description: 'Medium heading.',
+export const heading2 = (t: TranslateFn): BlockItem => ({
+  title: t('block.heading2.title'),
+  description: t('block.heading2.description'),
   searchTerms: ['h2', 'subtitle', 'medium'],
   icon: <IconPlaceholder
   lucide="Heading2"
@@ -65,11 +66,11 @@ export const heading2: BlockItem = {
       .setNode('heading', { level: 2 })
       .run();
   },
-};
+});
 
-export const heading3: BlockItem = {
-  title: 'Heading 3',
-  description: 'Small heading.',
+export const heading3 = (t: TranslateFn): BlockItem => ({
+  title: t('block.heading3.title'),
+  description: t('block.heading3.description'),
   searchTerms: ['h3', 'subtitle', 'small'],
   icon: <IconPlaceholder
   lucide="Heading3"
@@ -87,11 +88,11 @@ export const heading3: BlockItem = {
       .setNode('heading', { level: 3 })
       .run();
   },
-};
+});
 
-export const hardBreak: BlockItem = {
-  title: 'Hard Break',
-  description: 'Add a break between lines.',
+export const hardBreak = (t: TranslateFn): BlockItem => ({
+  title: t('block.hardBreak.title'),
+  description: t('block.hardBreak.description'),
   searchTerms: ['break', 'line'],
   icon: <IconPlaceholder
   lucide="DivideIcon"
@@ -105,11 +106,11 @@ export const hardBreak: BlockItem = {
     // @ts-ignore
     editor.chain().focus().deleteRange(range).setHardBreak().run();
   },
-};
+});
 
-export const blockquote: BlockItem = {
-  title: 'Blockquote',
-  description: 'Add blockquote.',
+export const blockquote = (t: TranslateFn): BlockItem => ({
+  title: t('block.blockquote.title'),
+  description: t('block.blockquote.description'),
   searchTerms: ['quote', 'blockquote'],
   icon: <IconPlaceholder
   lucide="TextQuote"
@@ -123,11 +124,11 @@ export const blockquote: BlockItem = {
     // @ts-ignore
     editor.chain().focus().deleteRange(range).toggleBlockquote().run();
   },
-};
+});
 
-export const footer: BlockItem = {
-  title: 'Footer',
-  description: 'Add a footer text to email.',
+export const footer = (t: TranslateFn): BlockItem => ({
+  title: t('block.footer.title'),
+  description: t('block.footer.description'),
   searchTerms: ['footer', 'text'],
   icon: <IconPlaceholder
   lucide="FootprintsIcon"
@@ -141,11 +142,11 @@ export const footer: BlockItem = {
     // @ts-ignore
     editor.chain().focus().deleteRange(range).setFooter().run();
   },
-};
+});
 
-export const clearLine: BlockItem = {
-  title: 'Clear Line',
-  description: 'Clear the current line.',
+export const clearLine = (t: TranslateFn): BlockItem => ({
+  title: t('block.clearLine.title'),
+  description: t('block.clearLine.description'),
   searchTerms: ['clear', 'line'],
   icon: <IconPlaceholder
   lucide="EraserIcon"
@@ -159,4 +160,4 @@ export const clearLine: BlockItem = {
     // @ts-ignore
     editor.chain().focus().selectParentNode().deleteSelection().run();
   },
-};
+});

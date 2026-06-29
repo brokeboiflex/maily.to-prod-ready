@@ -438,6 +438,21 @@
           "target": "@components/maily/editor/extensions/tailing-node/tailing-node.ts"
         },
         {
+          "path": "registry/default/maily/components/maily/editor/i18n/default-labels.ts",
+          "type": "registry:component",
+          "target": "@components/maily/editor/i18n/default-labels.ts"
+        },
+        {
+          "path": "registry/default/maily/components/maily/editor/i18n/index.ts",
+          "type": "registry:component",
+          "target": "@components/maily/editor/i18n/index.ts"
+        },
+        {
+          "path": "registry/default/maily/components/maily/editor/i18n/translate.ts",
+          "type": "registry:component",
+          "target": "@components/maily/editor/i18n/translate.ts"
+        },
+        {
           "path": "registry/default/maily/components/maily/editor/index.tsx",
           "type": "registry:component",
           "target": "@components/maily/editor/index.tsx"
@@ -696,11 +711,6 @@
           "path": "registry/default/maily/lib/maily-render/preheader.ts",
           "type": "registry:lib",
           "target": "@lib/maily-render/preheader.ts"
-        },
-        {
-          "path": "registry/default/maily/lib/maily-render/render.test.ts",
-          "type": "registry:lib",
-          "target": "@lib/maily-render/render.test.ts"
         },
         {
           "path": "registry/default/maily/lib/maily-render/render.ts",
