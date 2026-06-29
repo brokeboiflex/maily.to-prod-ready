@@ -48,9 +48,9 @@ function _ShowPopover(props: ShowPopoverProps) {
         <TooltipTrigger asChild>
           <PopoverTrigger
             className={cn(
-              'data-[state=open]:bg-accent hover:bg-accent focus-visible:ring-ring flex size-7 items-center justify-center gap-1 rounded-md px-1.5 text-sm focus-visible:relative focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden',
+              'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring flex size-7 items-center justify-center gap-1 rounded-md px-1.5 text-sm focus-visible:relative focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden',
               showIfKey &&
-                'bg-rose-100 text-rose-800 hover:bg-rose-100 data-[state=open]:bg-rose-100'
+                'bg-rose-100 text-rose-800 hover:bg-rose-100 hover:text-rose-800 data-[state=open]:bg-rose-100 data-[state=open]:text-rose-800'
             )}
           >
             <IconPlaceholder

@@ -151,7 +151,7 @@ export const DefaultRenderVariable: RenderVariableFunction = (props) => {
     return (
       <div
         className={cn(
-          'border-border hover:bg-accent inline-grid h-7 max-w-xs min-w-28 grid-cols-[12px_1fr] items-center gap-1.5 rounded-md border px-2 font-mono text-sm',
+          'border-border hover:bg-accent hover:text-accent-foreground inline-grid h-7 max-w-xs min-w-28 grid-cols-[12px_1fr] items-center gap-1.5 rounded-md border px-2 font-mono text-sm',
           !valid && 'border-rose-400 bg-rose-50 text-rose-600 hover:bg-rose-100'
         )}
       >

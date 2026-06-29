@@ -261,7 +261,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
           <>
             <Divider />
             <Popover>
-              <PopoverTrigger className="data-[state=open]:bg-accent hover:bg-accent flex items-center gap-1 rounded-md px-1.5 text-sm">
+              <PopoverTrigger className="data-[state=open]:bg-accent data-[state=open]:text-accent-foreground hover:bg-accent hover:text-accent-foreground flex items-center gap-1 rounded-md px-1.5 text-sm">
                 Column
                 <ChevronUp className="h-3 w-3" />
               </PopoverTrigger>

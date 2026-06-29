@@ -142,7 +142,7 @@ function insertImportAfterDirectives(content, importBlock) {
  */
 function transformLucideIconsToPlaceholders(content, filePath) {
   const lucideImportRegex =
-    /import\s*{\s*([^}]+)\s*}\s*from\s*["']lucide-react["'];?\n?/g
+    /import\s*{\s*([^}]+)\s*}\s*from\s*["']lucide-react["'];?\r?\n?/g
 
   const typeSpecifiers = [] // e.g. ["LucideIcon"]
   const valueSpecifiers = [] // e.g. ["BoldIcon", "ChevronRight"]
