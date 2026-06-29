@@ -2,6 +2,7 @@ import { Columns2, SlidersVertical, Columns3 } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '../popover';
 import { cn } from '@/editor/utils/classname';
 import { AUTOCOMPLETE_PASSWORD_MANAGERS_OFF } from '@/editor/utils/constants';
+import { useMailyContext } from '../../provider';
 
 type ColumnsWidthConfigProps = {
   columnsCount: number;
@@ -18,6 +19,7 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
     columnWidths,
     onColumnWidthChange,
   } = props;
+  const { t } = useMailyContext();
 
   return (
     <Popover>
@@ -42,14 +44,14 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
             isActive={columnsCount === 2}
           >
             <Columns2 className="h-4 w-4 stroke-[2.5]" />
-            <span>2 Columns</span>
+            <span>{t('columnMenu.twoColumns')}</span>
           </SwitchButton>
           <SwitchButton
             onClick={() => onColumnsCountChange(3)}
             isActive={columnsCount === 3}
           >
             <Columns3 className="h-4 w-4 stroke-[2.5]" />
-            <span>3 Columns</span>
+            <span>{t('columnMenu.threeColumns')}</span>
           </SwitchButton>
         </div>
 
@@ -65,13 +67,13 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
             const label =
               columnsCount === 2
                 ? index === 0
-                  ? 'Left'
-                  : 'Right'
+                  ? t('columnMenu.left')
+                  : t('columnMenu.right')
                 : index === 0
-                  ? 'Left'
+                  ? t('columnMenu.left')
                   : index === 1
-                    ? 'Middle'
-                    : 'Right';
+                    ? t('columnMenu.middle')
+                    : t('columnMenu.right');
 
             return (
               <div className="flex flex-col gap-1" key={index}>
@@ -80,7 +82,7 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
                 <label className="relative">
                   <input
                     {...AUTOCOMPLETE_PASSWORD_MANAGERS_OFF}
-                    placeholder="auto"
+                    placeholder={t('columnMenu.autoPlaceholder')}
                     min={1}
                     max={90}
                     type="number"
@@ -92,7 +94,7 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
                     }}
                   />
                   <span className="text-muted-foreground absolute inset-y-0 right-0 flex aspect-square items-center justify-center text-xs tabular-nums">
-                    %
+                    {t('columnMenu.unitPercent')}
                   </span>
                 </label>
               </div>

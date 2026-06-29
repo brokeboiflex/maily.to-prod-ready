@@ -7,6 +7,7 @@ import { processVariables } from '../utils/variable';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 import { InputAutocomplete } from './ui/input-autocomplete';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
+import { useMailyContext } from '../provider';
 
 type ShowPopoverProps = {
   showIfKey?: string;
@@ -17,6 +18,7 @@ type ShowPopoverProps = {
 
 function _ShowPopover(props: ShowPopoverProps) {
   const { showIfKey = '', onShowIfKeyValueChange, editor } = props;
+  const { t } = useMailyContext();
 
   const opts = useVariableOptions(editor);
   const variables = opts?.variables;
@@ -56,7 +58,9 @@ function _ShowPopover(props: ShowPopoverProps) {
             <Eye className="h-3 w-3 stroke-[2.5]" />
           </PopoverTrigger>
         </TooltipTrigger>
-        <TooltipContent sideOffset={8}>Show block conditionally</TooltipContent>
+        <TooltipContent sideOffset={8}>
+          {t('showPopover.showConditionally')}
+        </TooltipContent>
       </Tooltip>
       <PopoverContent
         className="flex w-max rounded-lg p-0.5!"
@@ -71,7 +75,7 @@ function _ShowPopover(props: ShowPopoverProps) {
         }}
       >
         <div className="flex items-center gap-1.5 px-1.5 text-sm leading-none">
-          Show if
+          {t('showPopover.showIf')}
           <Tooltip>
             <TooltipTrigger>
               <InfoIcon
@@ -83,7 +87,7 @@ function _ShowPopover(props: ShowPopoverProps) {
               className="max-w-[285px]"
               align="start"
             >
-              Show the block if the selected variable is true.
+              {t('showPopover.showIfHint')}
             </TooltipContent>
           </Tooltip>
         </div>
