@@ -119,7 +119,8 @@ export function ContentMenu(props: ContentMenuProps) {
       pluginKey="ContentMenu"
       editor={editor}
       tippyOptions={{
-        offset: [2, 0],
+        placement: 'left',
+        offset: [0, 0],
         zIndex: 99,
       }}
       onNodeChange={handleNodeChange}
