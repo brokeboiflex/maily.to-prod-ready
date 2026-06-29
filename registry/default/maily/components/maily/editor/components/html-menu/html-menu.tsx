@@ -60,7 +60,7 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
       className="border-border bg-background flex items-stretch rounded-lg border p-0.5 shadow-md"
     >
       <TooltipProvider>
-        <div className="bg-accent flex h-7 items-center rounded-md px-0.5">
+        <div className="bg-muted flex h-7 items-center rounded-md px-0.5">
           <Tooltip>
             <TooltipTrigger asChild>
               <button

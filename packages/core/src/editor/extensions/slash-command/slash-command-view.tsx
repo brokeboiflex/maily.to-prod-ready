@@ -200,7 +200,7 @@ const CommandList = forwardRef<unknown, CommandListProps>((props, ref) => {
             <Fragment key={groupIndex}>
               <span
                 className={cn(
-                  'border-border bg-accent text-muted-foreground block border-b p-2 text-xs uppercase',
+                  'border-border bg-muted text-muted-foreground block border-b p-2 text-xs uppercase',
                   groupIndex > 0 ? 'border-t' : ''
                 )}
               >

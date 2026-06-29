@@ -82,7 +82,7 @@ export function VariableView(props: NodeViewProps) {
                     });
                   }}
                   placeholder="ie. name..."
-                  className="bg-accent text-foreground focus:bg-accent h-7 w-36 rounded-md px-2 text-sm focus:outline-hidden disabled:cursor-not-allowed"
+                  className="bg-muted text-foreground focus:bg-muted h-7 w-36 rounded-md px-2 text-sm focus:outline-hidden disabled:cursor-not-allowed"
                 />
               </label>
 
@@ -103,7 +103,7 @@ export function VariableView(props: NodeViewProps) {
                         });
                       }}
                       placeholder="ie. John Doe..."
-                      className="bg-accent text-foreground focus:bg-accent h-7 w-32 rounded-md px-2 pr-6 text-sm focus:outline-none"
+                      className="bg-muted text-foreground focus:bg-muted h-7 w-32 rounded-md px-2 pr-6 text-sm focus:outline-none"
                     />
                     <div className="absolute inset-y-0 right-1 flex items-center">
                       <Pencil className="text-foreground h-3 w-3 stroke-[2.5]" />

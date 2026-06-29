@@ -88,7 +88,7 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
 
     return (
       <div className="border-border bg-background z-50 w-64 rounded-lg border shadow-md transition-all">
-        <div className="border-border bg-accent/40 text-muted-foreground flex items-center justify-between gap-2 border-b px-1 py-1.5">
+        <div className="border-border bg-muted/40 text-muted-foreground flex items-center justify-between gap-2 border-b px-1 py-1.5">
           <span className="text-xs uppercase">Variables</span>
           <VariableIcon>
             <Braces className="size-3 stroke-[2.5]" />
@@ -104,8 +104,8 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
                   ref={(el) => (itemRefs.current[index] = el)}
                   onClick={() => onSelectItem(item)}
                   className={cn(
-                    'text-foreground hover:bg-accent flex w-fit min-w-full items-center gap-2 rounded-md px-2 py-1 text-left font-mono text-sm',
-                    index === selectedIndex ? 'bg-accent' : 'bg-background'
+                    'text-foreground hover:bg-muted flex w-fit min-w-full items-center gap-2 rounded-md px-2 py-1 text-left font-mono text-sm',
+                    index === selectedIndex ? 'bg-muted' : 'bg-background'
                   )}
                 >
                   <Braces className="size-3 stroke-[2.5] text-rose-600" />
@@ -113,7 +113,7 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
                 </button>
               ))
             ) : (
-              <div className="text-foreground hover:bg-accent flex h-7 w-full items-center gap-2 rounded-md px-2 py-1 text-left font-mono text-[13px]">
+              <div className="text-foreground hover:bg-muted flex h-7 w-full items-center gap-2 rounded-md px-2 py-1 text-left font-mono text-[13px]">
                 No result
               </div>
             )}

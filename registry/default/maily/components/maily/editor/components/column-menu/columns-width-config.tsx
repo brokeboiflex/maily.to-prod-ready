@@ -105,7 +105,7 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
                     min={1}
                     max={90}
                     type="number"
-                    className="bg-accent focus:bg-accent focus:ring-foreground/50 w-full [appearance:textfield] appearance-none rounded-md px-1.5 py-1 pr-6 text-sm tabular-nums outline-hidden focus:ring-1 focus:outline-hidden [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    className="bg-muted focus:bg-muted focus:ring-foreground/50 w-full [appearance:textfield] appearance-none rounded-md px-1.5 py-1 pr-6 text-sm tabular-nums outline-hidden focus:ring-1 focus:outline-hidden [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                     value={value}
                     onChange={(e) => {
                       const value = e.target.value;
@@ -137,8 +137,8 @@ function SwitchButton(props: SwitchButtonProps) {
   return (
     <button
       className={cn(
-        'text-muted-foreground hover:bg-accent hover:text-foreground flex h-7 items-center gap-1 rounded-md px-2 text-sm',
-        isActive && 'bg-accent text-foreground'
+        'text-muted-foreground hover:bg-muted hover:text-foreground flex h-7 items-center gap-1 rounded-md px-2 text-sm',
+        isActive && 'bg-muted text-foreground'
       )}
       onClick={onClick}
     >

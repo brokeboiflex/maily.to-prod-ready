@@ -62,7 +62,7 @@ export const InputAutocomplete = forwardRef<
             onValueChange(e.target.value);
           }}
           className={cn(
-            'bg-background text-foreground hover:bg-accent focus:bg-accent h-7 w-40 rounded-md px-2 pr-6 text-sm focus:outline-hidden',
+            'bg-background text-foreground hover:bg-muted focus:bg-muted h-7 w-40 rounded-md px-2 pr-6 text-sm focus:outline-hidden',
             className
           )}
           onKeyDown={(e) => {
