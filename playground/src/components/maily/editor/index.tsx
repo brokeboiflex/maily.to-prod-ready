@@ -35,7 +35,11 @@ type ParitialMailContextType = Partial<MailyContextType>;
 // expressed as token-based Tailwind so the writing surface follows the host's
 // shadcn theme. `prose` comes from the consumer's @tailwindcss/typography plugin.
 const EDITOR_CONTENT_CLASS = [
-  'prose w-full max-w-none focus:outline-none',
+  // pl-14 is the left gutter the hover drag-handle floats in. It lives on the
+  // content element (not the body wrapper) so the whole gutter is part of the
+  // ProseMirror hover surface — moving the mouse there fires the plugin's
+  // mousemove and reveals the handle, instead of only over the text.
+  'prose w-full max-w-none pl-14 focus:outline-none',
   // prose colors -> shadcn tokens (keeps the canvas readable in light & dark)
   '[--tw-prose-body:var(--foreground)] [--tw-prose-headings:var(--foreground)] [--tw-prose-bold:var(--foreground)] [--tw-prose-links:var(--foreground)] [--tw-prose-quotes:var(--foreground)] [--tw-prose-code:var(--foreground)] [--tw-prose-bullets:var(--muted-foreground)] [--tw-prose-counters:var(--muted-foreground)] [--tw-prose-hr:var(--border)] [--tw-prose-quote-borders:var(--border)] text-foreground',
   // email-content typography sizing / spacing
@@ -171,7 +175,7 @@ export function Editor(props: EditorProps) {
         {hasMenuBar && <EditorMenuBar config={props.config} editor={editor} />}
         <div
           className={cn(
-            'border-border bg-background mt-4 rounded-lg border p-4 pl-14',
+            'border-border bg-background mt-4 rounded-lg border py-4 pr-4',
             bodyClassName
           )}
         >
