@@ -4,6 +4,7 @@ import { AllowedLogoAlignment, allowedLogoAlignment } from '../nodes/logo/logo';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 import { cn } from '../utils/classname';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
+import { useMailyContext } from '../provider';
 
 type AlignmentSwitchProps = {
   alignment: AllowedLogoAlignment;
@@ -12,6 +13,7 @@ type AlignmentSwitchProps = {
 
 export function AlignmentSwitch(props: AlignmentSwitchProps) {
   const { alignment: rawAlignment, onAlignmentChange } = props;
+  const { t } = useMailyContext();
   const alignment = allowedLogoAlignment.includes(
     rawAlignment as AllowedLogoAlignment
   )
@@ -21,21 +23,21 @@ export function AlignmentSwitch(props: AlignmentSwitchProps) {
   const alignments = {
     left: {
       icon: AlignLeft,
-      tooltip: 'Align Left',
+      tooltip: t('alignment.left'),
       onClick: () => {
         onAlignmentChange('left');
       },
     },
     center: {
       icon: AlignCenter,
-      tooltip: 'Align Center',
+      tooltip: t('alignment.center'),
       onClick: () => {
         onAlignmentChange('center');
       },
     },
     right: {
       icon: AlignRight,
-      tooltip: 'Align Right',
+      tooltip: t('alignment.right'),
       onClick: () => {
         onAlignmentChange('right');
       },
@@ -56,7 +58,7 @@ export function AlignmentSwitch(props: AlignmentSwitchProps) {
             <activeAlignment.icon className="h-3 w-3 stroke-[2.5]" />
           </PopoverTrigger>
         </TooltipTrigger>
-        <TooltipContent sideOffset={8}>Alignment</TooltipContent>
+        <TooltipContent sideOffset={8}>{t('alignment.label')}</TooltipContent>
       </Tooltip>
       <PopoverContent
         className="flex w-max gap-0.5 rounded-lg p-0.5!"

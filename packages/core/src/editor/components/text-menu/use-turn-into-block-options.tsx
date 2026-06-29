@@ -9,6 +9,7 @@ import {
   LucideIcon,
   PilcrowIcon,
 } from 'lucide-react';
+import { useMailyContext } from '../../provider';
 
 export type TurnIntoBlockOptions = {
   label: string;
@@ -31,12 +32,13 @@ export type TurnIntoOptions = Array<
 >;
 
 export function useTurnIntoBlockOptions(editor: Editor) {
+  const { t } = useMailyContext();
   return useEditorState({
     editor,
     selector: ({ editor }): TurnIntoOptions => [
       {
         type: 'category',
-        label: 'Hierarchy',
+        label: t('turnInto.hierarchy'),
         id: 'hierarchy',
       },
       {
@@ -50,7 +52,7 @@ export function useTurnIntoBlockOptions(editor: Editor) {
           !editor.isActive('orderedList') &&
           !editor.isActive('bulletList') &&
           !editor.isActive('taskList'),
-        label: 'Paragraph',
+        label: t('turnInto.paragraph'),
         type: 'option',
       },
       {
@@ -65,7 +67,7 @@ export function useTurnIntoBlockOptions(editor: Editor) {
         id: 'heading1',
         disabled: () => !editor.can().setHeading({ level: 1 }),
         isActive: () => editor.isActive('heading', { level: 1 }),
-        label: 'Heading 1',
+        label: t('turnInto.heading1'),
         type: 'option',
       },
       {
@@ -80,7 +82,7 @@ export function useTurnIntoBlockOptions(editor: Editor) {
         id: 'heading2',
         disabled: () => !editor.can().setHeading({ level: 2 }),
         isActive: () => editor.isActive('heading', { level: 2 }),
-        label: 'Heading 2',
+        label: t('turnInto.heading2'),
         type: 'option',
       },
       {
@@ -95,13 +97,13 @@ export function useTurnIntoBlockOptions(editor: Editor) {
         id: 'heading3',
         disabled: () => !editor.can().setHeading({ level: 3 }),
         isActive: () => editor.isActive('heading', { level: 3 }),
-        label: 'Heading 3',
+        label: t('turnInto.heading3'),
         type: 'option',
       },
       {
         id: 'footer',
         type: 'option',
-        label: 'Footer',
+        label: t('turnInto.footer'),
         icon: FootprintsIcon,
         onClick: () => {
           editor.chain().focus().liftListItem('listItem').setFooter().run();
@@ -111,7 +113,7 @@ export function useTurnIntoBlockOptions(editor: Editor) {
       },
       {
         type: 'category',
-        label: 'Lists',
+        label: t('turnInto.lists'),
         id: 'lists',
       },
       {
@@ -120,7 +122,7 @@ export function useTurnIntoBlockOptions(editor: Editor) {
         id: 'bulletList',
         disabled: () => !editor.can().toggleBulletList(),
         isActive: () => editor.isActive('bulletList'),
-        label: 'Bullet list',
+        label: t('turnInto.bulletList'),
         type: 'option',
       },
       {
@@ -129,7 +131,7 @@ export function useTurnIntoBlockOptions(editor: Editor) {
         id: 'orderedList',
         disabled: () => !editor.can().toggleOrderedList(),
         isActive: () => editor.isActive('orderedList'),
-        label: 'Numbered list',
+        label: t('turnInto.numberedList'),
         type: 'option',
       },
     ],

@@ -9,6 +9,7 @@ import { useMemo } from 'react';
 import { BaseButton } from '../base-button';
 import { cn } from '@/editor/utils/classname';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+import { useMailyContext } from '../../provider';
 
 type TurnIntoBlockProps = {
   options: TurnIntoOptions;
@@ -24,6 +25,7 @@ const isCategory = (
 export function TurnIntoBlock(props: TurnIntoBlockProps) {
   const { options } = props;
 
+  const { t } = useMailyContext();
   const activeItem = useMemo(
     () =>
       options.find((option) => option.type === 'option' && option.isActive()),
@@ -44,7 +46,7 @@ export function TurnIntoBlock(props: TurnIntoBlockProps) {
             <ChevronDownIcon className="h-3 w-3 shrink-0 stroke-[2.5]" />
           </PopoverTrigger>
         </TooltipTrigger>
-        <TooltipContent sideOffset={8}>Turn into</TooltipContent>
+        <TooltipContent sideOffset={8}>{t('turnInto.label')}</TooltipContent>
       </Tooltip>
       <PopoverContent
         align="start"
