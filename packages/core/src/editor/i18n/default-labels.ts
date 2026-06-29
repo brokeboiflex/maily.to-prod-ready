@@ -138,6 +138,11 @@ export const defaultLabels = {
   // ── Image / inline-image menus ──
   'imageMenu.size': 'Size',
   'imageMenu.borderRadius': 'Border Radius',
+  'imageMenu.radius.sharp': 'Sharp',
+  'imageMenu.radius.smooth': 'Smooth',
+  'imageMenu.radius.smoother': 'Smoother',
+  'imageMenu.radius.rounded': 'Rounded',
+  'imageMenu.radius.circle': 'Circle',
   'imageMenu.lockAspectRatio': 'Lock Aspect Ratio',
   'imageMenu.lockAspectRatioLock': 'Lock aspect ratio',
   'imageMenu.lockAspectRatioUnlock': 'Unlock aspect ratio',

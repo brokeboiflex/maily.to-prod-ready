@@ -1,6 +1,7 @@
 import { LockIcon, LockOpenIcon } from 'lucide-react';
 import { BaseButton } from '../base-button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+import { useMailyContext } from '../../provider';
 
 type LockAspectRatioButtonProps = {
   onClick: () => void;
@@ -9,6 +10,7 @@ type LockAspectRatioButtonProps = {
 
 export function LockAspectRatioButton(props: LockAspectRatioButtonProps) {
   const { onClick, isLocked } = props;
+  const { t } = useMailyContext();
 
   return (
     <Tooltip>
@@ -29,7 +31,9 @@ export function LockAspectRatioButton(props: LockAspectRatioButtonProps) {
         </BaseButton>
       </TooltipTrigger>
       <TooltipContent sideOffset={8}>
-        {isLocked ? 'Unlock aspect ratio' : 'Lock aspect ratio'}
+        {isLocked
+          ? t('imageMenu.lockAspectRatioUnlock')
+          : t('imageMenu.lockAspectRatioLock')}
       </TooltipContent>
     </Tooltip>
   );
