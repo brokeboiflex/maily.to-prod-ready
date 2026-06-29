@@ -47,6 +47,39 @@ function App(props: AppProps) {
 }
 ```
 
+### Translating the editor
+
+Every user-facing string in the editor (menus, tooltips, placeholders, and the
+default block titles/descriptions) is overridable through a single `labels` prop.
+The mechanism is framework-agnostic — you supply a plain object, no `next-intl` /
+`react-i18next` dependency required.
+
+`labels` must be a **complete** language: `MailyLabels` is `Record<LabelKey, string>`,
+not a partial. Omit a key and TypeScript fails to compile, naming the missing key —
+so you always know exactly what you must declare. Omit the whole prop and the editor
+uses the shipped English defaults (`defaultLabels`) unchanged.
+
+```tsx
+import { Editor, defaultLabels, type MailyLabels } from '@maily-to/core';
+
+// Copy defaultLabels, translate the values. Every key is required.
+const frenchLabels: MailyLabels = {
+  ...defaultLabels,
+  'toolbar.bold': 'Gras',
+  'toolbar.italic': 'Italique',
+  'placeholder.heading': 'Titre {level}', // {level} is interpolated
+  // …translate the rest
+};
+
+<Editor labels={frenchLabels} />; // full French
+<Editor />; // English (defaultLabels)
+```
+
+- `defaultLabels` is **both** the runtime default **and** the authoring template — copy it, translate it, pass it back.
+- `MailyLabels` is the type you annotate your object with to get the completeness check.
+- Dynamic strings use `{token}` placeholders (e.g. `placeholder.heading` → `Heading {level}`); they are filled in by the editor at render time.
+- `searchTerms` are **not** part of the dictionary (they are fuzzy-match keys, never displayed). Override them via the `blocks` prop if you need localized search keywords.
+
 ### Slash Commands
 
 Slash commands let you interact with the editor by typing `/` followed by a command name. Commands are now organized into groups. Each group is an object with a `title` and a `commands` array. Every command within that array is a `BlockItem` that can either be a single command or a grouped command (with commands).
@@ -58,18 +91,25 @@ Suppose you have a couple of basic blocks, such as a text block or a heading blo
 ```tsx
 // omitting imports
 import { text, heading1 } from '@maily-to/core/blocks';
+import { createTranslator, defaultLabels } from '@maily-to/core';
+
+// The built-in blocks are translator factories: call them with a translator so
+// their title/description are localized. Use your own labels here if you have them.
+const t = createTranslator(defaultLabels);
 
 <Editor
   blocks={[
     {
       title: 'Basic Blocks',
-      commands: [text, heading1],
+      commands: [text(t), heading1(t)],
     },
   ]}
 />
 ```
 
 > **Note:** The order of the groups and the order of commands within each group determine how they are displayed in the editor.
+
+> **Breaking change:** the block exports from `@maily-to/core/blocks` (`text`, `heading1`, `button`, …) and `PlaceholderExtension` from `@maily-to/core/extensions` are now **factory functions** that take a translator (`(t) => …`) instead of ready-made values. Call them with a translator (`createTranslator(defaultLabels)` for English) — or just write plain `BlockItem` objects inline, as the examples below do.
 
 #### Grouped Command Blocks with Subcommands
 
