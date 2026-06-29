@@ -16,6 +16,7 @@ import { Popover, PopoverContent, PopoverTrigger } from './popover';
 import { Divider } from './ui/divider';
 import { DragHandle } from '../plugins/drag-handle/drag-handle';
 import { cn } from '../utils/classname';
+import { useMailyContext } from '../provider';
 
 export type ContentMenuProps = {
   editor: Editor;
@@ -23,6 +24,7 @@ export type ContentMenuProps = {
 
 export function ContentMenu(props: ContentMenuProps) {
   const { editor } = props;
+  const { t } = useMailyContext();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentNode, setCurrentNode] = useState<Node | null>(null);
@@ -140,7 +142,7 @@ export function ContentMenu(props: ContentMenuProps) {
                 <Plus className="size-3.5 shrink-0" />
               </BaseButton>
             </TooltipTrigger>
-            <TooltipContent sideOffset={8}>Add new node</TooltipContent>
+            <TooltipContent sideOffset={8}>{t('contentMenu.addNode')}</TooltipContent>
           </Tooltip>
           <Popover open={menuOpen} onOpenChange={setMenuOpen}>
             <div className="relative flex flex-col">
@@ -160,7 +162,7 @@ export function ContentMenu(props: ContentMenuProps) {
                     <GripVertical className="size-3.5 shrink-0" />
                   </BaseButton>
                 </TooltipTrigger>
-                <TooltipContent sideOffset={8}>Node actions</TooltipContent>
+                <TooltipContent sideOffset={8}>{t('contentMenu.nodeActions')}</TooltipContent>
               </Tooltip>
               <PopoverTrigger className="absolute top-0 left-0 z-0 h-5 w-5" />
             </div>
@@ -177,7 +179,7 @@ export function ContentMenu(props: ContentMenuProps) {
                 className="h-auto justify-start gap-2 rounded! px-2 py-1 text-sm font-normal"
               >
                 <Copy className="size-[15px] shrink-0" />
-                Duplicate
+                {t('contentMenu.duplicate')}
               </BaseButton>
               <Divider type="horizontal" />
               <BaseButton
@@ -185,7 +187,7 @@ export function ContentMenu(props: ContentMenuProps) {
                 className="bg-destructive/10 text-destructive h-auto justify-start gap-2 rounded! px-2 py-1 text-sm font-normal hover:bg-red-200 focus:bg-red-200"
               >
                 <Trash2 className="size-[15px] shrink-0" />
-                Delete
+                {t('contentMenu.delete')}
               </BaseButton>
             </PopoverContent>
           </Popover>

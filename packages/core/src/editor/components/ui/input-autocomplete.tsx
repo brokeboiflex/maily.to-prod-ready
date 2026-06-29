@@ -6,6 +6,7 @@ import { useOutsideClick } from '@/editor/utils/use-outside-click';
 import { Editor } from '@tiptap/core';
 import { CornerDownLeft } from 'lucide-react';
 import { forwardRef, HTMLAttributes, useRef } from 'react';
+import { useMailyContext } from '@/editor/provider';
 
 type InputAutocompleteProps = HTMLAttributes<HTMLInputElement> & {
   value: string;
@@ -36,6 +37,7 @@ export const InputAutocomplete = forwardRef<
     editor,
     ...inputProps
   } = props;
+  const { t } = useMailyContext();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const popoverRef = useRef<VariableSuggestionsPopoverRef>(null);
@@ -53,7 +55,7 @@ export const InputAutocomplete = forwardRef<
       <label className="relative">
         <input
           {...AUTOCOMPLETE_PASSWORD_MANAGERS_OFF}
-          placeholder="e.g. items"
+          placeholder={t('inputAutocomplete.placeholder')}
           type="text"
           {...inputProps}
           ref={ref}

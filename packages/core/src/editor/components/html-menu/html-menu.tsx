@@ -14,6 +14,7 @@ import {
   TooltipTrigger,
 } from '../ui/tooltip';
 import { useHtmlState } from './use-html-state';
+import { useMailyContext } from '../../provider';
 
 export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
   const { appendTo, editor } = props;
@@ -22,6 +23,7 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
   }
 
   const state = useHtmlState(editor);
+  const { t } = useMailyContext();
 
   const getReferenceClientRect = useCallback(() => {
     const renderContainer = getRenderContainer(editor!, 'htmlCodeBlock');
@@ -78,7 +80,7 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
                 <CodeXmlIcon className="size-3 shrink-0 stroke-[2.5]" />
               </button>
             </TooltipTrigger>
-            <TooltipContent sideOffset={8}>HTML Code</TooltipContent>
+            <TooltipContent sideOffset={8}>{t('htmlMenu.htmlCode')}</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -97,7 +99,7 @@ export function HTMLBubbleMenu(props: EditorBubbleMenuProps) {
                 <ViewIcon className="size-3 shrink-0 stroke-[2.5]" />
               </button>
             </TooltipTrigger>
-            <TooltipContent sideOffset={8}>Preview</TooltipContent>
+            <TooltipContent sideOffset={8}>{t('htmlMenu.preview')}</TooltipContent>
           </Tooltip>
         </div>
         <Divider />

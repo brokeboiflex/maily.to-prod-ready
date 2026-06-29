@@ -6,6 +6,7 @@ import { BaseButton } from '../base-button';
 import { Tooltip, TooltipContent, TooltipTrigger } from './tooltip';
 import { cn } from '@/editor/utils/classname';
 import { ReactNode } from 'react';
+import { useMailyContext } from '../../provider';
 
 type ColorPickerProps = {
   color: string;
@@ -35,6 +36,7 @@ export function ColorPicker(props: ColorPickerProps) {
 
     suggestedColors = [],
   } = props;
+  const { t } = useMailyContext();
 
   const handleColorChange = (color: string) => {
     // HACK: This is a workaround for a bug in tiptap
@@ -112,7 +114,9 @@ export function ColorPicker(props: ColorPickerProps) {
             <div>
               <div className="bg-muted -mx-4 my-4 h-px" />
 
-              <h2 className="text-muted-foreground text-xs">Recently used</h2>
+              <h2 className="text-muted-foreground text-xs">
+                {t('colorPicker.recentlyUsed')}
+              </h2>
 
               <div className="mt-2 flex flex-wrap gap-0.5">
                 {suggestedColors.map((suggestedColor) => (
