@@ -21,7 +21,7 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
 
   return (
     <Popover>
-      <PopoverTrigger className="mly:flex mly:size-7 mly:items-center mly:justify-center mly:gap-1 mly:rounded-md mly:text-sm mly:data-[state=open]:bg-soft-gray mly:hover:bg-soft-gray">
+      <PopoverTrigger className="mly:flex mly:size-7 mly:items-center mly:justify-center mly:gap-1 mly:rounded-md mly:text-sm mly:data-[state=open]:bg-accent mly:hover:bg-accent mly:hover:text-accent-foreground">
         <SlidersVertical className="mly:h-3 mly:w-3 mly:stroke-[2.5]" />
       </PopoverTrigger>
       <PopoverContent
@@ -53,7 +53,7 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
           </SwitchButton>
         </div>
 
-        <hr className="mly:my-0.5 mly:border-gray-200" />
+        <hr className="mly:my-0.5 mly:border-border" />
 
         <div
           className="mly:grid mly:gap-1 mly:p-1"
@@ -75,7 +75,7 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
 
             return (
               <div className="mly:flex mly:flex-col mly:gap-1" key={index}>
-                <span className="mly:text-xs mly:text-gray-400">{label}</span>
+                <span className="mly:text-xs mly:text-muted-foreground">{label}</span>
 
                 <label className="mly:relative">
                   <input
@@ -84,14 +84,14 @@ export function ColumnsWidthConfig(props: ColumnsWidthConfigProps) {
                     min={1}
                     max={90}
                     type="number"
-                    className="hide-number-controls mly:w-full mly:appearance-none mly:rounded-md mly:bg-soft-gray mly:px-1.5 mly:py-1 mly:pr-6 mly:text-sm mly:tabular-nums mly:outline-hidden mly:focus:bg-soft-gray mly:focus:outline-hidden mly:focus:ring-1 mly:focus:ring-midnight-gray/50"
+                    className="hide-number-controls mly:w-full mly:appearance-none mly:rounded-md mly:bg-accent mly:px-1.5 mly:py-1 mly:pr-6 mly:text-sm mly:tabular-nums mly:outline-hidden mly:focus:bg-accent mly:focus:outline-hidden mly:focus:ring-1 mly:focus:ring-ring/50"
                     value={value}
                     onChange={(e) => {
                       const value = e.target.value;
                       onColumnWidthChange?.(index, value);
                     }}
                   />
-                  <span className="mly:absolute mly:inset-y-0 mly:right-0 mly:flex mly:aspect-square mly:items-center mly:justify-center mly:text-xs mly:tabular-nums mly:text-gray-500">
+                  <span className="mly:absolute mly:inset-y-0 mly:right-0 mly:flex mly:aspect-square mly:items-center mly:justify-center mly:text-xs mly:tabular-nums mly:text-muted-foreground">
                     %
                   </span>
                 </label>
@@ -116,8 +116,8 @@ function SwitchButton(props: SwitchButtonProps) {
   return (
     <button
       className={cn(
-        'mly:flex mly:h-7 mly:items-center mly:gap-1 mly:rounded-md mly:px-2 mly:text-sm mly:text-gray-500 mly:hover:bg-soft-gray mly:hover:text-midnight-gray',
-        isActive && 'mly:bg-soft-gray mly:text-midnight-gray'
+        'mly:flex mly:h-7 mly:items-center mly:gap-1 mly:rounded-md mly:px-2 mly:text-sm mly:text-muted-foreground mly:hover:bg-accent mly:hover:text-accent-foreground',
+        isActive && 'mly:bg-accent mly:text-foreground'
       )}
       onClick={onClick}
     >

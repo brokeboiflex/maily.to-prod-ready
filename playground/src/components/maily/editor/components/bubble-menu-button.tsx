@@ -29,7 +29,7 @@ export function BubbleMenuButton(item: BubbleMenuItem) {
       ) : (
         <span
           className={cn(
-            'mly:text-sm mly:font-medium mly:text-slate-600',
+            'mly:text-sm mly:font-medium mly:text-muted-foreground',
             item?.nameClassName
           )}
         >

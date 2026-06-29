@@ -1,6 +1,7 @@
 import { useState } from "react"
 import type { Editor as TiptapEditor } from "@tiptap/core"
 
+import { ThemeToggle } from "@/components/theme-toggle"
 import { Editor } from "@/components/maily"
 
 export function App() {
@@ -9,13 +10,16 @@ export function App() {
   return (
     <div className="min-h-svh bg-muted/30 p-6">
       <div className="mx-auto flex max-w-3xl flex-col gap-4">
-        <header>
-          <h1 className="text-lg font-medium">Maily playground</h1>
-          <p className="text-sm text-muted-foreground">
-            Installed via{" "}
-            <code className="font-mono text-xs">shadcn add @maily/maily</code>{" "}
-            from the local registry.
-          </p>
+        <header className="flex items-start justify-between gap-4">
+          <div>
+            <h1 className="text-lg font-medium">Maily playground</h1>
+            <p className="text-sm text-muted-foreground">
+              Installed via{" "}
+              <code className="font-mono text-xs">shadcn add @maily/maily</code>{" "}
+              from the local registry.
+            </p>
+          </div>
+          <ThemeToggle />
         </header>
 
         <Editor

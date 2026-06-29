@@ -60,11 +60,11 @@ export function SlashCommandItem(props: SlashCommandItemProps) {
       </div>
       <div className="mly:grow">
         <p className="mly:font-medium">{item.title}</p>
-        <p className="mly:text-xs mly:text-gray-400">{item.description}</p>
+        <p className="mly:text-xs mly:text-muted-foreground">{item.description}</p>
       </div>
 
       {isSubCommand && (
-        <span className="mly:block mly:px-1 mly:text-gray-400">
+        <span className="mly:block mly:px-1 mly:text-muted-foreground">
           <IconPlaceholder
   lucide="ChevronRightIcon"
   tabler="IconChevronRight"
@@ -116,9 +116,9 @@ export function SlashCommandItem(props: SlashCommandItemProps) {
       <TooltipTrigger asChild>
         <button
           className={cn(
-            'mly:flex mly:w-full mly:items-center mly:gap-2 mly:rounded-md mly:px-2 mly:py-1 mly:text-left mly:text-sm mly:text-gray-900 mly:hover:bg-gray-100 mly:hover:text-gray-900',
+            'mly:flex mly:w-full mly:items-center mly:gap-2 mly:rounded-md mly:px-2 mly:py-1 mly:text-left mly:text-sm mly:text-foreground mly:hover:bg-accent mly:hover:text-accent-foreground',
             isActive
-              ? 'mly:bg-gray-100 mly:text-gray-900'
+              ? 'mly:bg-accent mly:text-accent-foreground'
               : 'mly:bg-transparent'
           )}
           onClick={() => selectItem(groupIndex, commandIndex)}
@@ -139,14 +139,14 @@ export function SlashCommandItem(props: SlashCommandItemProps) {
           item?.preview(editor)
         ) : (
           <>
-            <figure className="mly:relative mly:aspect-[2.5] mly:w-full mly:overflow-hidden mly:rounded-md mly:border mly:border-gray-200">
+            <figure className="mly:relative mly:aspect-[2.5] mly:w-full mly:overflow-hidden mly:rounded-md mly:border mly:border-border">
               <img
                 src={item?.preview}
                 alt={item?.title}
                 className="mly:absolute mly:inset-0 mly:h-full mly:w-full mly:object-cover"
               />
             </figure>
-            <p className="mly:mt-2 mly:px-0.5 mly:text-gray-500">
+            <p className="mly:mt-2 mly:px-0.5 mly:text-muted-foreground">
               {item.description}
             </p>
           </>

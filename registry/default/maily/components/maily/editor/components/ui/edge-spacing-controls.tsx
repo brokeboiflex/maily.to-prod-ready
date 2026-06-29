@@ -31,7 +31,7 @@ export function EdgeSpacingControl(props: EdgeSpacingControlProps) {
 
   return (
     <Popover>
-      <PopoverTrigger className="mly:rounded mly:hover:bg-gray-100">
+      <PopoverTrigger className="mly:rounded mly:hover:bg-accent mly:hover:text-accent-foreground">
         <IconPlaceholder
   lucide="ChevronUp"
   tabler="IconChevronUp"
@@ -42,7 +42,7 @@ export function EdgeSpacingControl(props: EdgeSpacingControlProps) {
 />
       </PopoverTrigger>
       <PopoverContent
-        className="mly:flex mly:max-w-max mly:gap-0.5 mly:rounded-md mly:border mly:border-gray-200 mly:p-0.5! mly:shadow-none"
+        className="mly:flex mly:max-w-max mly:gap-0.5 mly:rounded-md mly:border mly:border-border mly:p-0.5! mly:shadow-none"
         side="top"
         sideOffset={8}
       >
@@ -105,12 +105,12 @@ function InputWithLabel(props: InputWithLabelProps) {
         value={value + ''}
         onChange={(e) => onChange(Number(e.target.value))}
         className={cn(
-          'hide-number-controls mly:size-5 mly:border-0 mly:border-none mly:bg-gray-200 mly:p-0.5 mly:text-center mly:text-xs mly:tabular-nums mly:outline-hidden focus-visible:outline-none',
+          'hide-number-controls mly:size-5 mly:border-0 mly:border-none mly:bg-muted mly:p-0.5 mly:text-center mly:text-xs mly:text-foreground mly:tabular-nums mly:outline-hidden focus-visible:outline-none',
           inputClassName
         )}
       />
       <label
-        className="mly:text-[10px] mly:leading-none mly:text-gray-500"
+        className="mly:text-[10px] mly:leading-none mly:text-muted-foreground"
         htmlFor={id}
       >
         {label}

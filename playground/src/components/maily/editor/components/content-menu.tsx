@@ -133,7 +133,7 @@ export function ContentMenu(props: ContentMenuProps) {
               <BaseButton
                 variant="ghost"
                 size="icon"
-                className="mly:size-5! mly:cursor-grab mly:text-gray-500 mly:hover:text-black"
+                className="mly:size-5! mly:cursor-grab mly:text-muted-foreground mly:hover:text-foreground"
                 onClick={handleAddNewNode}
                 type="button"
               >
@@ -149,7 +149,7 @@ export function ContentMenu(props: ContentMenuProps) {
                   <BaseButton
                     variant="ghost"
                     size="icon"
-                    className="mly:relative mly:z-1 mly:size-5! mly:cursor-grab mly:text-gray-500 mly:hover:text-black"
+                    className="mly:relative mly:z-1 mly:size-5! mly:cursor-grab mly:text-muted-foreground mly:hover:text-foreground"
                     onClick={(e) => {
                       e.preventDefault();
                       setMenuOpen(true);
@@ -182,7 +182,7 @@ export function ContentMenu(props: ContentMenuProps) {
               <Divider type="horizontal" />
               <BaseButton
                 onClick={deleteCurrentNode}
-                className="mly:h-auto mly:justify-start mly:gap-2 mly:rounded! mly:bg-red-100 mly:px-2 mly:py-1 mly:text-sm mly:font-normal mly:text-red-600 mly:hover:bg-red-200 mly:focus:bg-red-200"
+                className="mly:h-auto mly:justify-start mly:gap-2 mly:rounded! mly:bg-destructive/10 mly:px-2 mly:py-1 mly:text-sm mly:font-normal mly:text-destructive mly:hover:bg-destructive/20 mly:focus:bg-destructive/20"
               >
                 <Trash2 className="mly:size-[15px] mly:shrink-0" />
                 Delete

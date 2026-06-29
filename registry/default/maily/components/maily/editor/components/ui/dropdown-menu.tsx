@@ -27,7 +27,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      'mly:focus:bg-white mly:data-[state=open]:bg-gray-100 mly:flex mly:cursor-default mly:select-none mly:items-center mly:rounded-sm mly:px-2 mly:py-1.5 mly:text-sm mly:outline-hidden',
+      'mly:focus:bg-accent mly:focus:text-accent-foreground mly:data-[state=open]:bg-accent mly:data-[state=open]:text-accent-foreground mly:flex mly:cursor-default mly:select-none mly:items-center mly:rounded-sm mly:px-2 mly:py-1.5 mly:text-sm mly:outline-hidden',
       inset && 'pl-8',
       className
     )}
@@ -54,7 +54,7 @@ const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      'mly:bg-white mly:text-midnight-gray mly:z-50 mly:min-w-32 mly:overflow-hidden mly:rounded-md mly:border mly:border-gray-200 mly:p-1 mly:shadow-lg',
+      'mly:bg-popover mly:text-popover-foreground mly:z-50 mly:min-w-32 mly:overflow-hidden mly:rounded-md mly:border mly:border-border mly:p-1 mly:shadow-lg',
       className
     )}
     {...props}
@@ -74,7 +74,7 @@ const DropdownMenuContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        'mly:z-50 mly:min-w-32 mly:overflow-hidden mly:rounded-md mly:border mly:border-gray-200 mly:p-1 mly:shadow-md mly:bg-white',
+        'mly:z-50 mly:min-w-32 mly:overflow-hidden mly:rounded-md mly:border mly:border-border mly:p-1 mly:shadow-md mly:bg-popover mly:text-popover-foreground',
         className
       )}
       {...props}
@@ -98,7 +98,7 @@ const DropdownMenuItem = React.forwardRef<
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(
-      'mly:relative mly:flex mly:cursor-default mly:select-none mly:items-center mly:gap-2 mly:rounded-sm mly:px-2 mly:py-1 mly:text-sm mly:outline-hidden mly:transition-colors mly:data-disabled:pointer-events-none mly:data-disabled:opacity-50 mly:focus:bg-gray-100 mly:[&_svg]:pointer-events-none',
+      'mly:relative mly:flex mly:cursor-default mly:select-none mly:items-center mly:gap-2 mly:rounded-sm mly:px-2 mly:py-1 mly:text-sm mly:outline-hidden mly:transition-colors mly:data-disabled:pointer-events-none mly:data-disabled:opacity-50 mly:focus:bg-accent mly:focus:text-accent-foreground mly:[&_svg]:pointer-events-none',
       inset && 'pl-8',
       className
     )}
@@ -131,7 +131,7 @@ const DropdownMenuSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
-    className={cn('mly:-mx-1 mly:my-1 mly:h-px mly:bg-gray-200', className)}
+    className={cn('mly:-mx-1 mly:my-1 mly:h-px mly:bg-border', className)}
     {...props}
   />
 ));

@@ -190,7 +190,7 @@ const CommandList = forwardRef<unknown, CommandListProps>((props, ref) => {
 
   return (
     <TooltipProvider>
-      <div className="mly:z-50 mly:w-72 mly:overflow-hidden mly:rounded-md mly:border mly:border-gray-200 mly:bg-white mly:shadow-md mly:transition-all">
+      <div className="mly:z-50 mly:w-72 mly:overflow-hidden mly:rounded-md mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:shadow-md mly:transition-all">
         <div
           id="slash-command"
           ref={commandListContainer}
@@ -200,7 +200,7 @@ const CommandList = forwardRef<unknown, CommandListProps>((props, ref) => {
             <Fragment key={groupIndex}>
               <span
                 className={cn(
-                  'mly:block mly:border-b mly:border-gray-200 mly:bg-soft-gray mly:p-2 mly:text-xs mly:uppercase mly:text-gray-400',
+                  'mly:block mly:border-b mly:border-border mly:bg-accent mly:p-2 mly:text-xs mly:uppercase mly:text-muted-foreground',
                   groupIndex > 0 ? 'mly:border-t' : ''
                 )}
               >
@@ -231,13 +231,13 @@ const CommandList = forwardRef<unknown, CommandListProps>((props, ref) => {
             </Fragment>
           ))}
         </div>
-        <div className="mly:border-t mly:border-gray-200 mly:px-1 mly:py-3 mly:pl-4">
+        <div className="mly:border-t mly:border-border mly:px-1 mly:py-3 mly:pl-4">
           <div className="mly:flex mly:items-center">
-            <p className="mly:text-center mly:text-xs mly:text-gray-400">
-              <kbd className="mly:rounded mly:border mly:border-gray-200 mly:p-1 mly:px-2 mly:font-medium">
+            <p className="mly:text-center mly:text-xs mly:text-muted-foreground">
+              <kbd className="mly:rounded mly:border mly:border-border mly:p-1 mly:px-2 mly:font-medium">
                 ↑
               </kbd>
-              <kbd className="mly:ml-1 mly:rounded mly:border mly:border-gray-200 mly:p-1 mly:px-2 mly:font-medium">
+              <kbd className="mly:ml-1 mly:rounded mly:border mly:border-border mly:p-1 mly:px-2 mly:font-medium">
                 ↓
               </kbd>{' '}
               to navigate
@@ -245,8 +245,8 @@ const CommandList = forwardRef<unknown, CommandListProps>((props, ref) => {
             <span aria-hidden="true" className="mly:select-none mly:px-1">
               ·
             </span>
-            <p className="mly:text-center mly:text-xs mly:text-gray-400">
-              <kbd className="mly:rounded mly:border mly:border-gray-200 mly:p-1 mly:px-1.5 mly:font-medium">
+            <p className="mly:text-center mly:text-xs mly:text-muted-foreground">
+              <kbd className="mly:rounded mly:border mly:border-border mly:p-1 mly:px-1.5 mly:font-medium">
                 Enter
               </kbd>{' '}
               to select

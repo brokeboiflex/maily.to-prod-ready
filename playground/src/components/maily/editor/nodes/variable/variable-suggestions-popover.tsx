@@ -83,8 +83,8 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
     }));
 
     return (
-      <div className="mly:z-50 mly:w-64 mly:rounded-lg mly:border mly:border-gray-200 mly:bg-white mly:shadow-md mly:transition-all">
-        <div className="mly:flex mly:items-center mly:justify-between mly:gap-2 mly:border-b mly:border-gray-200 mly:bg-soft-gray/40 mly:px-1 mly:py-1.5 mly:text-gray-500">
+      <div className="mly:z-50 mly:w-64 mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:shadow-md mly:transition-all">
+        <div className="mly:flex mly:items-center mly:justify-between mly:gap-2 mly:border-b mly:border-border mly:bg-muted/40 mly:px-1 mly:py-1.5 mly:text-muted-foreground">
           <span className="mly:text-xs mly:uppercase">Variables</span>
           <VariableIcon>
             <Braces className="mly:size-3 mly:stroke-[2.5]" />
@@ -103,10 +103,10 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
                   ref={(el) => (itemRefs.current[index] = el)}
                   onClick={() => onSelectItem(item)}
                   className={cn(
-                    'mly:flex mly:w-fit mly:min-w-full mly:items-center mly:gap-2 mly:rounded-md mly:px-2 mly:py-1 mly:text-left mly:font-mono mly:text-sm mly:text-gray-900 mly:hover:bg-soft-gray',
+                    'mly:flex mly:w-fit mly:min-w-full mly:items-center mly:gap-2 mly:rounded-md mly:px-2 mly:py-1 mly:text-left mly:font-mono mly:text-sm mly:text-foreground mly:hover:bg-accent mly:hover:text-accent-foreground',
                     index === selectedIndex
-                      ? 'mly:bg-soft-gray'
-                      : 'mly:bg-white'
+                      ? 'mly:bg-accent'
+                      : 'mly:bg-popover mly:text-popover-foreground'
                   )}
                 >
                   <Braces className="mly:size-3 mly:stroke-[2.5] mly:text-rose-600" />
@@ -114,14 +114,14 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
                 </button>
               ))
             ) : (
-              <div className="mly:flex mly:h-7 mly:w-full mly:items-center mly:gap-2 mly:rounded-md mly:px-2 mly:py-1 mly:text-left mly:font-mono mly:text-[13px] mly:text-gray-900 mly:hover:bg-soft-gray">
+              <div className="mly:flex mly:h-7 mly:w-full mly:items-center mly:gap-2 mly:rounded-md mly:px-2 mly:py-1 mly:text-left mly:font-mono mly:text-[13px] mly:text-foreground mly:hover:bg-accent mly:hover:text-accent-foreground">
                 No result
               </div>
             )}
           </div>
         </div>
 
-        <div className="mly:flex mly:items-center mly:justify-between mly:gap-2 mly:border-t mly:border-gray-200 mly:px-1 mly:py-1.5 mly:text-gray-500">
+        <div className="mly:flex mly:items-center mly:justify-between mly:gap-2 mly:border-t mly:border-border mly:px-1 mly:py-1.5 mly:text-muted-foreground">
           <div className="mly:flex mly:items-center mly:gap-1">
             <VariableIcon>
               <ArrowDownIcon className="mly:size-3 mly:stroke-[2.5]" />
@@ -129,7 +129,7 @@ export const VariableSuggestionsPopover: VariableSuggestionsPopoverType =
             <VariableIcon>
               <ArrowUpIcon className="mly:size-3 mly:stroke-[2.5]" />
             </VariableIcon>
-            <span className="mly:text-xs mly:text-gray-500">Navigate</span>
+            <span className="mly:text-xs mly:text-muted-foreground">Navigate</span>
           </div>
           <VariableIcon>
             <CornerDownLeftIcon className="mly:size-3 mly:stroke-[2.5]" />
@@ -150,7 +150,7 @@ function VariableIcon(props: VariableIconProps) {
   return (
     <div
       className={cn(
-        'mly:flex mly:size-5 mly:items-center mly:justify-center mly:rounded-md mly:border mly:border-gray-200',
+        'mly:flex mly:size-5 mly:items-center mly:justify-center mly:rounded-md mly:border mly:border-border',
         className
       )}
     >

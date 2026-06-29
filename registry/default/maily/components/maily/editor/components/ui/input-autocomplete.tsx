@@ -63,7 +63,7 @@ export const InputAutocomplete = forwardRef<
             onValueChange(e.target.value);
           }}
           className={cn(
-            'mly:h-7 mly:w-40 mly:rounded-md mly:bg-white mly:px-2 mly:pr-6 mly:text-sm mly:text-midnight-gray mly:hover:bg-soft-gray mly:focus:bg-soft-gray mly:focus:outline-hidden',
+            'mly:h-7 mly:w-40 mly:rounded-md mly:bg-transparent mly:px-2 mly:pr-6 mly:text-sm mly:text-foreground mly:hover:bg-accent mly:hover:text-accent-foreground mly:focus:bg-accent mly:focus:outline-hidden',
             className
           )}
           onKeyDown={(e) => {
@@ -92,7 +92,7 @@ export const InputAutocomplete = forwardRef<
   hugeicons="CornerDownLeftIcon"
   phosphor="ArrowBendDownLeft"
   remixicon="RiCornerDownLeftLine"
-  className="mly:h-3 mly:w-3 mly:stroke-[2.5] mly:text-midnight-gray"
+  className="mly:h-3 mly:w-3 mly:stroke-[2.5] mly:text-muted-foreground"
 />
         </div>
       </label>

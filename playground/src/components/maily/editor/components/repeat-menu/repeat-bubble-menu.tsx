@@ -95,14 +95,14 @@ export function RepeatBubbleMenu(props: EditorBubbleMenuProps) {
   return (
     <BubbleMenu
       {...bubbleMenuProps}
-      className="mly:flex mly:items-stretch mly:rounded-lg mly:border mly:border-gray-200 mly:bg-white mly:p-0.5 mly:shadow-md"
+      className="mly:flex mly:items-stretch mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:p-0.5 mly:shadow-md"
     >
       <TooltipProvider>
         <div className="mly:flex mly:items-center mly:gap-1.5 mly:px-1.5 mly:text-sm mly:leading-none">
           Repeat
           <Tooltip>
             <TooltipTrigger>
-              <InfoIcon className={cn('mly:size-3 mly:stroke-[2.5] mly:text-gray-500')} />
+              <InfoIcon className={cn('mly:size-3 mly:stroke-[2.5] mly:text-muted-foreground')} />
             </TooltipTrigger>
             <TooltipContent
               sideOffset={14}

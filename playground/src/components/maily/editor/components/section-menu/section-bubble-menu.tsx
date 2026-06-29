@@ -96,7 +96,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
   return (
     <BubbleMenu
       {...bubbleMenuProps}
-      className="mly:flex mly:items-stretch mly:rounded-lg mly:border mly:border-gray-200 mly:bg-white mly:p-0.5 mly:shadow-md"
+      className="mly:flex mly:items-stretch mly:rounded-lg mly:border mly:border-border mly:bg-popover mly:text-popover-foreground mly:p-0.5 mly:shadow-md"
     >
       <TooltipProvider>
         <AlignmentSwitch
@@ -217,7 +217,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
             >
               <BorderColor
                 className="mly:size-3 mly:shrink-0"
-                topBarClassName="mly:stroke-midnight-gray"
+                topBarClassName="mly:stroke-foreground"
                 style={{
                   color: state.currentBorderColor,
                 }}
@@ -233,7 +233,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
             }}
             backgroundColor={state.currentBackgroundColor}
             tooltip="Background Color"
-            className="mly:rounded-full mly:border-[1.5px] mly:border-white mly:shadow"
+            className="mly:rounded-full mly:border-[1.5px] mly:border-background mly:shadow"
           />
         </div>
 
@@ -263,7 +263,7 @@ export function SectionBubbleMenu(props: EditorBubbleMenuProps) {
           <>
             <Divider />
             <Popover>
-              <PopoverTrigger className="mly:flex mly:items-center mly:gap-1 mly:rounded-md mly:px-1.5 mly:text-sm mly:data-[state=open]:bg-soft-gray mly:hover:bg-soft-gray">
+              <PopoverTrigger className="mly:flex mly:items-center mly:gap-1 mly:rounded-md mly:px-1.5 mly:text-sm mly:data-[state=open]:bg-accent mly:hover:bg-accent mly:hover:text-accent-foreground">
                 Column
                 <ChevronUp className="mly:h-3 mly:w-3" />
               </PopoverTrigger>

@@ -28,16 +28,19 @@ const BaseButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = asChild ? Slot : 'button';
     const baseClass =
-      'mly:inline-flex mly:items-center mly:justify-center mly:rounded-md mly:text-sm mly:font-medium mly:ring-offset-white mly:transition-colors mly:focus-visible:outline-hidden mly:focus-visible:ring-2 mly:focus-visible:ring-gray-400 mly:focus-visible:ring-offset-2 mly:focus-visible:relative mly:focus-visible:z-10 mly:disabled:opacity-50 ';
+      'mly:inline-flex mly:items-center mly:justify-center mly:rounded-md mly:text-sm mly:font-medium mly:ring-offset-background mly:transition-colors mly:focus-visible:outline-hidden mly:focus-visible:ring-2 mly:focus-visible:ring-ring mly:focus-visible:ring-offset-2 mly:focus-visible:relative mly:focus-visible:z-10 mly:disabled:opacity-50 ';
     const variantClasses = {
-      default: 'mly:bg-gray-900 mly:text-gray-50 mly:hover:bg-soft-gray',
-      destructive: 'mly:bg-red-500 mly:text-gray-50 mly:hover:bg-red-500/90',
+      default:
+        'mly:bg-primary mly:text-primary-foreground mly:hover:bg-primary/90',
+      destructive:
+        'mly:bg-destructive mly:text-white mly:hover:bg-destructive/90',
       outline:
-        'mly:border mly:border-gray-200 mly:bg-white mly:hover:bg-gray-100 mly:hover:text-gray-900',
-      secondary: 'mly:bg-gray-100 mly:text-gray-900 mly:hover:bg-gray-100/80',
+        'mly:border mly:border-input mly:bg-background mly:hover:bg-accent mly:hover:text-accent-foreground',
+      secondary:
+        'mly:bg-secondary mly:text-secondary-foreground mly:hover:bg-secondary/80',
       ghost:
-        'mly:hover:bg-soft-gray bg-transparent mly:hover:text-gray-900 mly:data-[state=true]:bg-soft-gray mly:data-[state=true]:text-gray-900',
-      link: 'mly:text-gray-900 mly:underline-offset-4 mly:hover:underline',
+        'mly:bg-transparent mly:hover:bg-accent mly:hover:text-accent-foreground mly:data-[state=true]:bg-accent mly:data-[state=true]:text-accent-foreground',
+      link: 'mly:text-foreground mly:underline-offset-4 mly:hover:underline',
     };
     const sizeClasses = {
       default: 'mly:h-10 mly:px-4 mly:py-2',

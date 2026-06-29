@@ -24,9 +24,9 @@ export function LockAspectRatioButton(props: LockAspectRatioButtonProps) {
           onClick={onClick}
         >
           {isLocked ? (
-            <LockIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-midnight-gray" />
+            <LockIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-foreground" />
           ) : (
-            <LockOpenIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-midnight-gray" />
+            <LockOpenIcon className="mly:h-3 mly:w-3 mly:shrink-0 mly:stroke-[2.5] mly:text-foreground" />
           )}
         </BaseButton>
       </TooltipTrigger>

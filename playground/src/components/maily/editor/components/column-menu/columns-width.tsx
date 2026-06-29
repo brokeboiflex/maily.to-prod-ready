@@ -12,7 +12,7 @@ export function ColumnsWidth(props: ColumnsWidthProps) {
 
   const content = (
     <label className="mly:relative mly:flex mly:items-center">
-      <span className="mly:absolute mly:inset-y-0 mly:left-2 mly:flex mly:items-center mly:text-xs mly:leading-none mly:text-gray-400">
+      <span className="mly:absolute mly:inset-y-0 mly:left-2 mly:flex mly:items-center mly:text-xs mly:leading-none mly:text-muted-foreground">
         W
       </span>
       <select
